@@ -15,7 +15,7 @@ public class RobotMap {
     public static int solChannel2 = 3;
 
     public static int joyPort1 = 0;
-    public static int joyPort2 = 4;
+    //public static int joyPort2 = 4;
 
     public static int talonPort1 = 5;
     public static int talonPort2 = 6;

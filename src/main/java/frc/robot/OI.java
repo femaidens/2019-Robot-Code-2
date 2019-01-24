@@ -16,9 +16,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
     public static Joystick atkJoy1 = new Joystick(RobotMap.joyPort1);
     
-    public static Joystick atkJoy2 = new Joystick(RobotMap.joyPort2);
+    //public static Joystick atkJoy2 = new Joystick(RobotMap.joyPort2);
 
     public static Button hatch = new JoystickButton(atkJoy1, 3);
+    public static Button testCounter = new JoystickButton(atkJoy1, 5);
 
     //public static Button cargoIn = new JoystickButton(atkJoy1, 5);
     /*public static Button cargoOut = new JoystickButton(atkJoy1, 6);
@@ -33,7 +34,8 @@ public class OI {
 */
 
     public static void bindButtons(){
-        hatch.whenPressed(new HatchIntakeCom());
+        //hatch.whenPressed(new HatchIntakeCom());
+        testCounter.whenPressed(new PrintTest());
         
         //cargoIn.whileHeld(new CargoIn());
         /*cargoOut.whileHeld(new CargoOut());

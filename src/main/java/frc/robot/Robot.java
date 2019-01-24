@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.wpilibj.Timer;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
   public static DriveTrain drivetrain;
   public static HatchIntake hatchIntake;
   Command autonomousCommand;
+  public static Timer timer;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -43,7 +44,10 @@ public class Robot extends TimedRobot {
     drivetrain = new DriveTrain();
    // autonomousCommand = new AutonomousDrive();
     OI.bindButtons();
-    hatchIntake = new HatchIntake();
+    timer = new Timer();
+    
+    timer.start();
+    //hatchIntake = new HatchIntake();
   }
 
   /**

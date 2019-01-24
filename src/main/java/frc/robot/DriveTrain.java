@@ -9,6 +9,7 @@ package frc.robot;
 
 
 
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -19,9 +20,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
 
-  public DriveTrain(){
-  }
-
   public static CANSparkMax frontRight = new CANSparkMax(0, MotorType.kBrushless);
   public static CANSparkMax frontLeft = new CANSparkMax(15, MotorType.kBrushless);
   public static CANSparkMax rearRight = new CANSparkMax(2, MotorType.kBrushless);
@@ -29,10 +27,17 @@ public class DriveTrain extends Subsystem {
 
   //public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
-  public static Counter frontRightHall = new Counter(0);
-  public static Counter rearRightHall = new Counter(2);
-  public static Counter frontLeftHall = new Counter(15);
-  public static Counter rearLeftHall = new Counter(12);
+  public static CANEncoder frontRightHall = frontRight.getEncoder();
+  public static CANEncoder rearRightHall = rearRight.getEncoder();
+  public static CANEncoder frontLeftHall = frontLeft.getEncoder();
+  public static CANEncoder rearLeftHall = rearLeft.getEncoder();
+
+  //public static double frontRightHallVal;
+  //public static double leftHallVal;
+  
+
+  public DriveTrain(){
+  }
 
   @Override
   public void initDefaultCommand() { 
@@ -40,13 +45,18 @@ public class DriveTrain extends Subsystem {
     System.out.println("defaultcommand");
   }
   public static void driveTeleop(){
-    double leftJoy = OI.atkJoy1.getRawAxis(1);
-    double rightJoy = OI.atkJoy1.getRawAxis(5);
+    //double leftJoy = OI.atkJoy1.getRawAxis(1);
+    //double rightJoy = OI.atkJoy1.getRawAxis(5);
+    double leftJoy = 0.02;
+    double rightJoy  = 0.02;
     frontRight.set(rightJoy);
     rearRight.set(rightJoy);
     frontLeft.set(leftJoy);
     rearLeft.set(leftJoy);
-    System.out.println(frontLeftHall.get() + frontRightHall.get() + rearLeftHall.get() + rearRightHall.get());
+
+    
+    //System.out.println(DriveTrain.frontLeftHall.getPosition() + "/t" + DriveTrain.frontRightHall.getPosition() + "/t" + DriveTrain.rearLeftHall.getPosition() + "/t" + DriveTrain.rearRightHall.getPosition());
+    
   }
   public static void driveAuton(double rightSpeed, double leftSpeed){
     frontRight.set(rightSpeed);
