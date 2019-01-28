@@ -31,10 +31,7 @@ public class DriveTrain extends Subsystem {
   public static CANEncoder rearRightHall = rearRight.getEncoder();
   public static CANEncoder frontLeftHall = frontLeft.getEncoder();
   public static CANEncoder rearLeftHall = rearLeft.getEncoder();
-
-  //public static double frontRightHallVal;
-  //public static double leftHallVal;
-  
+  //1 revolution is approximately 0.  
 
   public DriveTrain(){
   }

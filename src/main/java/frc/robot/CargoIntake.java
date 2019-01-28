@@ -14,34 +14,45 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class CargoIntake extends Subsystem {
-    public static TalonSRX inTalon = new TalonSRX(RobotMap.cargoTalonPort1);
-    public static TalonSRX backTalon1 = new TalonSRX(RobotMap.cargoTalonPort2);
-    public static TalonSRX backTalon2 = new TalonSRX(RobotMap.cargoTalonPort3);
+    public static TalonSRX inTalon1 = new TalonSRX(RobotMap.cargoTalonPortfr);
+    public static TalonSRX inTalon2 = new TalonSRX(RobotMap.cargoTalonPortrr);
+    public static TalonSRX backTalon1 = new TalonSRX(RobotMap.cargoTalonPortfl);
+    public static TalonSRX backTalon2 = new TalonSRX(RobotMap.cargoTalonPortrl);
 
-    public static DoubleSolenoid backSol1 = new DoubleSolenoid(RobotMap.cargoSol1, RobotMap.cargoSol2);
-    public static DoubleSolenoid backSol2 = new DoubleSolenoid(RobotMap.cargoSol3, RobotMap.cargoSol4);
+    //public static DoubleSolenoid backSol = new DoubleSolenoid(RobotMap.cargoSol1, RobotMap.cargoSol2);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-
-  /*public static void retract(){
-    backSol1.set(DoubleSolenoid.Value.kReverse);
-    backSol2.set(DoubleSolenoid.Value.kReverse);
+/*
+  public static void retract(){
+    backSol.set(DoubleSolenoid.Value.kReverse);
   }
   public static void extend(){
-    backSol1.set(DoubleSolenoid.Value.kForward);
-    backSol2.set(DoubleSolenoid.Value.kForward);
+    backSol.set(DoubleSolenoid.Value.kForward);
   }
+  */
   public static void intake(){
-    inTalon.set(ControlMode.PercentOutput, -0.75);
-    backTalon1.set(ControlMode.PercentOutput, -0.75);
-    backTalon2.set(ControlMode.PercentOutput, -0.75);
+    inTalon1.set(ControlMode.PercentOutput, -0.2);
+    inTalon2.set(ControlMode.PercentOutput, -0.2);
+    backTalon1.set(ControlMode.PercentOutput, 0.2);
+    backTalon2.set(ControlMode.PercentOutput, 0.2);
+    //System.out.println("Intake");
   }
   public static void outtake(){
-    backTalon1.set(ControlMode.PercentOutput, 0.75);
-    backTalon2.set(ControlMode.PercentOutput, 0.75);
-  }*/
+    backTalon1.set(ControlMode.PercentOutput, -0.2);
+    backTalon2.set(ControlMode.PercentOutput, -0.2);
+    inTalon1.set(ControlMode.PercentOutput, 0.2);
+    inTalon2.set(ControlMode.PercentOutput, 0.2);
+    //System.out.println("Outtake");
+  }
+  public static void stop(){
+    backTalon1.set(ControlMode.PercentOutput, 0.0);
+    backTalon2.set(ControlMode.PercentOutput, 0.0);
+    inTalon1.set(ControlMode.PercentOutput, 0.0);
+    inTalon2.set(ControlMode.PercentOutput, 0.0);
+  }
+
 }

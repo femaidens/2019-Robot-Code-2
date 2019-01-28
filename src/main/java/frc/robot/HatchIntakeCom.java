@@ -26,8 +26,10 @@ public class HatchIntakeCom extends Command {
   protected void execute() {
       if (HatchIntake.hatchState){
         HatchIntake.retract();
+        System.out.println("yeet");
       }else{
         HatchIntake.extend();
+        System.out.println("yote");
       }
   }
 
