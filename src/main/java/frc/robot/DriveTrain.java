@@ -61,6 +61,17 @@ public class DriveTrain extends Subsystem {
     frontLeft.set(leftSpeed);
     rearLeft.set(leftSpeed);
   }
+  /*public static void infrared(){
+    while(middle!=0){ 
+      if(left==0){
+        driveAuton(0.2, 0.5);
+      }
+      else if(right==0){
+        driveAuton(0.5, 0.2);
+      }
+    }
+    */
+  }
   /*
   public static void turnDegrees(int angle) {
     if (angle > 180) {
@@ -75,4 +86,4 @@ public class DriveTrain extends Subsystem {
       }
     }
   }*/
-}
+

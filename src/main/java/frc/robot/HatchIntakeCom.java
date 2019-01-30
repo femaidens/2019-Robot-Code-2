@@ -9,7 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class HatchIntakeCom extends Command {
+public class HatchIntakeCom extends Command { //actual mechanism
   public HatchIntakeCom() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -26,10 +26,10 @@ public class HatchIntakeCom extends Command {
   protected void execute() {
       if (HatchIntake.hatchState){
         HatchIntake.retract();
-        System.out.println("yeet");
+        System.out.println("yoot");
       }else{
         HatchIntake.extend();
-        System.out.println("yote");
+        System.out.println("yate");
       }
   }
 

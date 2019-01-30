@@ -14,10 +14,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class HatchIntake extends Subsystem {
-  public static DoubleSolenoid sol1 = new DoubleSolenoid(RobotMap.solChannel1, RobotMap.solChannel2);
+  //public static DoubleSolenoid sol1 = new DoubleSolenoid(RobotMap.solChannel1, RobotMap.solChannel2);
+  public static DoubleSolenoid sol2 = new DoubleSolenoid(RobotMap.solChannel3, RobotMap.solChannel4);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public static boolean hatchState ; //true if already extended
+  public static boolean hatchState2; 
 
   @Override
   public void initDefaultCommand() {
@@ -25,14 +27,23 @@ public class HatchIntake extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public static void extend(){
-    sol1.set(DoubleSolenoid.Value.kForward);
+    //sol1.set(DoubleSolenoid.Value.kForward);
     hatchState = true;
   }
   
   public static void retract(){
-    sol1.set(DoubleSolenoid.Value.kReverse);
+    //sol1.set(DoubleSolenoid.Value.kReverse);
     hatchState = false;
   }
 
+  public static void extend2(){
+    sol2.set(DoubleSolenoid.Value.kForward);
+    hatchState2 = true;
+  }
+  
+  public static void retract2(){
+    sol2.set(DoubleSolenoid.Value.kReverse);
+    hatchState2 = false;
+  }
    
 }

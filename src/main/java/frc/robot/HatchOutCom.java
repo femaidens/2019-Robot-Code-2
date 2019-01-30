@@ -5,13 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot; //pushes hatch intake out of perimeter
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RocketDown extends Command {
-  
-  public RocketDown() {
+public class HatchOutCom extends Command {
+  public HatchOutCom() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -19,17 +18,18 @@ public class RocketDown extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(HallLift.index1 <= 0){
-      System.out.println("Where are you trying to go? The mantle?");
+    if (HatchIntake.hatchState2){
+      HatchIntake.retract2();
+      System.out.println("yeet");
     }else{
-      HallLift.index1--;
-      //Lift.liftDown();
-      HallLift.liftDown();
+      HatchIntake.extend2();
+      System.out.println("yote");
     }
   }
 

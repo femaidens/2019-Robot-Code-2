@@ -31,6 +31,8 @@ public class Robot extends TimedRobot {
   Command autonomousCommand;
   public static Timer timer;
   public static CargoIntake cargoIntake;
+  public static HallLift hallLift;
+  
 
   /**
    * This function is run when the robot is first started up and should be
@@ -49,7 +51,8 @@ public class Robot extends TimedRobot {
     
     timer.start();
     //hatchIntake = new HatchIntake();
-    cargoIntake = new CargoIntake();
+    //cargoIntake = new CargoIntake();
+    hallLift = new HallLift();
   }
 
   /**

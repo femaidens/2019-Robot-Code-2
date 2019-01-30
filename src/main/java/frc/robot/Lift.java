@@ -27,24 +27,24 @@ public class Lift extends Subsystem {
   @Override
   public void initDefaultCommand() {
   }
-  
-  /*public static void liftUp(){
+  /*
+  public static void liftUp(){
     double distance = rocket(index1);
     while (encLeft.get() < distance && encRight.get() < distance){
-      frontLeft.set(ControlMode.PercentOutput, 0.65);
-      frontRight.set(ControlMode.PercentOutput, 0.65);
-      rearLeft.set(ControlMode.PercentOutput, 0.65);
-      rearRight.set(ControlMode.PercentOutput, 0.65);
+      frontLeft.set(ControlMode.PercentOutput, 0.02);
+      frontRight.set(ControlMode.PercentOutput, 0.02);
+      rearLeft.set(ControlMode.PercentOutput, 0.02);
+      rearRight.set(ControlMode.PercentOutput, 0.02);
     }
   }
 
   public static void liftDown(){
     double distance = rocket(index1);
     while (encLeft.get() > distance && encRight.get() > distance){
-      frontLeft.set(ControlMode.PercentOutput, -0.65);
-      frontRight.set(ControlMode.PercentOutput, -0.65);
-      rearLeft.set(ControlMode.PercentOutput, -0.65);
-      rearRight.set(ControlMode.PercentOutput, -0.65);
+      frontLeft.set(ControlMode.PercentOutput, -0.02);
+      frontRight.set(ControlMode.PercentOutput, -0.02);
+      rearLeft.set(ControlMode.PercentOutput, -0.02);
+      rearRight.set(ControlMode.PercentOutput, -0.02);
     }
   }*/
 }
