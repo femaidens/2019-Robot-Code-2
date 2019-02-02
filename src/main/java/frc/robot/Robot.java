@@ -30,8 +30,8 @@ public class Robot extends TimedRobot {
   //public static HatchIntake hatchIntake;
   //Command autonomousCommand;
   public static Timer timer;
-  //public static CargoIntake cargoIntake;
-  public static HallLift hallLift;
+  public static CargoIntake cargoIntake;
+  //public static HallLift hallLift;
   
 
   /**
@@ -51,8 +51,8 @@ public class Robot extends TimedRobot {
     
     timer.start();
     //hatchIntake = new HatchIntake();
-    //cargoIntake = new CargoIntake();
-    hallLift = new HallLift();
+    cargoIntake = new CargoIntake();
+    //hallLift = new HallLift();
   }
 
   /**
