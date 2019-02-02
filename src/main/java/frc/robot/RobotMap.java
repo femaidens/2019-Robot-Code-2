@@ -30,11 +30,15 @@ public class RobotMap {
     public static int encPort4 = 12;
 
     //poly motors
+    /*
     public static int cargoTalonPortfr = 2; //frontright
     public static int cargoTalonPortfl = 4; //frontleft
     public static int cargoTalonPortrl = 3; //rearLeft
     public static int cargoTalonPortrr = 1; //rearRight
+    */
 
+    public static int cargoTalonPortLevel1 = 2;
+    public static int cargoTalonPortLevel2 = 2;
     public static int cargoSol1 = 17;
     public static int cargoSol2 = 18;
     public static int cargoSol3 = 19;

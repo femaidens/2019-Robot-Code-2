@@ -35,11 +35,13 @@ public class OI {
 
 
     public static void bindButtons(){
+        /*
+        //hatch
         hatchPer.whenPressed(new HatchIntakeCom());
         hatchOut.whenPressed(new HatchOutCom());
+        */
 
-        //testCounter.whenPressed(new PrintTest());
-        
+
         /*cargoIn.whileHeld(new CargoIn()); 
         cargoOut.whileHeld(new CargoOut());
         cargoIn.whenReleased(new StopAcquirer());
@@ -49,8 +51,11 @@ public class OI {
 
         //liftUp.whenPressed(new RocketUp());
         //liftDown.whenPressed(new RocketDown());
-/*
+        /*
+        //climber manual
         frontClimb.whenPressed(new FrontClimb());
         rearClimb.whenPressed(new RearClimb());*/
+
+        //testCounter.whenPressed(new PrintTest());
     }
 }
