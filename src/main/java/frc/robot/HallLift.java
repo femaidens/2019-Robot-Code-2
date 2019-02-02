@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class HallLift extends Subsystem {
-  public static CANSparkMax sparkLeft = new CANSparkMax(12, MotorType.kBrushless);
-  public static CANSparkMax sparkRight = new CANSparkMax(15, MotorType.kBrushless);
+  public static CANSparkMax sparkLeft = new CANSparkMax(0, MotorType.kBrushless);
+  public static CANSparkMax sparkRight = new CANSparkMax(2, MotorType.kBrushless);
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
@@ -40,26 +40,43 @@ public class HallLift extends Subsystem {
   }
   
   public static void liftUp(){
-    double distance = rocket(index1+1)-rocket(index1);
-    double initDistance = leftHall.getPosition();
-    while (Math.abs(leftHall.getPosition() - initDistance) < distance){//&& Math.abs(rightHall.getPosition() - initDistance) < distance){
-      sparkLeft.set(0.05);
-      sparkRight.set(0.05);
+    System.out.println("Level: " + HallLift.index1);
+    System.out.println(leftHall.getPosition());
+    if (HallLift.index1 >= HallLift.level.length-1){
+      System.out.println(" Where are you trying to go? To the sky?");
+    }else{
+      double distance = rocket(index1+1)-rocket(index1);
+      double initDistance = leftHall.getPosition();
+      //while ((leftHall.getPosition() < rocket(index1+1))){//&& Math.abs(rightHall.getPosition() - initDistance) < distance){
+      while (leftHall.getPosition()-initDistance < distance) {
+        sparkLeft.set(0.05);
+        sparkRight.set(0.05);
       //System.out.println("Level: " + index1);
+      }
+      sparkLeft.set(0.0);
+      sparkRight.set(0.0);
+      index1++;
+      System.out.println("Level: " + HallLift.index1);
     }
-    sparkLeft.set(0.0);
-    sparkRight.set(0.0);
   }
 
   public static void liftDown(){
-    double distance = rocket(index1)-rocket(index1-1);
-    double initDistance = leftHall.getPosition();
-    while (Math.abs(leftHall.getPosition() - initDistance) < distance){// && Math.abs(rightHall.getPosition() - initDistance) < distance){
-      sparkLeft.set(-0.05);
-      sparkRight.set(-0.05);
-      //System.out.println("Level: " + index1);
+    System.out.println("Level: " + index1);
+    System.out.println(leftHall.getPosition());
+    if(HallLift.index1 <= 0){
+      System.out.println(" Where are you trying to go? The mantle?");
+    } else{
+      double distance = rocket(index1)-rocket(index1-1);
+      double initDistance = leftHall.getPosition();
+      while (Math.abs(leftHall.getPosition()-initDistance) < distance){// && Math.abs(rightHall.getPosition() - initDistance) < distance){
+        sparkLeft.set(-0.05);
+        sparkRight.set(-0.05);
+        //System.out.println("Level: " + index1);
+      }
+      sparkLeft.set(0.0);
+      sparkRight.set(0.0);
+      index1--;
+      System.out.println("Level: " + HallLift.index1);
     }
-    sparkLeft.set(0.0);
-    sparkRight.set(0.0);
   }
 }

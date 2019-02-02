@@ -24,14 +24,10 @@ public class RocketUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (HallLift.index1 >= Lift.level.length-1){
-      System.out.println("Where are you trying to go? To the sky?");
-    }else{
-      HallLift.index1++;
+      //HallLift.index1++;
       //Lift.liftUp();
-      HallLift.liftUp();
-      System.out.print("Level: " + HallLift.index1 + "level length: " + Lift.level.length);
-    }
+    HallLift.liftUp();
+    // + "level length: " + Lift.level.length);\
   }
 
   // Make this return true when this Command no longer needs to run execute()

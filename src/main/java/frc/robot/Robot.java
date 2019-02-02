@@ -23,14 +23,14 @@ import edu.wpi.first.wpilibj.Timer;
 public class Robot extends TimedRobot {
   //private static final String kDefaultAuto = "Default";
   //private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
+  //private String m_autoSelected;
   public static OI m_oi;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  //private final SendableChooser<String> m_chooser = new SendableChooser<>();
   //public static DriveTrain drivetrain;
-  public static HatchIntake hatchIntake;
-  Command autonomousCommand;
+  //public static HatchIntake hatchIntake;
+  //Command autonomousCommand;
   public static Timer timer;
-  public static CargoIntake cargoIntake;
+  //public static CargoIntake cargoIntake;
   public static HallLift hallLift;
   
 
@@ -73,7 +73,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
-    Scheduler.getInstance().run();
+    //Scheduler.getInstance().run();
   }
 
   
@@ -92,7 +92,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
+    //m_autoSelected = m_chooser.getSelected();
     // autoSelected = SmartDashboard.getString("Auto Selector",
     // defaultAuto);
     //System.out.println("Auto selected: " + m_autoSelected);
@@ -116,9 +116,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    if (autonomousCommand != null){
+    /*if (autonomousCommand != null){
       autonomousCommand.cancel();
-    }
+    }*/
   }
 
   /**

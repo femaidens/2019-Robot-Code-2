@@ -51,6 +51,5 @@ public class OI {
 /*
         frontClimb.whenPressed(new FrontClimb());
         rearClimb.whenPressed(new RearClimb());*/
-        
-    } 
+    }
 }

@@ -24,13 +24,10 @@ public class RocketDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(HallLift.index1 <= 0){
-      System.out.println("Where are you trying to go? The mantle?");
-    }else{
-      HallLift.index1--;
-      //Lift.liftDown();
-      HallLift.liftDown();
-    }
+    //HallLift.index1--;
+    //Lift.liftDown();
+    HallLift.liftDown();
+    // + "level length: " + HallLift.level.length);  
   }
 
   // Make this return true when this Command no longer needs to run execute()
