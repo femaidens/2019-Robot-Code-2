@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
     //hatchIntake = new HatchIntake();
     //cargoIntake = new CargoIntake();
     hallLift = new HallLift();
-    i2c = new I2C(I2C.Port.kOnboard, I2CAddress); // I2CAddress placeholder
+    //i2c = new I2C(I2C.Port.kOnboard, I2CAddress); // I2CAddress placeholder
   }
 
   /**

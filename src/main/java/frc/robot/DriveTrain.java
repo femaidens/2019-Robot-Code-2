@@ -14,7 +14,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Counter;
-//import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -47,10 +47,10 @@ public class DriveTrain extends Subsystem {
     System.out.println("defaultcommand");
   }
   public static void driveTeleop(){
-    //double leftJoy = OI.atkJoy1.getRawAxis(1);
-    //double rightJoy = OI.atkJoy1.getRawAxis(5);
-    double leftJoy = 0.02;
-    double rightJoy  = 0.02;
+    double leftJoy = OI.atkJoy1.getRawAxis(1);
+    double rightJoy = OI.atkJoy1.getRawAxis(5);
+    //double leftJoy = 0.02;
+    //double rightJoy  = 0.02;
     frontRight.set(rightJoy);
     rearRight.set(rightJoy);
     frontLeft.set(leftJoy);
