@@ -32,6 +32,11 @@ public class DriveTrain extends Subsystem {
   public static CANEncoder frontLeftHall = frontLeft.getEncoder();
   public static CANEncoder rearLeftHall = rearLeft.getEncoder();
   //1 revolution is approximately 0.  
+  
+  public static byte[] left = new byte[0];
+  public static byte[] middle = new byte[0];
+  public static byte[] right = new byte[0];
+  public static byte[] ultrasonic = new byte[0];
 
   public DriveTrain(){
   }
@@ -61,16 +66,19 @@ public class DriveTrain extends Subsystem {
     frontLeft.set(leftSpeed);
     rearLeft.set(leftSpeed);
   }
-  /*public static void infrared(){
-    while(middle!=0){ 
-      if(left==0){
+  public static void infrared(){
+    Robot.i2c.read(IRAdresssL, 1, left);
+    Robot.i2c.read(IRAdresssM, 1, middle);
+    Robot.i2c.read(IRAdresssR, 1, right);
+
+    while(middle[0] == 1){ 
+      if(left[0] == 0){
         driveAuton(0.2, 0.5);
       }
-      else if(right==0){
+      else if(right[0] == 0){
         driveAuton(0.5, 0.2);
       }
-    }
-    */
+    }    
   }
   /*
   public static void turnDegrees(int angle) {

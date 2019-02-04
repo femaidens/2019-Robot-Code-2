@@ -7,12 +7,15 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.I2C.Port;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -32,6 +35,7 @@ public class Robot extends TimedRobot {
   public static Timer timer;
   //public static CargoIntake cargoIntake;
   public static HallLift hallLift;
+  public static I2C i2c;
   
 
   /**
@@ -53,6 +57,7 @@ public class Robot extends TimedRobot {
     //hatchIntake = new HatchIntake();
     //cargoIntake = new CargoIntake();
     hallLift = new HallLift();
+    i2c = new I2C(I2C.Port.kOnboard, I2CAddress); // I2CAddress placeholder
   }
 
   /**
