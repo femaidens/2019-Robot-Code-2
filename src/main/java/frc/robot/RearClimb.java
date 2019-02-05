@@ -23,13 +23,17 @@ public class RearClimb extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Climb.extendRear();
+    if (Climb.climbBack){
+      Climb.retractRear();
+    }else{
+      Climb.extendRear();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

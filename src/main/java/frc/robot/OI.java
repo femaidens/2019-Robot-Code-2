@@ -33,6 +33,8 @@ public class OI {
     public static Button frontClimb = new JoystickButton(atkJoy1, 10);
     public static Button rearClimb = new JoystickButton(atkJoy1, 11);*/
 
+    public static Button cargoOutZ = new JoystickButton(atkJoy1, 12);
+    public static Button cargoInZ = new JoystickButton(atkJoy1, 12);
 
     public static void bindButtons(){
         /*
@@ -57,5 +59,8 @@ public class OI {
         rearClimb.whenPressed(new RearClimb());*/
 
         //testCounter.whenPressed(new PrintTest());
+
+        cargoOutZ.whenReleased(new CargoOutZ());
+        cargoInZ.whileHeld(new CargoInZ());
     }
 }

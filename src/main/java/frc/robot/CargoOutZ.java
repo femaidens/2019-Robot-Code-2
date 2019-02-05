@@ -9,8 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class CargoPiston extends Command {
-  public CargoPiston() {
+public class CargoOutZ extends Command {
+  public CargoOutZ() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -23,17 +23,13 @@ public class CargoPiston extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(CargoIntake.state){
-      CargoIntake.retract();
-    }else{
-      CargoIntake.extend();
-    }
+    CargoIntake.outtakeZ();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

@@ -23,13 +23,17 @@ public class FrontClimb extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Climb.extendFront();
+    if (Climb.climbFront){
+      Climb.retractFront();
+    }else{
+       Climb.extendFront();
+    } 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
@@ -41,6 +45,5 @@ public class FrontClimb extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //Climb.retractFront();
   }
 }
