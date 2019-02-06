@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
   //Command autonomousCommand;
   public static Timer timer;
   //public static CargoIntake cargoIntake;
-  public static HallLift hallLift;
+  //public static HallLift hallLift;
   public static I2C i2c;
   
 
@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
     timer.start();
     //hatchIntake = new HatchIntake();
     //cargoIntake = new CargoIntake();
-    hallLift = new HallLift();
+    //hallLift = new HallLift();
     //i2c = new I2C(I2C.Port.kOnboard, I2CAddress); // I2CAddress placeholder
   }
 

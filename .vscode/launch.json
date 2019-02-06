@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - BackUpVision",
+      "request": "launch",
+      "mainClass": "frc.robot.BackUpVision",
+      "projectName": "circles"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - bob",
       "request": "launch",
       "mainClass": "frc.robot.bob",
