@@ -29,13 +29,14 @@ public class Robot extends TimedRobot {
   //private String m_autoSelected;
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  //public static DriveTrain drivetrain;
+  public static DriveTrain drivetrain;
   //public static HatchIntake hatchIntake;
   //Command autonomousCommand;
   public static Timer timer;
   //public static CargoIntake cargoIntake;
   //public static HallLift hallLift;
   public static I2C i2c;
+  public static SerialCom serialCom;
   
 
   /**
@@ -48,16 +49,18 @@ public class Robot extends TimedRobot {
     //m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
    // m_chooser.addOption("My Auto", kCustomAuto);
     //SmartDashboard.putData("Auto choices", m_chooser);
-    //drivetrain = new DriveTrain();
+    drivetrain = new DriveTrain();
    // autonomousCommand = new AutonomousDrive();
     OI.bindButtons();
     timer = new Timer();
+    serialCom = new SerialCom();
     
     timer.start();
     //hatchIntake = new HatchIntake();
     //cargoIntake = new CargoIntake();
     //hallLift = new HallLift();
-    //i2c = new I2C(I2C.Port.kOnboard, I2CAddress); // I2CAddress placeholder
+    i2c = new I2C(I2C.Port.kOnboard, 4); // 34 is SDA lineI2CAddress input and output 
+    
   }
 
   /**
