@@ -34,9 +34,10 @@ public class Robot extends TimedRobot {
   //Command autonomousCommand;
   public static Timer timer;
   //public static CargoIntake cargoIntake;
-  //public static HallLift hallLift;
+  public static HallLift hallLift;
   public static I2C i2c;
   public static SerialCom serialCom;
+  public static Practice practice;
   
 
   /**
@@ -53,14 +54,13 @@ public class Robot extends TimedRobot {
    // autonomousCommand = new AutonomousDrive();
     OI.bindButtons();
     timer = new Timer();
-    serialCom = new SerialCom();
+    //serialCom = new SerialCom();
+    //practice = new Practice();
     
     timer.start();
     //hatchIntake = new HatchIntake();
     //cargoIntake = new CargoIntake();
-    //hallLift = new HallLift();
-    i2c = new I2C(I2C.Port.kOnboard, 4); // 34 is SDA lineI2CAddress input and output 
-    
+    hallLift = new HallLift();
   }
 
   /**

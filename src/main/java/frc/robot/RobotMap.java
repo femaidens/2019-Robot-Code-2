@@ -19,10 +19,10 @@ public class RobotMap {
     public static int joyPort1 = 0;
     //public static int joyPort2 = 4;
 
-    public static int talonPort1 = 5;
-    public static int talonPort2 = 6;
-    public static int talonPort3 = 7;
-    public static int talonPort4 = 8;
+    //public static int rearLeftTalon = 3; //rearLeft
+    //public static int frontLeftTalon = 4; //frontLeft
+   // public static int rearRightTalon = 1; //rearRight
+    public static int frontRightTalon = 4; //frontRight
 
     public static int encPort1 = 9;
     public static int encPort2 = 10;

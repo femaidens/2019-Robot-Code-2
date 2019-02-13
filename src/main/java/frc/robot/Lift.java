@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Lift extends Subsystem {
-  public static TalonSRX frontLeft = new TalonSRX(RobotMap.talonPort1);
-  public static TalonSRX frontRight = new TalonSRX(RobotMap.talonPort2);
-  public static TalonSRX rearLeft = new TalonSRX(RobotMap.talonPort3);
-  public static TalonSRX rearRight = new TalonSRX(RobotMap.talonPort4);
-
+  /*public static TalonSRX frontLeft = new TalonSRX(RobotMap.frontLeftTalon);
+  public static TalonSRX frontRight = new TalonSRX(RobotMap.frontRightTalon);
+  public static TalonSRX rearLeft = new TalonSRX(RobotMap.rearLeftTalon);
+  public static TalonSRX rearRight = new TalonSRX(RobotMap.rearRightTalon);
+*/
   public static Encoder encLeft = new Encoder(RobotMap.encPort1, RobotMap.encPort2);
   public static Encoder encRight = new Encoder(RobotMap.encPort3, RobotMap.encPort4);
 
