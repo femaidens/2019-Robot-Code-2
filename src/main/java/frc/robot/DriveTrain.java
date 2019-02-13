@@ -9,6 +9,8 @@ package frc.robot;
 
 
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -20,9 +22,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
 
-  public static CANSparkMax frontRight = new CANSparkMax(5, MotorType.kBrushless);
+  //public static CANSparkMax frontRight = new CANSparkMax(5, MotorType.kBrushless);
   //public static CANSparkMax frontLeft = new CANSparkMax(12, MotorType.kBrushless);
-  public static CANSparkMax rearRight = new CANSparkMax(12, MotorType.kBrushless);
+  //public static CANSparkMax rearRight = new CANSparkMax(12, MotorType.kBrushless);
   //public static CANSparkMax rearLeft = new CANSparkMax(12, MotorType.kBrushless);
   //public static CANSparkMax middleLeft = new CANSparkMax(10, MotorType.kBrushless);
   //public static CANSparkMax middleRight = new CANSparkMax(18, MotorType.kBrushless);
@@ -37,20 +39,24 @@ public class DriveTrain extends Subsystem {
   public static CANEncoder middleRightHall = middleRight.getEncoder();
   //1 revolution is approximately 0.  
   */
+public static TalonSRX frontRight = new TalonSRX(1);
+
   public DriveTrain(){
     
   }
 
   @Override
   public void initDefaultCommand() { 
-    //setDefaultCommand(new DriveTeleop());
+    setDefaultCommand(new DriveTeleop());
     //System.out.println("defaultcommand");
   }
   public static void driveTeleop(){
     double leftJoy = OI.atkJoy1.getRawAxis(1);
     double rightJoy = OI.atkJoy1.getRawAxis(5);
-    frontRight.set(rightJoy);
-    rearRight.set(rightJoy);
+
+    frontRight.set(ControlMode.PercentOutput, rightJoy);
+    //frontRight.set(rightJoy);
+    //rearRight.set(rightJoy);
     //frontLeft.set(leftJoy);
     //rearLeft.set(leftJoy);
     //middleLeft.set(leftJoy);
@@ -59,7 +65,7 @@ public class DriveTrain extends Subsystem {
   }
 
   public static void driveAuton(double rightSpeed, double leftSpeed){
-    frontRight.set(rightSpeed);
+    //frontRight.set(rightSpeed);
     //rearRight.set(rightSpeed);
     //frontLeft.set(leftSpeed);
     //rearLeft.set(leftSpeed);
