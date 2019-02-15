@@ -16,7 +16,7 @@ public class DriveTeleop extends Command {
   public DriveTeleop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.drivetrain);
+    //requires(Robot.drivetrain);
     //System.out.println("hi");
     //requires(Robot.practice);
   }
@@ -29,8 +29,9 @@ public class DriveTeleop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    DriveTrain.driveTeleop();
-    //Practice.driveTeleop();
+    //DriveTrain.driveTeleop();
+    //System.out.println("frontRight " + DriveTrain.frontRightHall.getPosition() + "\t rearRight " + DriveTrain.rearRightHall.getPosition());
+    Practice.driveTeleop();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,8 +43,8 @@ public class DriveTeleop extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    DriveTrain.driveAuton(0.0, 0.0);
-    //Practice.driveAuton(0.0, 0.0);
+    //DriveTrain.driveAuton(0.0, 0.0);
+    Practice.driveAuton(0.0, 0.0);
   }
 
   // Called when another command which requires one or more of the same

@@ -22,8 +22,7 @@ public class RobotMap {
     //public static int rearLeftTalon = 3; //rearLeft
     //public static int frontLeftTalon = 4; //frontLeft
    // public static int rearRightTalon = 1; //rearRight
-    public static int frontRightTalon = 4; //frontRight
-
+    public static int frontRightTalon = 5; //frontRight
     public static int encPort1 = 9;
     public static int encPort2 = 10;
     public static int encPort3 = 11;

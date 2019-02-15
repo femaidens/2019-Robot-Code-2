@@ -27,7 +27,7 @@ public class Climb extends Subsystem {
     frontRightPiston.set(DoubleSolenoid.Value.kForward);
     frontLeftPiston.set(DoubleSolenoid.Value.kForward);
     climbFront = true;
-  }
+  }//
   public static void extendRear(){
     rearRightPiston.set(DoubleSolenoid.Value.kForward);
     rearLeftPiston.set(DoubleSolenoid.Value.kForward);

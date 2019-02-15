@@ -35,7 +35,7 @@ public class CargoIntake extends Subsystem {
     }
     else{
       inTalon.set(ControlMode.PercentOutput, -0.2);
-      backTalon.set(ControlMode.PercentOutput, 0.2);
+      backTalon.set(ControlMode.PercentOutput, -0.2);
     }
     //System.out.println("Intake");
   }
@@ -45,7 +45,7 @@ public class CargoIntake extends Subsystem {
     }
     else{
       inTalon.set(ControlMode.PercentOutput, 0.2);
-      backTalon.set(ControlMode.PercentOutput, -0.2);
+      backTalon.set(ControlMode.PercentOutput, 0.2);
     //System.out.println("Outtake");
     }
   }

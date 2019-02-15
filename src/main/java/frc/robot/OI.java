@@ -18,8 +18,8 @@ public class OI {
     
     //public static Joystick atkJoy2 = new Joystick(RobotMap.joyPort2);
 
-    //public static Button hatchPer = new JoystickButton(atkJoy1, 1);
-    //public static Button hatchOut = new JoystickButton(atkJoy1, 2);
+    public static Button hatchPer = new JoystickButton(atkJoy1, 1);
+    public static Button hatchOut = new JoystickButton(atkJoy1, 2);
     //public static Button cargoauton = new JoystickButton(atkJoy1, 2);
     /*public static Button testCounter = new JoystickButton(atkJoy1, 5);*/
 
@@ -42,11 +42,11 @@ public class OI {
 
     public static void bindButtons(){
         //serialtest.whenPressed(new SerialTest());
-        /*
+        
         //hatch
         hatchPer.whenPressed(new HatchIntakeCom());
         hatchOut.whenPressed(new HatchOutCom());
-        */
+        
 
         //cargoauton.whenPressed(new DriveAuton());
         /*cargoIn.whileHeld(new CargoIn()); 

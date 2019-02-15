@@ -31,7 +31,7 @@ public class CargoInZ extends Command {
   @Override
   protected boolean isFinished() {
     return false;
-  }
+  }//
 
   // Called once after isFinished returns true
   @Override

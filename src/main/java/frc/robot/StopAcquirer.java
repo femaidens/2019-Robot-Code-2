@@ -32,7 +32,7 @@ public class StopAcquirer extends Command {
   protected boolean isFinished() {
     return false;
   }
-
+//
   // Called once after isFinished returns true
   @Override
   protected void end() {

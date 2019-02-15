@@ -35,7 +35,7 @@ public class RocketDown extends Command {
   protected boolean isFinished() {
     return true;
   }
-
+//
   // Called once after isFinished returns true
   @Override
   protected void end() {

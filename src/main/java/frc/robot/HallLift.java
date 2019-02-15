@@ -35,7 +35,7 @@ public class HallLift extends Subsystem {
     //0.0 will be ground state and 1.0 will be first hatch
 
   public static double distance, initDistance;
-
+//
   public HallLift()
   {
     controller = sparkRight.getPIDController();

@@ -20,7 +20,7 @@ public class HatchIntake extends Subsystem {
   // here. Call these from Commands.
   public static boolean hatchState ; //true if already extended
   public static boolean hatchState2; 
-
+//
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

@@ -46,7 +46,7 @@ public class Practice extends Subsystem {
    //rearRight.set(ControlMode.PercentOutput, rightJoy);
    //rearLeft.set(ControlMode.PercentOutput, leftJoy);
  }
-
+//
  public static void driveAuton(double rightSpeed, double leftSpeed){
    frontRight.set(ControlMode.PercentOutput, rightSpeed);
    /*rearRight.set(ControlMode.PercentOutput,  rightSpeed);

@@ -19,7 +19,7 @@ public class Lift extends Subsystem {
 
   public static double[] level = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}; 
     //0.0 will be ground state and 1.0 will be first hatch
-
+//
   public static double rocket(int index){
     return level[index];
   }
