@@ -5,9 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.subsystems;
 
-
+import frc.robot.commands.*;
+import frc.robot.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -25,8 +26,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
 
-  //public static CANSparkMax frontRight = new CANSparkMax(14, MotorType.kBrushless);
- // public static CANSparkMax frontLeft = new CANSparkMax(12, MotorType.kBrushless);
+  public static CANSparkMax frontRight = new CANSparkMax(14, MotorType.kBrushless);
+  public static CANSparkMax frontLeft = new CANSparkMax(15, MotorType.kBrushless);
   //public static CANSparkMax rearRight = new CANSparkMax(15, MotorType.kBrushless);
   //public static CANSparkMax rearLeft = new CANSparkMax(12, MotorType.kBrushless);
   //public static CANSparkMax middleLeft = new CANSparkMax(10, MotorType.kBrushless);
@@ -44,7 +45,7 @@ public class DriveTrain extends Subsystem {
   public static CANEncoder middleRightHall = middleRight.getEncoder();
   //1 revolution is approximately 0.  
   */
-  public static TalonSRX frontRight = new TalonSRX(1);
+  //public static TalonSRX frontRight = new TalonSRX(1);
 
   public DriveTrain(){
     //frontRightHall.setPosition(0.0);
@@ -56,7 +57,7 @@ public class DriveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() { 
     setDefaultCommand(new DriveTeleop());
-    //System.out.println("defaultcommand");
+    System.out.println("defaultcommand");
   }
 
   /*
@@ -91,8 +92,9 @@ public class DriveTrain extends Subsystem {
     //double leftJoy = OI.atkJoy1.getRawAxis(1);
     double rightJoy = OI.atkJoy1.getRawAxis(5);
 
-    frontRight.set(ControlMode.PercentOutput, rightJoy);
-    
+    //frontRight.set(ControlMode.PercentOutput, rightJoy);
+    frontRight.set(rightJoy);
+    frontLeft.set(rightJoy);
   }
 
   public static void driveAuton(double rightSpeed, double leftSpeed){

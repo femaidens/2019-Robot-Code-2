@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -28,6 +30,7 @@ public class Robot extends TimedRobot {
   //private static final String kDefaultAuto = "Default";
   //private static final String kCustomAuto = "My Auto";
   //private String m_autoSelected;
+  //public static DriveTrain drivetrain;
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
   //public static DriveTrain drivetrain;
@@ -55,12 +58,13 @@ public class Robot extends TimedRobot {
     //SmartDashboard.putData("Auto choices", m_chooser);
     //drivetrain = new DriveTrain();
    // autonomousCommand = new AutonomousDrive();
-    OI.bindButtons();
-    timer = new Timer();
+    m_oi.bindButtons();
+    //timer = new Timer();
     //serialCom = new SerialCom();
     //practice = new Practice();
     
-    timer.start();
+    //timer.start();
+    //drivetrain = new DriveTrain();
     hatchIntake = new HatchIntake();
     cargoIntake = new CargoIntake();
     //hallLift = new HallLift();

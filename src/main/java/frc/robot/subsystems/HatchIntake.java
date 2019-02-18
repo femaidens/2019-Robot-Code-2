@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -14,8 +14,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class HatchIntake extends Subsystem {
-  public static DoubleSolenoid sol1 = new DoubleSolenoid(02, 0, 1);//RobotMap.solChannel1, RobotMap.solChannel2);
-  public static DoubleSolenoid sol2 = new DoubleSolenoid(02, 2, 3);//RobotMap.solChannel3, RobotMap.solChannel4);
+  public static DoubleSolenoid sol1 = new DoubleSolenoid(2, 0, 1);//RobotMap.solChannel1, RobotMap.solChannel2);
+  public static DoubleSolenoid sol2 = new DoubleSolenoid(2, 2, 3);//RobotMap.solChannel3, RobotMap.solChannel4);
+  //pcm = Spring
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public static boolean hatchState ; //true if already extended

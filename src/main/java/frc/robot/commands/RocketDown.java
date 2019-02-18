@@ -5,16 +5,18 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
+import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class CargoOutZ extends Command {
-  public CargoOutZ() {
+public class RocketDown extends Command {
+  
+  public RocketDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
-//
+
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -23,15 +25,18 @@ public class CargoOutZ extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    CargoIntake.outtakeZ();
+    //HallLift.index1--;
+    //Lift.liftDown();
+    HallLift.liftDown();
+    // + "level length: " + HallLift.level.length);  
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
-
+//
   // Called once after isFinished returns true
   @Override
   protected void end() {

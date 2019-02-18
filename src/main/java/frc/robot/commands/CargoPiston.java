@@ -5,12 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot; //pushes hatch intake out of perimeter
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.*;
 
-public class HatchOutCom extends Command {
-  public HatchOutCom() {
+public class CargoPiston extends Command {
+  public CargoPiston() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -18,21 +19,18 @@ public class HatchOutCom extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
-//
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (HatchIntake.hatchState2){
-      HatchIntake.retract2();
-      System.out.println("yeet");
+    if(CargoIntake.state){
+      CargoIntake.retract();
     }else{
-      HatchIntake.extend2();
-      System.out.println("yote");
+      CargoIntake.extend();
     }
   }
-
+//
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {

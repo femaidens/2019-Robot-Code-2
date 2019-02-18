@@ -5,13 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
-
+package frc.robot.commands;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RocketUp extends Command {
-  
-  public RocketUp() {
+public class StopAcquirer extends Command {
+  public StopAcquirer() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -24,22 +23,20 @@ public class RocketUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      //HallLift.index1++;
-      //Lift.liftUp();
-    HallLift.liftUp();
-    // + "level length: " + Lift.level.length);\
+    CargoIntake.stop();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
-
+//
   // Called once after isFinished returns true
   @Override
   protected void end() {
-  }//
+  }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run

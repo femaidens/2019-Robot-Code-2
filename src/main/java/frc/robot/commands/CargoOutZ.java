@@ -5,16 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.*;
 
-public class SerialTest extends Command {
-  public SerialTest() {
+public class CargoOutZ extends Command {
+  public CargoOutZ() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
-
+//
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -23,7 +24,7 @@ public class SerialTest extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Practice.infrared();
+    CargoIntake.outtakeZ();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,5 +42,5 @@ public class SerialTest extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-  }//
+  }
 }

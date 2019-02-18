@@ -1,4 +1,4 @@
-package frc.robot;
+package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -10,7 +10,7 @@ public class CargoIntake extends Subsystem {
     //public static TalonSRX inTalon = new TalonSRX(RobotMap.cargoTalonPortfr);
     //public static TalonSRX backTalon = new TalonSRX(RobotMap.cargoTalonPortfl);
 
-    public static DoubleSolenoid backSol = new DoubleSolenoid(01, 2, 3);//RobotMap.cargoSol1, RobotMap.cargoSol2);
+    public static DoubleSolenoid backSol = new DoubleSolenoid(1, 2, 3);//RobotMap.cargoSol1, RobotMap.cargoSol2);
 
     public static boolean state = false;
 

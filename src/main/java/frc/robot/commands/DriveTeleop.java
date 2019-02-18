@@ -5,14 +5,21 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.*;
+//import frc.robot.subsystems.DriveTrain;
+import frc.robot.Robot;
 
-public class CargoPiston extends Command {
-  public CargoPiston() {
+public class DriveTeleop extends Command {
+  
+  public DriveTeleop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    //requires(Robot.drivetrain);
+    //System.out.println("hi");
+    //requires(Robot.practice);
   }
 
   // Called just before this Command runs the first time
@@ -23,22 +30,22 @@ public class CargoPiston extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(CargoIntake.state){
-      CargoIntake.retract();
-    }else{
-      CargoIntake.extend();
-    }
+    //DriveTrain.driveTeleop();
+    //System.out.println("frontRight " + DriveTrain.frontRightHall.getPosition() + "\t rearRight " + DriveTrain.rearRightHall.getPosition());
+    DriveTrain.driveTeleop();
   }
-//
+
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    //DriveTrain.driveAuton(0.0, 0.0);
+    DriveTrain.driveAuton(0.0, 0.0);
   }
 
   // Called when another command which requires one or more of the same

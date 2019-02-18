@@ -5,14 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import frc.robot.subsystems.*;
 
-public class StopAcquirer extends Command {
-  public StopAcquirer() {
+public class CargoIn extends Command {
+  public CargoIn() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    //requires(Robot.cargoIntake);
   }
 
   // Called just before this Command runs the first time
@@ -23,8 +28,7 @@ public class StopAcquirer extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    CargoIntake.stop();
-    
+    CargoIntake.intake();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -44,3 +48,4 @@ public class StopAcquirer extends Command {
   protected void interrupted() {
   }
 }
+//

@@ -5,7 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
+import frc.robot.subsystems.*;
 
 import com.revrobotics.ControlType;
 
