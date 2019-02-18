@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -33,11 +34,13 @@ public class Robot extends TimedRobot {
   public static HatchIntake hatchIntake;
   //Command autonomousCommand;
   public static Timer timer;
-  //public static CargoIntake cargoIntake;
+  public static CargoIntake cargoIntake;
   //public static HallLift hallLift;
   //public static I2C i2c;
   //public static SerialCom serialCom;
   //public static Practice practice;
+  public static Climb climb;
+  public static Compressor compress;
   
 
   /**
@@ -59,9 +62,10 @@ public class Robot extends TimedRobot {
     
     timer.start();
     hatchIntake = new HatchIntake();
-    //cargoIntake = new CargoIntake();
+    cargoIntake = new CargoIntake();
     //hallLift = new HallLift();
-
+    climb = new Climb();
+    compress = new Compressor();
   }
 
   /**
