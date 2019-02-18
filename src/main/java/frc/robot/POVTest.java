@@ -25,7 +25,7 @@ public class POVTest extends Command {
   @Override
   protected void execute() {
     if(OI.atkJoy1.getPOV(0)==0){
-      System.out.println("WEEEEEEEEEt");
+      System.out.println("WEEEEEEEEEEEEEEE");
     }
     else if(OI.atkJoy1.getPOV(0)==180){
       System.out.println("WOOOOOOOOOOOOOOO");

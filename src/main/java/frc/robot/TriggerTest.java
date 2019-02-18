@@ -24,14 +24,18 @@ public class TriggerTest extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(OI.atkJoy1.getRawAxis(2) >= 0.5){
+    if(OI.atkJoy1.getRawAxis(2) ==  1 && Test.trigBol){
       System.out.println("HIIIIIIIII");
+      Test.trigBol = false;
+    }
+    else if(OI.atkJoy1.getRawAxis(2) < 0.5 && Test.trigBol == false){
+      Test.trigBol = true;
     }
   } 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
