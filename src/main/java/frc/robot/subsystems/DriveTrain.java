@@ -108,16 +108,16 @@ public class DriveTrain extends Subsystem {
     frontRight.set(rightJoy);
     frontLeft.set(rightJoy);
   }
-
+*/
   public static void driveAuton(double rightSpeed, double leftSpeed){
-    //frontRight.set(rightSpeed);
-    //rearRight.set(rightSpeed);
+    frontRight.set(rightSpeed);
+    rearRight.set(rightSpeed);
     //frontLeft.set(leftSpeed);
     //rearLeft.set(leftSpeed);
     //middleLeft.set(leftSpeed);
     //middleRight.set(rightSpeed);
   }
-  */
+  
 
   public static void infrared(){
   }

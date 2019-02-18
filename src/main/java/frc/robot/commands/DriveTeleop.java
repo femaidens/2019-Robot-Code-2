@@ -17,7 +17,7 @@ public class DriveTeleop extends Command {
   public DriveTeleop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    //requires(Robot.drivetrain);
+    requires(Robot.drivetrain);
     //System.out.println("hi");
     //requires(Robot.practice);
   }

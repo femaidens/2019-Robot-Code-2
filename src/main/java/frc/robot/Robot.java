@@ -30,10 +30,9 @@ public class Robot extends TimedRobot {
   //private static final String kDefaultAuto = "Default";
   //private static final String kCustomAuto = "My Auto";
   //private String m_autoSelected;
-  //public static DriveTrain drivetrain;
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  //public static DriveTrain drivetrain;
+  public static DriveTrain drivetrain;
   public static HatchIntake hatchIntake;
   //Command autonomousCommand;
   public static Timer timer;
@@ -56,20 +55,24 @@ public class Robot extends TimedRobot {
     //m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
    // m_chooser.addOption("My Auto", kCustomAuto);
     //SmartDashboard.putData("Auto choices", m_chooser);
-    //drivetrain = new DriveTrain();
    // autonomousCommand = new AutonomousDrive();
     m_oi.bindButtons();
     //timer = new Timer();
     //serialCom = new SerialCom();
     //practice = new Practice();
+    //hallLift = new HallLift();
     
     //timer.start();
-    //drivetrain = new DriveTrain();
+
+    drivetrain = new DriveTrain();
+
+    //stuff with pneumatics
+    /*
     hatchIntake = new HatchIntake();
     cargoIntake = new CargoIntake();
-    //hallLift = new HallLift();
     climb = new Climb();
     compress = new Compressor();
+    */
   }
 
   /**
