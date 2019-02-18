@@ -31,6 +31,17 @@ public class TriggerTest extends Command {
     else if(OI.atkJoy1.getRawAxis(2) < 0.5 && Test.trigBol == false){
       Test.trigBol = true;
     }
+    
+    if(OI.atkJoy1.getPOV(0) == 0 && Test.povBol1){
+      System.out.println("WEEEEEEEEEEEEEEE");
+      Test.povBol1 = false;
+    }else if(OI.atkJoy1.getPOV(0) == 180 && Test.povBol2){
+      System.out.println("WOOOOOOOOOOOOOOO");
+      Test.povBol2 = false;
+    }else if(OI.atkJoy1.getPOV(0) == -1){
+      Test.povBol1 = true;
+      Test.povBol2 = true;
+    }
   } 
   // Make this return true when this Command no longer needs to run execute()
   @Override
