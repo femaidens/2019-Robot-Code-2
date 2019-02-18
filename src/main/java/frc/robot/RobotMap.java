@@ -11,10 +11,10 @@ package frc.robot;
  * Add your docs here.
  */
 public class RobotMap {
-    public static int solChannel1 = 6;
-    public static int solChannel2 = 7;
-    public static int solChannel3 = 6;
-    public static int solChannel4 = 7;
+    public static int solChannel1 = 0;
+    public static int solChannel2 = 1;
+    public static int solChannel3 = 2;
+    public static int solChannel4 = 3;
 
     public static int joyPort1 = 0;
     //public static int joyPort2 = 4;
@@ -39,14 +39,11 @@ public class RobotMap {
     public static int cargoSol3 = 19;
     public static int cargoSol4 = 20;
 
-    public static int solenoidPort1 = 21;
-    public static int solenoidPort2 = 22;
-    public static int solenoidPort3 = 23;
-    public static int solenoidPort4 = 24;
-    public static int solenoidPort5 = 25;
-    public static int solenoidPort6 = 26;
-    public static int solenoidPort7 = 27;
-    public static int solenoidPort8 = 28;
+    public static int solenoidPort1 = 6;
+    public static int solenoidPort2 = 7;
+    public static int solenoidPort3 = 4;
+    public static int solenoidPort4 = 5;
+    
 
     public static int gyroPort = 29;
     //public static int I2Cport = 30;

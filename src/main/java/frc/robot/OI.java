@@ -7,9 +7,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.AnalogTrigger;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
+
 /**
  * Add your docs here.
  */
@@ -38,7 +41,9 @@ public class OI {
     //public static Button cargoInZ = new JoystickButton(atkJoy1, 12);
 
     //public static Button i2ctest = new JoystickButton(atkJoy1, 3);
-    public static Button serialtest = new JoystickButton(atkJoy1, 4);
+    //public static Button serialtest = new JoystickButton(atkJoy1, 4);
+    //public static Trigger trigger = new Trigger(); // right trigger
+    //public static AnalogTrigger trigger = new AnalogTrigger(2);
 
     public static void bindButtons(){
         //serialtest.whenPressed(new SerialTest());
@@ -68,5 +73,7 @@ public class OI {
         /*cargoOutZ.whenReleased(new CargoOutZ());
         cargoInZ.whileHeld(new CargoInZ());
     */
+      //  trigger.whenActive(new TriggerTest());
     }
+    
 }

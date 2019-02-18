@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class Climb extends Subsystem {
-  public static DoubleSolenoid frontRightPiston = new DoubleSolenoid(RobotMap.solenoidPort1, RobotMap.solenoidPort2);
-  public static DoubleSolenoid frontLeftPiston = new DoubleSolenoid(RobotMap.solenoidPort3, RobotMap.solenoidPort4);
-  public static DoubleSolenoid rearRightPiston = new DoubleSolenoid(RobotMap.solenoidPort5, RobotMap.solenoidPort6);
-  public static DoubleSolenoid rearLeftPiston = new DoubleSolenoid(RobotMap.solenoidPort7, RobotMap.solenoidPort8);
+  
+  public static DoubleSolenoid frontLeftPiston = new DoubleSolenoid(01, RobotMap.solenoidPort1, RobotMap.solenoidPort2);
+  public static DoubleSolenoid rearRightPiston = new DoubleSolenoid(01, RobotMap.solenoidPort3, RobotMap.solenoidPort4);
+  
 
   public static boolean climbFront = false;
   public static boolean climbBack = false;
@@ -24,23 +24,23 @@ public class Climb extends Subsystem {
   public void initDefaultCommand() {
   }
   public static void extendFront(){
-    frontRightPiston.set(DoubleSolenoid.Value.kForward);
+    //frontRightPiston.set(DoubleSolenoid.Value.kForward);
     frontLeftPiston.set(DoubleSolenoid.Value.kForward);
     climbFront = true;
   }
   public static void extendRear(){
     rearRightPiston.set(DoubleSolenoid.Value.kForward);
-    rearLeftPiston.set(DoubleSolenoid.Value.kForward);
+   //rearLeftPiston.set(DoubleSolenoid.Value.kForward);
     climbBack = true;
   }
   public static void retractFront(){
-    frontRightPiston.set(DoubleSolenoid.Value.kReverse);
+    //frontRightPiston.set(DoubleSolenoid.Value.kReverse);
     frontLeftPiston.set(DoubleSolenoid.Value.kReverse);
     climbFront = false;
   }
   public static void retractRear(){
     rearRightPiston.set(DoubleSolenoid.Value.kReverse);
-    rearLeftPiston.set(DoubleSolenoid.Value.kReverse);
+    //rearLeftPiston.set(DoubleSolenoid.Value.kReverse);
     climbBack = false;
   }
 }

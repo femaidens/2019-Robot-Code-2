@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class HatchIntake extends Subsystem {
-  public static DoubleSolenoid sol1 = new DoubleSolenoid(RobotMap.solChannel1, RobotMap.solChannel2);
-  public static DoubleSolenoid sol2 = new DoubleSolenoid(RobotMap.solChannel3, RobotMap.solChannel4);
+  public static DoubleSolenoid sol1 = new DoubleSolenoid(02, RobotMap.solChannel1, RobotMap.solChannel2);
+  public static DoubleSolenoid sol2 = new DoubleSolenoid(02, RobotMap.solChannel3, RobotMap.solChannel4);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   public static boolean hatchState ; //true if already extended

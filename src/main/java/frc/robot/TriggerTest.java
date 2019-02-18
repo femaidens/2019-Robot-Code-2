@@ -9,11 +9,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveAuton extends Command {
-  public DriveAuton() {
+public class TriggerTest extends Command {
+  public TriggerTest() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    //requires(Robot.practice);
+    requires(Robot.test);
   }
 
   // Called just before this Command runs the first time
@@ -24,9 +24,10 @@ public class DriveAuton extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Practice.driveAuton(1.0, 1.0);
-  }
-
+    if(OI.atkJoy1.getRawAxis(2) >= 0.5){
+      System.out.println("HIIIIIIIII");
+    }
+  } 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
@@ -42,6 +43,5 @@ public class DriveAuton extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Practice.driveTeleop();
   }
 }
