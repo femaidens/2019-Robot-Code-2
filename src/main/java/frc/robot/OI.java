@@ -16,24 +16,25 @@ import frc.robot.commands.*;
  */
 public class OI {
     public static Joystick atkJoy1 = new Joystick(RobotMap.joyPort1);
+    public static Joystick atkJoy2 = new Joystick(1);
     
     //public static Joystick atkJoy2 = new Joystick(RobotMap.joyPort2);
 
-    public static Button hatchPer = new JoystickButton(atkJoy1, 1);
-    public static Button hatchOut = new JoystickButton(atkJoy1, 2);
+    public static Button hatchPer = new JoystickButton(atkJoy2, 1);
+    public static Button hatchOut = new JoystickButton(atkJoy2, 2);
     //public static Button cargoauton = new JoystickButton(atkJoy1, 2);
     /*public static Button testCounter = new JoystickButton(atkJoy1, 5);*/
 
-    //public static Button cargoIn = new JoystickButton(atkJoy1, 3); //backwards
-    //public static Button cargoOut = new JoystickButton(atkJoy1, 2); //forwards
+    public static Button cargoIn = new JoystickButton(atkJoy2, 3); //backwards
+    public static Button cargoOut = new JoystickButton(atkJoy2, 4); //forwards
 
-    public static Button cargoPiston = new JoystickButton(atkJoy1, 3);
+    public static Button cargoPiston = new JoystickButton(atkJoy2, 5);
 
     //public static Button liftUp = new JoystickButton(atkJoy1, 3);
     //public static Button liftDown = new JoystickButton(atkJoy1, 2);
 
-    public static Button frontClimb = new JoystickButton(atkJoy1, 4);
-    public static Button rearClimb = new JoystickButton(atkJoy1, 5);
+    public static Button frontClimb = new JoystickButton(atkJoy1, 1);
+    public static Button rearClimb = new JoystickButton(atkJoy1, 2);
 
     //public static Button cargoOutZ = new JoystickButton(atkJoy1, 12);
     //public static Button cargoInZ = new JoystickButton(atkJoy1, 12);
@@ -50,11 +51,11 @@ public class OI {
         
 
         //cargoauton.whenPressed(new DriveAuton());
-        /*cargoIn.whileHeld(new CargoIn()); 
+        cargoIn.whileHeld(new CargoIn()); 
         cargoOut.whileHeld(new CargoOut());
         cargoIn.whenReleased(new StopAcquirer());
         cargoOut.whenReleased(new StopAcquirer());
-        */cargoPiston.whenPressed(new CargoPiston());
+        cargoPiston.whenPressed(new CargoPiston());
         
 
         //liftUp.whenPressed(new RocketUp());
@@ -66,8 +67,8 @@ public class OI {
 
         //testCounter.whenPressed(new PrintTest());
 
-        /*cargoOutZ.whenReleased(new CargoOutZ());
-        cargoInZ.whileHeld(new CargoInZ());
-    */
+        //cargoOutZ.whenReleased(new CargoOutZ());
+        //cargoInZ.whileHeld(new CargoInZ());
+    
     }
 }

@@ -26,34 +26,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
 
-  public static CANSparkMax frontRight = new CANSparkMax(15, MotorType.kBrushless);
-  //public static CANSparkMax frontLeft = new CANSparkMax(15, MotorType.kBrushless);
+  public static CANSparkMax frontRight = new CANSparkMax(12, MotorType.kBrushless);
+  public static CANSparkMax frontLeft = new CANSparkMax(1, MotorType.kBrushless);
   public static CANSparkMax rearRight = new CANSparkMax(14, MotorType.kBrushless);
-  //public static CANSparkMax rearLeft = new CANSparkMax(12, MotorType.kBrushless);
-  //public static CANSparkMax middleLeft = new CANSparkMax(10, MotorType.kBrushless);
-  //public static CANSparkMax middleRight = new CANSparkMax(18, MotorType.kBrushless);
+  public static CANSparkMax rearLeft = new CANSparkMax(4, MotorType.kBrushless);
+  public static CANSparkMax middleLeft = new CANSparkMax(2, MotorType.kBrushless);
+  public static CANSparkMax middleRight = new CANSparkMax(11, MotorType.kBrushless);
 
 //
   public static double initial, initial2;
-  public static double max = 10;
+  public static double max = 30;
   //public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
   public static CANEncoder frontRightHall = frontRight.getEncoder();
   public static CANEncoder rearRightHall = rearRight.getEncoder();
-  /*public static CANEncoder frontLeftHall = frontLeft.getEncoder();
+  public static CANEncoder frontLeftHall = frontLeft.getEncoder();
   public static CANEncoder rearLeftHall = rearLeft.getEncoder();
   public static CANEncoder middleLeftHall = middleLeft.getEncoder();
   public static CANEncoder middleRightHall = middleRight.getEncoder();
   //1 revolution is approximately 0.  
-  */
+  
   //public static TalonSRX frontRight = new TalonSRX(1);
 
   public DriveTrain(){
-    frontRightHall.setPosition(0.0);
+    /*frontRightHall.setPosition(0.0);
     rearRightHall.setPosition(0.0);
     initial = frontRightHall.getPosition();
     initial2 = rearRightHall.getPosition();
-  }
+  */}
 
   @Override
   public void initDefaultCommand() { 
@@ -65,28 +65,40 @@ public class DriveTrain extends Subsystem {
   public static void driveTeleop(){//cascade
 
     //make joystick value positive, pos is up, neg is down
-    double rightJoy = -OI.atkJoy1.getRawAxis(5);
+    double rightJoy = OI.atkJoy1.getRawAxis(5);
+    double leftJoy = -OI.atkJoy1.getRawAxis(1);
     
-    
+    frontLeft.set(leftJoy);
+    frontRight.set(rightJoy);
+    middleLeft.set(leftJoy);
+    middleRight.set(rightJoy);
+    rearLeft.set(leftJoy);
+    rearRight.set(rightJoy);
+  }
       //System.out.println("joy" + rightJoy);
       
 
-    if (rearRightHall.getPosition() <= initial2 && rightJoy < 0){//min limit
+    /*if ((rearRightHall.getPosition() <= initial2 || frontRightHall.getPosition() <= initial) && rightJoy < 0){//min limit
       frontRight.set(0.0);
       rearRight.set(0.0);
       System.out.println("too low");
     }
-    else if (rearRightHall.getPosition() >= max && rightJoy > 0){//max limit
+    
+    else if ((rearRightHall.getPosition() >= max || frontRightHall.getPosition() >= max) && rightJoy > 0){//max limit
       frontRight.set(0.0);
       rearRight.set(0.0);
       System.out.println("too high");
     }
+    
     else{
       frontRight.set(rightJoy);
+      //rearRight.follow(frontRight);
       rearRight.set(rightJoy);
       System.out.println("ok");
     }
-  }
+    */
+  
+  
   
 /*
   public static void driveTeleop(){//cargo
@@ -99,12 +111,12 @@ public class DriveTrain extends Subsystem {
   }
 */
   public static void driveAuton(double rightSpeed, double leftSpeed){
-    //frontRight.set(rightSpeed);
+    frontRight.set(rightSpeed);
     rearRight.set(rightSpeed);
-    //frontLeft.set(leftSpeed);
-    //rearLeft.set(leftSpeed);
-    //middleLeft.set(leftSpeed);
-    //middleRight.set(rightSpeed);
+    frontLeft.set(leftSpeed);
+    rearLeft.set(leftSpeed);
+    middleLeft.set(leftSpeed);
+    middleRight.set(rightSpeed);
   }
   
 

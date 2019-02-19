@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
   //private String m_autoSelected;
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  public static DriveTrain drivetrain;
+  //public static DriveTrain drivetrain;
   
   //Command autonomousCommand;
   public static Timer timer;
@@ -41,12 +41,14 @@ public class Robot extends TimedRobot {
   //public static I2C i2c;
   //public static SerialCom serialCom;
   //public static Practice practice;
-  /*
+  
   public static Climb climb;
   public static Compressor compress;
   public static HatchIntake hatchIntake;
   public static CargoIntake cargoIntake;
-  */
+  public static Lift lift;
+  //public static DriveTrain drivetrain;
+  
   
 
   /**
@@ -68,15 +70,16 @@ public class Robot extends TimedRobot {
     
     //timer.start();
 
-    drivetrain = new DriveTrain();
+    //drivetrain = new DriveTrain();
 
     //stuff with pneumatics
-    /*
+    
     hatchIntake = new HatchIntake();
     cargoIntake = new CargoIntake();
+    lift = new Lift();
     climb = new Climb();
     compress = new Compressor();
-    */
+    
   }
 
   /**

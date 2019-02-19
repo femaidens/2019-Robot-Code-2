@@ -6,20 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-
+import frc.robot.*;
+import frc.robot.subsystems.Lift;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.*;
-//import frc.robot.subsystems.DriveTrain;
-import frc.robot.Robot;
 
-public class DriveTeleop extends Command {
-  
-  public DriveTeleop() {
+public class LiftTeleop extends Command {
+  public LiftTeleop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    //requires(Robot.drivetrain);
-    //System.out.println("hi");
-    //requires(Robot.practice);
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
@@ -30,10 +25,8 @@ public class DriveTeleop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //DriveTrain.driveTeleop();
-    
-    //System.out.println("frontRight " +  DriveTrain.frontRightHall.getPosition()+"\t rearRight " + DriveTrain.rearRightHall.getPosition());
-    DriveTrain.driveTeleop();
+    System.out.println("frontRight " +  Lift.frontHall.getPosition()+"\t rearRight " + Lift.rearHall.getPosition());
+    Lift.liftTeleop();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -45,8 +38,8 @@ public class DriveTeleop extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    //DriveTrain.driveAuton(0.0, 0.0);
-    DriveTrain.driveAuton(0.0, 0.0);
+    Lift.frontLeft.set(0.0);
+    Lift.rearLeft.set(0.0);
   }
 
   // Called when another command which requires one or more of the same

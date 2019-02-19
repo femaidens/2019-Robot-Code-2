@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class CargoIntake extends Subsystem {
-    //public static TalonSRX inTalon = new TalonSRX(RobotMap.cargoTalonPortfr);
-    //public static TalonSRX backTalon = new TalonSRX(RobotMap.cargoTalonPortfl);
+    public static TalonSRX inTalon = new TalonSRX(5);
+    public static TalonSRX backTalon = new TalonSRX(2);
 
     public static DoubleSolenoid backSol = new DoubleSolenoid(1, 2, 3);//RobotMap.cargoSol1, RobotMap.cargoSol2);
 
@@ -30,30 +30,30 @@ public class CargoIntake extends Subsystem {
   }
   
   public static void intake(){
-    if(state==false){
-      //backTalon.set(ControlMode.PercentOutput, 0.2);
+    if(state){
+      backTalon.set(ControlMode.PercentOutput, 0.75);
     }
     else{
-      //inTalon.set(ControlMode.PercentOutput, -0.2);
-      //backTalon.set(ControlMode.PercentOutput, -0.2);
+      inTalon.set(ControlMode.PercentOutput, 0.75);
+      backTalon.set(ControlMode.PercentOutput, -0.75);
     }
-    //System.out.println("Intake");
+    System.out.println("Intake");
   }
   public static void outtake(){
-    if(state==false){
-      //backTalon.set(ControlMode.PercentOutput, -0.2);
+    if(state){
+      backTalon.set(ControlMode.PercentOutput, -0.75);
     }
     else{
-      //inTalon.set(ControlMode.PercentOutput, 0.2);
-      //backTalon.set(ControlMode.PercentOutput, 0.2);
-    //System.out.println("Outtake");
+      inTalon.set(ControlMode.PercentOutput, -0.75);
+      backTalon.set(ControlMode.PercentOutput, 0.75);
+      System.out.println("Outtake");
     }
   }
   public static void stop(){
-    //backTalon.set(ControlMode.PercentOutput, 0.0);
-    //inTalon.set(ControlMode.PercentOutput, 0.0);
+    backTalon.set(ControlMode.PercentOutput, 0.0);
+    inTalon.set(ControlMode.PercentOutput, 0.0);
   }
   public static void outtakeZ(){
-    //backTalon.set(ControlMode.PercentOutput, -0.2);
+    backTalon.set(ControlMode.PercentOutput, -0.2);
   }
 }
