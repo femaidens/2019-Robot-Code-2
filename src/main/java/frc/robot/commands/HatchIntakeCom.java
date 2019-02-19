@@ -27,10 +27,10 @@ public class HatchIntakeCom extends Command { //actual mechanism
   protected void execute() {
       if (HatchIntake.hatchState){
         HatchIntake.retract();
-        System.out.println("yoot");
+        //System.out.println("yoot");
       }else{
         HatchIntake.extend();
-        System.out.println("yate");
+        //System.out.println("yate");
       }
   }
 //

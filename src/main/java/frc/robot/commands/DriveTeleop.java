@@ -31,7 +31,8 @@ public class DriveTeleop extends Command {
   @Override
   protected void execute() {
     //DriveTrain.driveTeleop();
-    //System.out.println("frontRight " + DriveTrain.frontRightHall.getPosition() + "\t rearRight " + DriveTrain.rearRightHall.getPosition());
+    //DriveTrain.frontRightHall.getPosition() +
+    System.out.println("frontRight " +  "\t rearRight " + DriveTrain.rearRightHall.getPosition());
     DriveTrain.driveTeleop();
   }
 

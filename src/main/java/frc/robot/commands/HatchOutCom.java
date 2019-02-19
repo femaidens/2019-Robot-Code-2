@@ -27,10 +27,10 @@ public class HatchOutCom extends Command {
   protected void execute() {
     if (HatchIntake.hatchState2){
       HatchIntake.retract2();
-      System.out.println("yeet");
+      //System.out.println("yeet");
     }else{
       HatchIntake.extend2();
-      System.out.println("yote");
+      //System.out.println("yote");
     }
   }
 

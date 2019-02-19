@@ -33,16 +33,20 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static DriveTrain drivetrain;
-  public static HatchIntake hatchIntake;
+  
   //Command autonomousCommand;
   public static Timer timer;
-  public static CargoIntake cargoIntake;
+  
   //public static HallLift hallLift;
   //public static I2C i2c;
   //public static SerialCom serialCom;
   //public static Practice practice;
+  /*
   public static Climb climb;
   public static Compressor compress;
+  public static HatchIntake hatchIntake;
+  public static CargoIntake cargoIntake;
+  */
   
 
   /**
