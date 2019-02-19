@@ -28,15 +28,18 @@ public class Lift extends Subsystem {
   public static int index1 = 0;
   public static  double initial;
   public static double initial2;
+  public static double max  = 71;
 
   public static double[] level = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}; 
     //0.0 will be ground state and 1.0 will be first hatch
 //
 public Lift(){
+  /*
   frontHall.setPosition(0.0);
   rearHall.setPosition(0.0);
   initial = frontHall.getPosition();
   initial2 = rearHall.getPosition();
+  */
 }
   public static double rocket(int index){
     return level[index];
@@ -55,17 +58,17 @@ public Lift(){
       rearLeft.set(0.0);
       System.out.println("too low");
     }
-    /*
-    else if ((rearRightHall.getPosition() >= max || frontRightHall.getPosition() >= max) && rightJoy > 0){//max limit
-      frontRight.set(0.0);
-      rearRight.set(0.0);
+    
+    else if ((rearHall.getPosition() >= max || frontHall.getPosition() >= max) && rightSpeed > 0){//max limit
+      frontLeft.set(0.0);
+      rearLeft.set(0.0);
       System.out.println("too high");
     }
-    */
+    
     else{
       frontLeft.set(rightSpeed);
       //rearRight.follow(frontRight);
-      frontLeft.set(rightSpeed);
+      rearLeft.set(rightSpeed);
       //System.out.println("ok");
     }
   }
