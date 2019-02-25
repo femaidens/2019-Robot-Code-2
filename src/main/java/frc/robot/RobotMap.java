@@ -17,7 +17,7 @@ public class RobotMap {
     //public static int joyPort2 = 4;
 
     //PCM ports
-    public static int pcmPort1 = 0; //PCM Name = Dodo
+    public static int pcmPort1 = 1; //PCM Name = Dodo
     public static int pcmPort2 = 2; //PCM Name = Spring
 
     //Hatch- baby piston ports (PCM-2)
