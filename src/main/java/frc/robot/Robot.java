@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.*;
+
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -15,6 +18,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.I2C.Port;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
+import org.opencv.imgcodecs.Imgcodecs;
+import java.util.*;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,17 +44,25 @@ public class Robot extends TimedRobot {
   //private String m_autoSelected;
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  public static DriveTrain drivetrain;
-  //public static HatchIntake hatchIntake;
+  //public static DriveTrain drivetrain;
+  
   //Command autonomousCommand;
   public static Timer timer;
+  
+  //public static HallLift hallLift;
+  //public static I2C i2c;
+  //public static SerialCom serialCom;
+  //public static Practice practice;
+  
+  public static Climb climb;
+  public static Compressor compress;
+  public static HatchIntake hatchIntake;
   public static CargoIntake cargoIntake;
-  public static HallLift hallLift;
-  public static I2C i2c;
-  public static SerialCom serialCom;
-  public static Practice practice;
-  public static TriggerTest triggertest;
-  public static Test test;
+  public static Lift lift;
+  public static 
+  //public static DriveTrain drivetrain;
+  
+  
 
   /**
    * This function is run when the robot is first started up and should be
@@ -51,19 +74,58 @@ public class Robot extends TimedRobot {
     //m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
    // m_chooser.addOption("My Auto", kCustomAuto);
     //SmartDashboard.putData("Auto choices", m_chooser);
-    //drivetrain = new DriveTrain();
    // autonomousCommand = new AutonomousDrive();
-    OI.bindButtons();
-    timer = new Timer();
+    m_oi.bindButtons();
+    //timer = new Timer();
     //serialCom = new SerialCom();
     //practice = new Practice();
+    //hallLift = new HallLift();
     
-    timer.start();
-    //hatchIntake = new HatchIntake();
-    //cargoIntake = new CargoIntake();
-   // hallLift = new HallLift();
-    test = new Test();
-  }
+    //timer.start();
+
+    //drivetrain = new DriveTrain();
+
+    //stuff with pneumatics
+    
+    hatchIntake = new HatchIntake();
+    cargoIntake = new CargoIntake();
+    lift = new Lift();
+    climb = new Climb();
+    compress = new Compressor();
+
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    camera.setResolution(640, 480);
+    camera.setBrightness(0);
+    CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+    CvSink cvSink = CameraServer.getInstance().getVideo();
+
+    new Thread(() -> {
+      System.load("C:\\Users\\Robotics\\Desktop\\frc\\opencv\\build\\java\\x64\\opencv_java400.dll");
+      Mat img1 = new Mat();
+      //img1 = Imgcodecs.imread("C:\\Users\\Robotics\\Desktop\\pastedimage0.png");
+      Mat img2 = new Mat();
+      //Core.inRange(img1, new Scalar(0, 155, 0), new Scalar(15, 255, 15), img2);
+      while (!Thread.interrupted()){
+        cvSink.grabFrame(img1);
+        Core.inRange(img1, new Scalar(0, 75, 0), new Scalar(75, 255, 10), img2);
+        List<MatOfPoint> contours = new ArrayList<>();
+        MatOfPoint2f approxCurve = new MatOfPoint2f();
+        Imgproc.findContours(img2, contours, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);  
+        Imgproc.cvtColor(img2, img2, Imgproc.COLOR_GRAY2BGR);
+        Imgproc.drawContours(img2, contours, -1, new Scalar (0,255,0), 3);
+
+        for (int i = 0; i<contours.size(); i++) {
+          Imgproc.drawContours(img1, contours, i, new Scalar (255,255,0), 5);
+          MatOfPoint2f contours2f = new MatOfPoint2f(contours.get(i).toArray());
+          double approxDistance = Imgproc.arcLength(contours2f, true)*0.03;
+          Imgproc.approxPolyDP(contours2f, approxCurve, approxDistance, true);
+          MatOfPoint points = new MatOfPoint(approxCurve.toArray());
+          Rect rect = Imgproc.boundingRect(points);
+          Imgproc.rectangle(img2, new Point(rect.x,rect.y), new Point(rect.x+rect.width, rect.y+rect.height), new Scalar(255,0,255), 3);
+        }
+        Imgcodecs.imwrite("C:\\Users\\Robotics\\Desktop\\final.png", img2); 
+      }
+    }).start();
 
   /**
    * This function is called every robot packet, no matter the mode. Use
@@ -129,6 +191,10 @@ public class Robot extends TimedRobot {
     /*if (autonomousCommand != null){
       autonomousCommand.cancel();
     }*/
+    Lift.frontHall.setPosition(0.0);
+    Lift.rearHall.setPosition(0.0);
+    Lift.initial = frontHall.getPosition();
+    Lift.initial2 = rearHall.getPosition();
   }
 
   /**
@@ -145,4 +211,5 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
 }
