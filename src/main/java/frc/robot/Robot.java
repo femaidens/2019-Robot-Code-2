@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.I2C;
@@ -18,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.I2C.Port;
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -59,7 +60,7 @@ public class Robot extends TimedRobot {
   public static HatchIntake hatchIntake;
   public static CargoIntake cargoIntake;
   public static Lift lift;
-  public static 
+   
   //public static DriveTrain drivetrain;
   
   
@@ -92,6 +93,7 @@ public class Robot extends TimedRobot {
     lift = new Lift();
     climb = new Climb();
     compress = new Compressor();
+  
 
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setResolution(640, 480);
@@ -126,6 +128,8 @@ public class Robot extends TimedRobot {
         Imgcodecs.imwrite("C:\\Users\\Robotics\\Desktop\\final.png", img2); 
       }
     }).start();
+  }
+
 
   /**
    * This function is called every robot packet, no matter the mode. Use
@@ -191,10 +195,12 @@ public class Robot extends TimedRobot {
     /*if (autonomousCommand != null){
       autonomousCommand.cancel();
     }*/
+    /*
     Lift.frontHall.setPosition(0.0);
     Lift.rearHall.setPosition(0.0);
-    Lift.initial = frontHall.getPosition();
-    Lift.initial2 = rearHall.getPosition();
+    Lift.initial = Lift.frontHall.getPosition();
+    Lift.initial2 = Lift.rearHall.getPosition();
+    */
   }
 
   /**
@@ -213,3 +219,4 @@ public class Robot extends TimedRobot {
   }
 
 }
+

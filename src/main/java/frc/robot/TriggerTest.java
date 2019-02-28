@@ -13,7 +13,7 @@ public class TriggerTest extends Command {
   public TriggerTest() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.test);
+    //requires(Robot.test);
   }
 
   // Called just before this Command runs the first time
