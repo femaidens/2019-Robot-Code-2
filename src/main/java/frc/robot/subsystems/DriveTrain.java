@@ -26,12 +26,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem {
 
-  public static CANSparkMax frontRight = new CANSparkMax(12, MotorType.kBrushless);
-  public static CANSparkMax frontLeft = new CANSparkMax(1, MotorType.kBrushless);
-  public static CANSparkMax rearRight = new CANSparkMax(14, MotorType.kBrushless);
-  public static CANSparkMax rearLeft = new CANSparkMax(4, MotorType.kBrushless);
-  public static CANSparkMax middleLeft = new CANSparkMax(2, MotorType.kBrushless);
-  public static CANSparkMax middleRight = new CANSparkMax(11, MotorType.kBrushless);
+  public static CANSparkMax frontRight = new CANSparkMax(RobotMap.frontRightPort, MotorType.kBrushless);//12
+  public static CANSparkMax frontLeft = new CANSparkMax(RobotMap.frontLeftPort, MotorType.kBrushless);//1
+  public static CANSparkMax rearRight = new CANSparkMax(RobotMap.rearRightPort, MotorType.kBrushless);//14
+  public static CANSparkMax rearLeft = new CANSparkMax(RobotMap.rearLeftPort, MotorType.kBrushless);//4
+  public static CANSparkMax middleLeft = new CANSparkMax(RobotMap.middleLeftPort, MotorType.kBrushless);//2
+  public static CANSparkMax middleRight = new CANSparkMax(RobotMap.middleRightPort, MotorType.kBrushless);//11
 
 //
   public static double initial, initial2;

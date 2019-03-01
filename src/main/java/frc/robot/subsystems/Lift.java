@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Lift extends Subsystem {
-  public static CANSparkMax frontLeft = new CANSparkMax(3, MotorType.kBrushless);
-  public static CANSparkMax rearLeft = new CANSparkMax(15, MotorType.kBrushless);
+  public static CANSparkMax frontLeft = new CANSparkMax(RobotMap.frontPort, MotorType.kBrushless);//3
+  public static CANSparkMax rearLeft = new CANSparkMax(RobotMap.rearPort, MotorType.kBrushless);//15
 
   /*public static TalonSRX frontLeft = new TalonSRX(RobotMap.frontLeftTalon);
   public static TalonSRX frontRight = new TalonSRX(RobotMap.frontRightTalon);

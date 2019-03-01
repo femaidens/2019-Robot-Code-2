@@ -22,7 +22,7 @@ import java.lang.Double;
  * Add your docs here.
  */
 public class Practice extends Subsystem {
- public static TalonSRX frontRight = new TalonSRX(RobotMap.frontRightTalon);
+ public static TalonSRX frontRight = new TalonSRX(11);
  /*public static TalonSRX frontLeft = new TalonSRX(RobotMap.frontLeftTalon);
  public static TalonSRX rearRight = new TalonSRX(RobotMap.rearRightTalon);
  public static TalonSRX rearLeft = new TalonSRX(RobotMap.rearLeftTalon);

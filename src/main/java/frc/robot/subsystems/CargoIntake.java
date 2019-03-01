@@ -4,13 +4,16 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 
 public class CargoIntake extends Subsystem {
-    public static TalonSRX inTalon = new TalonSRX(5);
-    public static TalonSRX backTalon = new TalonSRX(2);
+    public static TalonSRX inTalon = new TalonSRX(RobotMap.cargo1Port); //5
+    public static TalonSRX backTalon = new TalonSRX(RobotMap.cargo2Port); //2
 
-    public static DoubleSolenoid backSol = new DoubleSolenoid(1, 2, 3);//RobotMap.cargoSol1, RobotMap.cargoSol2);
+    public static DoubleSolenoid backSol = new DoubleSolenoid(RobotMap.cargoPcmPort, RobotMap.cargoSol1,RobotMap.cargoSol2);
+    //actual robot ports = 1, 2, 3
+    //practice robot ports = 2, 4, 5
 
     public static boolean state = false;
 

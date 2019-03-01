@@ -9,12 +9,17 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 
 public class Climb extends Subsystem {
 
-  public static DoubleSolenoid frontPiston = new DoubleSolenoid(1, 6, 7);//RobotMap.solenoidPort3, RobotMap.solenoidPort4);
-  public static DoubleSolenoid rearPiston = new DoubleSolenoid(1, 4, 5);//RobotMap.solenoidPort5, RobotMap.solenoidPort6);
+  public static DoubleSolenoid frontPiston = new DoubleSolenoid(RobotMap.climbPcmPort, RobotMap.climbFrontPort1, RobotMap.climbFrontPort2);
+  //actual robot ports = 1, 6, 7
+  //practice robot ports  = 3, 6, 7
+  public static DoubleSolenoid rearPiston = new DoubleSolenoid(RobotMap.climbPcmPort, RobotMap.climbRearPort1, RobotMap.climbRearPort2);
+  //actual robot ports = 1, 4, 5
+  //practice robot ports = 3, 4, 5
 
   public static boolean climbFront = false;
   public static boolean climbBack = false;

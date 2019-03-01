@@ -14,13 +14,14 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class HallLift extends Subsystem {
-  public static CANSparkMax sparkLeft = new CANSparkMax(0, MotorType.kBrushless);
-  public static CANSparkMax sparkRight = new CANSparkMax(2, MotorType.kBrushless);
+  public static CANSparkMax sparkLeft = new CANSparkMax(RobotMap.frontPort, MotorType.kBrushless);//3
+  public static CANSparkMax sparkRight = new CANSparkMax(RobotMap.rearPort, MotorType.kBrushless);//15
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
