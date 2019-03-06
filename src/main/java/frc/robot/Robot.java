@@ -46,7 +46,8 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
   //public static DriveTrain drivetrain;
-  
+  public static CvSink cvSink;
+  public static CvSource outputStream; 
   //Command autonomousCommand;
   public static Timer timer;
   
@@ -55,12 +56,12 @@ public class Robot extends TimedRobot {
   //public static SerialCom serialCom;
   //public static Practice practice;
   
-  public static Climb climb;
+  /*public static Climb climb;
   public static Compressor compress;
   public static HatchIntake hatchIntake;
   public static CargoIntake cargoIntake;
   public static Lift lift;
-   
+   */
   //public static DriveTrain drivetrain;
   
   
@@ -71,6 +72,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    System.load("C:\\Users\\Robotics\\Desktop\\frc\\opencv\\build\\java\\x64\\opencv_java400.dll");
     m_oi=new OI();
     //m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
    // m_chooser.addOption("My Auto", kCustomAuto);
@@ -88,18 +90,18 @@ public class Robot extends TimedRobot {
 
     //stuff with pneumatics
     
-    hatchIntake = new HatchIntake();
+    /*hatchIntake = new HatchIntake();
     cargoIntake = new CargoIntake();
     lift = new Lift();
     climb = new Climb();
     compress = new Compressor();
-  
+  */
 
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     camera.setResolution(640, 480);
     camera.setBrightness(0);
-    CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
-    CvSink cvSink = CameraServer.getInstance().getVideo();
+    outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+    cvSink = CameraServer.getInstance().getVideo();
 
     new Thread(() -> {
       System.load("C:\\Users\\Robotics\\Desktop\\frc\\opencv\\build\\java\\x64\\opencv_java400.dll");
@@ -107,7 +109,7 @@ public class Robot extends TimedRobot {
       //img1 = Imgcodecs.imread("C:\\Users\\Robotics\\Desktop\\pastedimage0.png");
       Mat img2 = new Mat();
       //Core.inRange(img1, new Scalar(0, 155, 0), new Scalar(15, 255, 15), img2);
-      while (!Thread.interrupted()){
+      if (!Thread.interrupted()){
         cvSink.grabFrame(img1);
         Core.inRange(img1, new Scalar(0, 75, 0), new Scalar(75, 255, 10), img2);
         List<MatOfPoint> contours = new ArrayList<>();
@@ -125,7 +127,9 @@ public class Robot extends TimedRobot {
           Rect rect = Imgproc.boundingRect(points);
           Imgproc.rectangle(img2, new Point(rect.x,rect.y), new Point(rect.x+rect.width, rect.y+rect.height), new Scalar(255,0,255), 3);
         }
-        Imgcodecs.imwrite("C:\\Users\\Robotics\\Desktop\\final.png", img2); 
+
+        //outputStream.putFrame(img2);
+       // Imgcodecs.imwrite("C:\\Users\\Robotics\\Desktop\\final1.png", img2); 
       }
     }).start();
   }

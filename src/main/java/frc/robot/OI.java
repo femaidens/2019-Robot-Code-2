@@ -44,6 +44,7 @@ public class OI {
     //public static Button serialtest = new JoystickButton(atkJoy1, 4);
     //public static Trigger trigger = new Trigger(); // right trigger
     //public static AnalogTrigger trigger = new AnalogTrigger(2);
+    public static Button buv = new JoystickButton(atkJoy1, 1);
 
     public static void bindButtons(){
         //serialtest.whenPressed(new SerialTest());
@@ -74,6 +75,7 @@ public class OI {
         cargoInZ.whileHeld(new CargoInZ());
     */
       //  trigger.whenActive(new TriggerTest());
+        buv.whenPressed(new BackUpVisionCommand());
     }
     
 }
