@@ -28,6 +28,7 @@ public class BackUpVisionCommand extends Command {
   public BackUpVisionCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    //System.load("C:\\Users\\Robotics\\Desktop\\frc\\opencv\\build\\java\\x64\\opencv_java400.dll");
   }
 
   // Called just before this Command runs the first time
@@ -38,8 +39,8 @@ public class BackUpVisionCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //new Thread(() -> {
-      //System.load("C:\\Users\\Robotics\\Desktop\\frc\\opencv\\build\\java\\x64\\opencv_java400.dll");
+    new Thread(() -> {
+      System.load("C:\\Users\\Robotics\\Desktop\\frc\\opencv\\build\\java\\x64\\opencv_java400.dll");
       Mat img1 = new Mat();
       //img1 = Imgcodecs.imread("C:\\Users\\Robotics\\Desktop\\pastedimage0.png");
       Mat img2 = new Mat();
@@ -69,7 +70,7 @@ public class BackUpVisionCommand extends Command {
        Imgcodecs.imwrite("C:\\Users\\Robotics\\Desktop\\final2.png", img2);
        System.out.println("write2"); 
       }
-    //}).start();
+    }).start();
   }
 
   // Make this return true when this Command no longer needs to run execute()
