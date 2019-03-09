@@ -5,13 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
+
+import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.*;
 
-public class RocketDown extends Command {
-  
-  public RocketDown() {
+public class RearClimb extends Command {
+  public RearClimb() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -20,14 +22,15 @@ public class RocketDown extends Command {
   @Override
   protected void initialize() {
   }
-
+//
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //HallLift.index1--;
-    //Lift.liftDown();
-    HallLift.liftDown();
-    // + "level length: " + HallLift.level.length);  
+    if (Climb.climbBack){
+      Climb.retractRear();
+    }else{
+      Climb.extendRear();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -45,5 +48,7 @@ public class RocketDown extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    //Climb.retractRear();
   }
+
 }

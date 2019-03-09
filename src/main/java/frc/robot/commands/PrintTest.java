@@ -5,7 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
+import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,7 +21,7 @@ public class PrintTest extends Command {
   @Override
   protected void initialize() {
   }
-
+//
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {

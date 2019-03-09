@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -35,4 +35,4 @@ public class SerialCom extends Subsystem {
     /*for (SerialPort.Port c : SerialPort.Port.values())
     System.out.println(c);*/
   }
-}
+}//

@@ -5,14 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
-
+package frc.robot.commands;
+import frc.robot.*;
+import frc.robot.subsystems.Lift;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class SerialTest extends Command {
-  public SerialTest() {
+public class LiftTeleop extends Command {
+  public LiftTeleop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
@@ -23,7 +25,8 @@ public class SerialTest extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Practice.infrared();
+    System.out.println("frontRight " +  Lift.frontHall.getPosition()+"\t rearRight " + Lift.rearHall.getPosition());
+    Lift.liftTeleop();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -35,6 +38,8 @@ public class SerialTest extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Lift.frontLeft.set(0.0);
+    Lift.rearLeft.set(0.0);
   }
 
   // Called when another command which requires one or more of the same

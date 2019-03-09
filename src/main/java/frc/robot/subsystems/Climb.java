@@ -5,17 +5,21 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 
 public class Climb extends Subsystem {
-  
-  public static DoubleSolenoid frontLeftPiston = new DoubleSolenoid(01, RobotMap.solenoidPort1, RobotMap.solenoidPort2);
-  public static DoubleSolenoid rearRightPiston = new DoubleSolenoid(01, RobotMap.solenoidPort3, RobotMap.solenoidPort4);
-  
+
+  public static DoubleSolenoid frontPiston = new DoubleSolenoid(RobotMap.climbPcmPort, RobotMap.climbFrontPort1, RobotMap.climbFrontPort2);
+  //actual robot ports = 1, 6, 7
+  //practice robot ports  = 3, 6, 7
+  public static DoubleSolenoid rearPiston = new DoubleSolenoid(RobotMap.climbPcmPort, RobotMap.climbRearPort1, RobotMap.climbRearPort2);
+  //actual robot ports = 1, 4, 5
+  //practice robot ports = 3, 4, 5
 
   public static boolean climbFront = false;
   public static boolean climbBack = false;
@@ -24,23 +28,19 @@ public class Climb extends Subsystem {
   public void initDefaultCommand() {
   }
   public static void extendFront(){
-    //frontRightPiston.set(DoubleSolenoid.Value.kForward);
-    frontLeftPiston.set(DoubleSolenoid.Value.kForward);
+    frontPiston.set(DoubleSolenoid.Value.kForward);
     climbFront = true;
   }
   public static void extendRear(){
-    rearRightPiston.set(DoubleSolenoid.Value.kForward);
-   //rearLeftPiston.set(DoubleSolenoid.Value.kForward);
+    rearPiston.set(DoubleSolenoid.Value.kForward);
     climbBack = true;
   }
   public static void retractFront(){
-    //frontRightPiston.set(DoubleSolenoid.Value.kReverse);
-    frontLeftPiston.set(DoubleSolenoid.Value.kReverse);
+    frontPiston.set(DoubleSolenoid.Value.kReverse);
     climbFront = false;
   }
   public static void retractRear(){
-    rearRightPiston.set(DoubleSolenoid.Value.kReverse);
-    //rearLeftPiston.set(DoubleSolenoid.Value.kReverse);
+    rearPiston.set(DoubleSolenoid.Value.kReverse);
     climbBack = false;
   }
 }

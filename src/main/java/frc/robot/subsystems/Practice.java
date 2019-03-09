@@ -5,7 +5,9 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.subsystems;
+import frc.robot.*;
+import frc.robot.commands.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -20,7 +22,7 @@ import java.lang.Double;
  * Add your docs here.
  */
 public class Practice extends Subsystem {
- public static TalonSRX frontRight = new TalonSRX(RobotMap.frontRightTalon);
+ public static TalonSRX frontRight = new TalonSRX(11);
  /*public static TalonSRX frontLeft = new TalonSRX(RobotMap.frontLeftTalon);
  public static TalonSRX rearRight = new TalonSRX(RobotMap.rearRightTalon);
  public static TalonSRX rearLeft = new TalonSRX(RobotMap.rearLeftTalon);
@@ -46,7 +48,7 @@ public class Practice extends Subsystem {
    //rearRight.set(ControlMode.PercentOutput, rightJoy);
    //rearLeft.set(ControlMode.PercentOutput, leftJoy);
  }
-
+//
  public static void driveAuton(double rightSpeed, double leftSpeed){
    frontRight.set(ControlMode.PercentOutput, rightSpeed);
    /*rearRight.set(ControlMode.PercentOutput,  rightSpeed);

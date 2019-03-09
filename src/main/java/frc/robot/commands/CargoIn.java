@@ -5,14 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import frc.robot.subsystems.*;
 
-public class CargoOut extends Command {
-  public CargoOut() {
+public class CargoIn extends Command {
+  public CargoIn() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     //requires(Robot.cargoIntake);
@@ -21,13 +23,12 @@ public class CargoOut extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    CargoIntake.outtake();
+    CargoIntake.intake();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +36,7 @@ public class CargoOut extends Command {
   protected boolean isFinished() {
     return false;
   }
-
+//
   // Called once after isFinished returns true
   @Override
   protected void end() {
@@ -47,3 +48,4 @@ public class CargoOut extends Command {
   protected void interrupted() {
   }
 }
+//

@@ -5,8 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
-
+package frc.robot.commands;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class StopAcquirer extends Command {
@@ -32,7 +32,7 @@ public class StopAcquirer extends Command {
   protected boolean isFinished() {
     return false;
   }
-
+//
   // Called once after isFinished returns true
   @Override
   protected void end() {

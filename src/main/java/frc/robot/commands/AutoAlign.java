@@ -5,12 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot; //pushes hatch intake out of perimeter
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
 
-public class HatchOutCom extends Command {
-  public HatchOutCom() {
+
+public class AutoAlign extends Command {
+  public AutoAlign() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -18,19 +22,25 @@ public class HatchOutCom extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    //Robot.limelight.table.getEntry("camMode").setNumber(0);
+    //Robot.limelight.table.getEntry("ledMode").setNumber(3);
+    Limelight.setLiveStream(0);
+    Limelight.setLEDMode(3);
 
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (HatchIntake.hatchState2){
-      HatchIntake.retract2();
-      System.out.println("yeet");
-    }else{
-      HatchIntake.extend2();
-      System.out.println("yote");
+    /*
+    double degrees = Robot.limelight.getTx();
+    if(degrees > 10 || degrees < -10){
+      Robot.drivetrain.turnDegrees(degrees);
     }
+    else{
+      DriveTrain.driveAuton(0.3, 0.3);
+    }
+    */
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,6 +52,7 @@ public class HatchOutCom extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    
   }
 
   // Called when another command which requires one or more of the same

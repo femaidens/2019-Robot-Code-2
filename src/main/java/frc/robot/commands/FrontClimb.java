@@ -5,12 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
-
+package frc.robot.commands;
+//
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.*;
 
-public class RearClimb extends Command {
-  public RearClimb() {
+public class FrontClimb extends Command {
+  public FrontClimb() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -23,11 +24,11 @@ public class RearClimb extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Climb.climbBack){
-      Climb.retractRear();
+    if (Climb.climbFront){
+      Climb.retractFront();
     }else{
-      Climb.extendRear();
-    }
+       Climb.extendFront();
+    } 
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -45,7 +46,5 @@ public class RearClimb extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    //Climb.retractRear();
   }
-
 }
