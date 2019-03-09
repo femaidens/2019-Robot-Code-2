@@ -32,7 +32,7 @@ public class AutoAlign extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    /*
+    
     double degrees = Robot.limelight.getTx();
     if(degrees > 10 || degrees < -10){
       Robot.drivetrain.turnDegrees(degrees);
@@ -40,7 +40,7 @@ public class AutoAlign extends Command {
     else{
       DriveTrain.driveAuton(0.3, 0.3);
     }
-    */
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()

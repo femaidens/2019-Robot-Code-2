@@ -8,9 +8,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
+import frc.robot.subsystems.Limelight;
 
-public class Stop extends Command {
-  public Stop() {
+public class StopAlign extends Command {
+  public StopAlign() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -23,12 +25,16 @@ public class Stop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    System.out.println("stopppp");
+    Robot.drivetrain.driveAuton(0, 0);
+    Robot.limelight.table.getEntry("camMode").setNumber(1);
+    Robot.limelight.table.getEntry("ledMode").setNumber(1);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

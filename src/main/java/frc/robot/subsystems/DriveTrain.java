@@ -36,7 +36,8 @@ public class DriveTrain extends Subsystem {
 //
   public static double initial, initial2;
   public static double max = 30;
-  //public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
+  public int currentLimit = 40;
+  public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
   public static CANEncoder frontRightHall = frontRight.getEncoder();
   public static CANEncoder rearRightHall = rearRight.getEncoder();
@@ -49,6 +50,12 @@ public class DriveTrain extends Subsystem {
   //public static TalonSRX frontRight = new TalonSRX(1);
 
   public DriveTrain(){
+    frontLeft.setSmartCurrentLimit(currentLimit);
+    frontRight.setSmartCurrentLimit(currentLimit);
+    rearLeft.setSmartCurrentLimit(currentLimit);
+    rearRight.setSmartCurrentLimit(currentLimit);
+    middleLeft.setSmartCurrentLimit(currentLimit);
+    middleRight.setSmartCurrentLimit(currentLimit);
     /*frontRightHall.setPosition(0.0);
     rearRightHall.setPosition(0.0);
     initial = frontRightHall.getPosition();
@@ -122,8 +129,8 @@ public class DriveTrain extends Subsystem {
 
   public static void infrared(){
   }
-  /*
-  public static void turnDegrees(int angle) {
+  
+  public static void turnDegrees(double angle) {
     if (angle > 180) {
       angle = -(360-angle);
     }
@@ -136,5 +143,5 @@ public class DriveTrain extends Subsystem {
       }
     }
   }
-  */
+  
 }

@@ -17,11 +17,11 @@ import frc.robot.commands.*;
  */
 public class OI {
     public static Joystick atkJoy1 = new Joystick(RobotMap.joyPort1);
-    public static Joystick atkJoy2 = new Joystick(1);
+    public static Joystick atkJoy2 = new Joystick(RobotMap.joyPort2);
     
     //public static Joystick atkJoy2 = new Joystick(RobotMap.joyPort2);
 
-    public static Button hatchPer = new JoystickButton(atkJoy2, 1);
+    public static Button hatchPer = new JoystickButton(atkJoy2, 1);//baby
     public static Button hatchOut = new JoystickButton(atkJoy2, 2);
     //public static Button cargoauton = new JoystickButton(atkJoy1, 2);
     /*public static Button testCounter = new JoystickButton(atkJoy1, 5);*/
