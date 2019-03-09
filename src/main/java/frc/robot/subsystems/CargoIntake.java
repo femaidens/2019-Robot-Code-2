@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 
@@ -26,35 +27,40 @@ public class CargoIntake extends Subsystem {
   public static void retract(){
     backSol.set(DoubleSolenoid.Value.kReverse);
     state = false;
+    SmartDashboard.putBoolean("State", state);
   }
   public static void extend(){
     backSol.set(DoubleSolenoid.Value.kForward);
     state = true;
+    SmartDashboard.putBoolean("State", state);
   }
   
   public static void intake(){
-    if(state){
+    if(!state){
       backTalon.set(ControlMode.PercentOutput, 0.75);
     }
     else{
       inTalon.set(ControlMode.PercentOutput, 0.75);
       backTalon.set(ControlMode.PercentOutput, -0.75);
     }
-    System.out.println("Intake");
+    System.out.println("Outtake");
+    SmartDashboard.putString("Cargo", "outtake");
   }
   public static void outtake(){
-    if(state){
+    if(!state){
       backTalon.set(ControlMode.PercentOutput, -0.75);
     }
     else{
       inTalon.set(ControlMode.PercentOutput, -0.75);
       backTalon.set(ControlMode.PercentOutput, 0.75);
-      System.out.println("Outtake");
+      System.out.println("Intake");
+      SmartDashboard.putString("Cargo", "intake");
     }
   }
   public static void stop(){
     backTalon.set(ControlMode.PercentOutput, 0.0);
     inTalon.set(ControlMode.PercentOutput, 0.0);
+    SmartDashboard.putString("Cargo", "stop");
   }
   public static void outtakeZ(){
     backTalon.set(ControlMode.PercentOutput, -0.2);

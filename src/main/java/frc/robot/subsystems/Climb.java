@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 
@@ -30,17 +31,21 @@ public class Climb extends Subsystem {
   public static void extendFront(){
     frontPiston.set(DoubleSolenoid.Value.kForward);
     climbFront = true;
+    SmartDashboard.putBoolean("Front", climbFront);
   }
   public static void extendRear(){
     rearPiston.set(DoubleSolenoid.Value.kForward);
     climbBack = true;
+    SmartDashboard.putBoolean("Back", climbBack);
   }
   public static void retractFront(){
     frontPiston.set(DoubleSolenoid.Value.kReverse);
     climbFront = false;
+    SmartDashboard.putBoolean("Front", climbFront);
   }
   public static void retractRear(){
     rearPiston.set(DoubleSolenoid.Value.kReverse);
     climbBack = false;
+    SmartDashboard.putBoolean("Back", climbBack);
   }
 }

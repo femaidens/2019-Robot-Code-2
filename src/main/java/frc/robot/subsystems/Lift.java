@@ -10,6 +10,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Lift extends Subsystem {
   public static CANSparkMax frontLeft = new CANSparkMax(RobotMap.frontPort, MotorType.kBrushless);//3
@@ -51,26 +52,33 @@ public Lift(){
   }
 
   public static void liftTeleop(){
-     double rightSpeed = - OI.atkJoy2.getRawAxis(5);
+     double rightSpeed = -OI.atkJoy2.getRawAxis(1);
+     if (rightSpeed < 0) rightSpeed *= .25;
+     double currentRear = -rearHall.getPosition();
+     double currentFront = -frontHall.getPosition();
 
-     if ((rearHall.getPosition() <= initial2 || frontHall.getPosition() <= initial) && rightSpeed < 0){//min limit
+     if ((currentRear <= initial2+2.5 || currentFront <= initial+2.5) && rightSpeed < 0){//min limit
       frontLeft.set(0.0);
       rearLeft.set(0.0);
       System.out.println("too low");
     }
+    /*
     
     else if ((rearHall.getPosition() >= max || frontHall.getPosition() >= max) && rightSpeed > 0){//max limit
       frontLeft.set(0.0);
       rearLeft.set(0.0);
       System.out.println("too high");
     }
-    
+    */
     else{
-      frontLeft.set(rightSpeed);
+      frontLeft.set(-rightSpeed);
       //rearRight.follow(frontRight);
-      rearLeft.set(rightSpeed);
+      rearLeft.set(-rightSpeed);
       //System.out.println("ok");
     }
+    SmartDashboard.putNumber("Front Hall", currentFront);
+    SmartDashboard.putNumber("Rear Hall", currentRear);
+    SmartDashboard.putNumber("Joystick", rightSpeed);
   }
 
   }

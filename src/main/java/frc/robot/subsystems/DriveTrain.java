@@ -21,6 +21,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
@@ -65,7 +66,7 @@ public class DriveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() { 
     setDefaultCommand(new DriveTeleop());
-    System.out.println("defaultcommand");
+    SmartDashboard.putString("Print statements", "default command");
   }
 
   
@@ -81,6 +82,9 @@ public class DriveTrain extends Subsystem {
     middleRight.set(rightJoy);
     rearLeft.set(leftJoy);
     rearRight.set(rightJoy);
+
+    SmartDashboard.putNumber("Left motor speed", Robot.drivetrain.frontLeft.get());
+    SmartDashboard.putNumber("Right motor speed", -Robot.drivetrain.frontRight.get());
   }
       //System.out.println("joy" + rightJoy);
       
@@ -124,6 +128,8 @@ public class DriveTrain extends Subsystem {
     rearLeft.set(leftSpeed);
     middleLeft.set(leftSpeed);
     middleRight.set(rightSpeed);
+    SmartDashboard.putNumber("Left motor speed", Robot.drivetrain.frontLeft.get());
+    SmartDashboard.putNumber("Right motor speed", Robot.drivetrain.frontRight.get());
   }
   
 

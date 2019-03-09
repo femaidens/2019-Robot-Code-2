@@ -68,8 +68,7 @@ public class Robot extends TimedRobot {
     //serialCom = new SerialCom();
     //practice = new Practice();
     //hallLift = new HallLift();
-    
-    //timer.start();
+    timer = new Timer();
 
     drivetrain = new DriveTrain();
     limelight = new Limelight();
@@ -82,6 +81,7 @@ public class Robot extends TimedRobot {
     climb = new Climb();
     compress = new Compressor();
     
+    SmartDashboard.putString("Print statements", "initialized robot");
   }
 
   /**
@@ -94,16 +94,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putNumber("Time", timer.get());
   }
 
   @Override
   public void disabledInit() {
+    timer.stop();
     Lift.frontHall.setPosition(0.0);
     Lift.rearHall.setPosition(0.0);
     Lift.initial = Lift.frontHall.getPosition();
     Lift.initial2 = Lift.rearHall.getPosition();
-    System.out.println("initial:\t"+Lift.initial);
-    System.out.println("initial2:\t"+ Lift.initial2);
+    SmartDashboard.putNumber("Initial Lift", Robot.lift.initial);
+    SmartDashboard.putNumber("Initial2 Lift", Robot.lift.initial2);
+    SmartDashboard.putString("Print statements", "reset lift hall sensors");
   }
 
   @Override
@@ -154,6 +157,7 @@ public class Robot extends TimedRobot {
     /*if (autonomousCommand != null){
       autonomousCommand.cancel();
     }*/
+    timer.start();
   }
 
   /**

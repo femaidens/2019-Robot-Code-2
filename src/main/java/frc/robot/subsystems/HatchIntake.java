@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 /**
@@ -35,21 +36,25 @@ public class HatchIntake extends Subsystem {
   public static void extend(){
     sol1.set(DoubleSolenoid.Value.kForward);
     hatchState = true;
+    SmartDashboard.putBoolean("Baby piston", hatchState);
   }
   
   public static void retract(){
     sol1.set(DoubleSolenoid.Value.kReverse);
     hatchState = false;
+    SmartDashboard.putBoolean("Baby piston", hatchState);
   }
 
   public static void extend2(){
     sol2.set(DoubleSolenoid.Value.kForward);
     hatchState2 = true;
+    SmartDashboard.putBoolean("Big piston", hatchState2);
   }
   
   public static void retract2(){
     sol2.set(DoubleSolenoid.Value.kReverse);
     hatchState2 = false;
+    SmartDashboard.putBoolean("Big piston", hatchState2);
   }
    
 }

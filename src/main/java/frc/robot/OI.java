@@ -37,6 +37,9 @@ public class OI {
     public static Button frontClimb = new JoystickButton(atkJoy1, 1);
     public static Button rearClimb = new JoystickButton(atkJoy1, 2);
 
+    public static Button autoAlign1 = new JoystickButton(atkJoy1, 3);
+    public static Button autoAlign2 = new JoystickButton(atkJoy1,4);
+
     //public static Button cargoOutZ = new JoystickButton(atkJoy1, 12);
     //public static Button cargoInZ = new JoystickButton(atkJoy1, 12);
 
@@ -65,6 +68,11 @@ public class OI {
         //climber manual
         frontClimb.whenPressed(new FrontClimb());
         rearClimb.whenPressed(new RearClimb());
+
+        autoAlign1.whileHeld(new AutoAlign_PID(.3,.3));
+        autoAlign2.whileHeld(new AutoAlign());
+        autoAlign1.whenReleased(new StopAlign());
+        autoAlign2.whenReleased(new StopAlign());
 
         //testCounter.whenPressed(new PrintTest());
 
