@@ -32,7 +32,8 @@ public class Robot extends TimedRobot {
   //private String m_autoSelected;
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  //public static DriveTrain drivetrain;
+  public static DriveTrain drivetrain;
+  public static Limelight limelight;
   
   //Command autonomousCommand;
   public static Timer timer;
@@ -70,7 +71,8 @@ public class Robot extends TimedRobot {
     
     //timer.start();
 
-    //drivetrain = new DriveTrain();
+    drivetrain = new DriveTrain();
+    limelight = new Limelight();
 
     //stuff with pneumatics
     

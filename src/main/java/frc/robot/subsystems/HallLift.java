@@ -39,8 +39,8 @@ public class HallLift extends Subsystem {
 //
   public HallLift()
   {
-    leftHall.setPosition(0.0);
-    rightHall.setPosition(0.0);
+    //leftHall.setPosition(0.0);
+    //rightHall.setPosition(0.0);
     controller = sparkRight.getPIDController();
     //sparkRight.follow(sparkLeft);//left leads
   }
