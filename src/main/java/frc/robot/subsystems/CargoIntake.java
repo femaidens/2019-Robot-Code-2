@@ -21,6 +21,7 @@ public class CargoIntake extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    //setDefaultCommand(new TriggerTest());
   }
 
   public static void retract(){

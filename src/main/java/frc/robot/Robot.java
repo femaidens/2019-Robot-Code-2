@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
   
   //Command autonomousCommand;
   public static Timer timer;
+<<<<<<< HEAD
   
   //public static HallLift hallLift;
   //public static I2C i2c;
@@ -51,6 +52,15 @@ public class Robot extends TimedRobot {
   //public static DriveTrain drivetrain;
   
   
+=======
+  public static CargoIntake cargoIntake;
+  public static HallLift hallLift;
+  public static I2C i2c;
+  public static SerialCom serialCom;
+  public static Practice practice;
+  public static TriggerTest triggertest;
+  public static Test test;
+>>>>>>> f43a1128c4cc7616b812af8885505e3950321f68
 
   /**
    * This function is run when the robot is first started up and should be
@@ -62,6 +72,10 @@ public class Robot extends TimedRobot {
     //m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
    // m_chooser.addOption("My Auto", kCustomAuto);
     //SmartDashboard.putData("Auto choices", m_chooser);
+<<<<<<< HEAD
+=======
+    //drivetrain = new DriveTrain();
+>>>>>>> f43a1128c4cc7616b812af8885505e3950321f68
    // autonomousCommand = new AutonomousDrive();
     m_oi.bindButtons();
     //timer = new Timer();
@@ -82,6 +96,14 @@ public class Robot extends TimedRobot {
     climb = new Climb();
     compress = new Compressor();
     
+<<<<<<< HEAD
+=======
+    timer.start();
+    //hatchIntake = new HatchIntake();
+    //cargoIntake = new CargoIntake();
+   // hallLift = new HallLift();
+    test = new Test();
+>>>>>>> f43a1128c4cc7616b812af8885505e3950321f68
   }
 
   /**
