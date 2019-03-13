@@ -8,12 +8,10 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
-import frc.robot.subsystems.Limelight;
+import frc.robot.subsystems.LiftSpark;
 
-public class StopAlign extends Command {
-  public StopAlign() {
+public class DownToZero extends Command {
+  public DownToZero() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -26,10 +24,7 @@ public class StopAlign extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putString("Print statements", "stopppp");
-    Robot.drivetrain.driveAuton(0, 0);
-    Robot.limelight.table.getEntry("camMode").setNumber(1);
-    Robot.limelight.table.getEntry("ledMode").setNumber(1);
+    LiftSpark.downToZero();
   }
 
   // Make this return true when this Command no longer needs to run execute()

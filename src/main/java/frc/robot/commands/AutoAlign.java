@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
@@ -32,7 +33,6 @@ public class AutoAlign extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
     double degrees = Robot.limelight.getTx();
     if(degrees > 10 || degrees < -10){
       Robot.drivetrain.turnDegrees(degrees);
@@ -52,7 +52,7 @@ public class AutoAlign extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    
+    Robot.drivetrain.driveAuton(0, 0);
   }
 
   // Called when another command which requires one or more of the same

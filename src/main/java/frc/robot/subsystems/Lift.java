@@ -53,7 +53,7 @@ public Lift(){
 
   public static void liftTeleop(){
      double rightSpeed = -OI.atkJoy2.getRawAxis(1);
-     if (rightSpeed < 0) rightSpeed *= .25;
+     if (rightSpeed < 0) rightSpeed *= .15;
      double currentRear = -rearHall.getPosition();
      double currentFront = -frontHall.getPosition();
 

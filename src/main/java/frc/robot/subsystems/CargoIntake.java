@@ -43,8 +43,8 @@ public class CargoIntake extends Subsystem {
       inTalon.set(ControlMode.PercentOutput, 0.75);
       backTalon.set(ControlMode.PercentOutput, -0.75);
     }
-    System.out.println("Outtake");
-    SmartDashboard.putString("Cargo", "outtake");
+    System.out.println("Intake");
+    SmartDashboard.putString("Cargo", "intake");
   }
   public static void outtake(){
     if(!state){
@@ -53,8 +53,8 @@ public class CargoIntake extends Subsystem {
     else{
       inTalon.set(ControlMode.PercentOutput, -0.75);
       backTalon.set(ControlMode.PercentOutput, 0.75);
-      System.out.println("Intake");
-      SmartDashboard.putString("Cargo", "intake");
+      System.out.println("Outtake");
+      SmartDashboard.putString("Cargo", "outtake");
     }
   }
   public static void stop(){

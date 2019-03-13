@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.*;
 
 /**
  * Add your docs here.
@@ -24,7 +25,7 @@ public class SerialCom extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-  
+    //setDefaultCommand(new SerialTest());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }

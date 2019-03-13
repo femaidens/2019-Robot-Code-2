@@ -73,8 +73,8 @@ public class DriveTrain extends Subsystem {
   public static void driveTeleop(){//cascade
 
     //make joystick value positive, pos is up, neg is down
-    double rightJoy = OI.atkJoy1.getRawAxis(5);
-    double leftJoy = -OI.atkJoy1.getRawAxis(1);
+    double rightJoy = 0;//OI.atkJoy1.getRawAxis(5);
+    double leftJoy = 0;//-OI.atkJoy1.getRawAxis(1);
     
     frontLeft.set(leftJoy);
     frontRight.set(rightJoy);

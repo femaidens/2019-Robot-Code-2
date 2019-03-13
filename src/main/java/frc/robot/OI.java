@@ -26,10 +26,10 @@ public class OI {
     //public static Button cargoauton = new JoystickButton(atkJoy1, 2);
     /*public static Button testCounter = new JoystickButton(atkJoy1, 5);*/
 
-    public static Button cargoIn = new JoystickButton(atkJoy2, 3); //backwards
-    public static Button cargoOut = new JoystickButton(atkJoy2, 4); //forwards
+    //public static Button cargoIn = new JoystickButton(atkJoy2, 3); //backwards
+    //public static Button cargoOut = new JoystickButton(atkJoy2, 4); //forwards
 
-    public static Button cargoPiston = new JoystickButton(atkJoy2, 5);
+    //public static Button cargoPiston = new JoystickButton(atkJoy2, 5);
 
     //public static Button liftUp = new JoystickButton(atkJoy1, 3);
     //public static Button liftDown = new JoystickButton(atkJoy1, 2);
@@ -39,6 +39,10 @@ public class OI {
 
     public static Button autoAlign1 = new JoystickButton(atkJoy1, 3);
     public static Button autoAlign2 = new JoystickButton(atkJoy1,4);
+
+    public static Button liftUp = new JoystickButton(atkJoy2, 6);
+    public static Button liftDown = new JoystickButton(atkJoy2,5);
+    public static Button downToZero = new JoystickButton(atkJoy2, 4);
 
     //public static Button cargoOutZ = new JoystickButton(atkJoy1, 12);
     //public static Button cargoInZ = new JoystickButton(atkJoy1, 12);
@@ -53,14 +57,18 @@ public class OI {
         hatchPer.whenPressed(new HatchIntakeCom());
         hatchOut.whenPressed(new HatchOutCom());
         
-
+/*
         //cargoauton.whenPressed(new DriveAuton());
         cargoIn.whileHeld(new CargoIn()); 
         cargoOut.whileHeld(new CargoOut());
         cargoIn.whenReleased(new StopAcquirer());
         cargoOut.whenReleased(new StopAcquirer());
-        cargoPiston.whenPressed(new CargoPiston());
+        //cargoPiston.whenPressed(new CargoPiston());
+        */
         
+        liftUp.whenPressed(new CascadeUp());
+        liftDown.whenPressed(new CascadeDown());
+        downToZero.whenPressed(new DownToZero());
 
         //liftUp.whenPressed(new RocketUp());
         //liftDown.whenPressed(new RocketDown());

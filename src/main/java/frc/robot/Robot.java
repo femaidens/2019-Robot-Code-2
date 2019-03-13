@@ -47,7 +47,8 @@ public class Robot extends TimedRobot {
   public static Compressor compress;
   public static HatchIntake hatchIntake;
   public static CargoIntake cargoIntake;
-  public static Lift lift;
+  //public static Lift lift;
+  public static LiftSpark liftSpark;
   //public static DriveTrain drivetrain;
   
   
@@ -77,10 +78,10 @@ public class Robot extends TimedRobot {
     
     hatchIntake = new HatchIntake();
     cargoIntake = new CargoIntake();
-    lift = new Lift();
+    //lift = new Lift();
     climb = new Climb();
     compress = new Compressor();
-    
+    liftSpark = new LiftSpark();
     SmartDashboard.putString("Print statements", "initialized robot");
   }
 
@@ -99,14 +100,22 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledInit() {
-    timer.stop();
+    timer.stop();/*
     Lift.frontHall.setPosition(0.0);
     Lift.rearHall.setPosition(0.0);
     Lift.initial = Lift.frontHall.getPosition();
     Lift.initial2 = Lift.rearHall.getPosition();
-    SmartDashboard.putNumber("Initial Lift", Robot.lift.initial);
-    SmartDashboard.putNumber("Initial2 Lift", Robot.lift.initial2);
-    SmartDashboard.putString("Print statements", "reset lift hall sensors");
+    */
+
+    LiftSpark.leftLiftHall.setPosition(0.0);
+    LiftSpark.rightLiftHall.setPosition(0.0);
+    LiftSpark.initposition = Math.min(LiftSpark.leftLiftHall.getPosition(), LiftSpark.rightLiftHall.getPosition());
+    LiftSpark.height = new double[] {LiftSpark.initposition, 6 + LiftSpark.initposition, 19 + LiftSpark.initposition, 23 + LiftSpark.initposition, 28 + LiftSpark.initposition, 35 + LiftSpark.initposition, 50 + LiftSpark.initposition, 69+LiftSpark.initposition};
+  
+
+    //SmartDashboard.putNumber("Initial Lift", Robot.lift.initial);
+    //SmartDashboard.putNumber("Initial2 Lift", Robot.lift.initial2);
+    //SmartDashboard.putString("Print statements", "reset lift hall sensors");
   }
 
   @Override
@@ -158,6 +167,7 @@ public class Robot extends TimedRobot {
       autonomousCommand.cancel();
     }*/
     timer.start();
+    HatchIntake.extend2();
   }
 
   /**

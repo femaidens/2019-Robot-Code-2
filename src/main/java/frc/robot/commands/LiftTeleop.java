@@ -14,7 +14,7 @@ public class LiftTeleop extends Command {
   public LiftTeleop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.lift);
+    //requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class LiftTeleop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("frontRight " +  -Lift.frontHall.getPosition()+"\t rearRight " + -Lift.rearHall.getPosition());
+    //System.out.println("frontRight " +  -Lift.frontHall.getPosition()+"\t rearRight " + -Lift.rearHall.getPosition());
     Lift.liftTeleop();
   }
 
