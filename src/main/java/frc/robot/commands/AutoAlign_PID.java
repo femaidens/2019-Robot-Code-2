@@ -42,7 +42,7 @@ public class AutoAlign_PID extends Command {
     right_speed = r;
   }*/
   public AutoAlign_PID(){
-    left_speed = OI.atkJoy1.getRawAxis(1);
+    left_speed = -OI.atkJoy1.getRawAxis(1);
     right_speed = OI.atkJoy1.getRawAxis(5);
   }
 
@@ -54,8 +54,8 @@ public class AutoAlign_PID extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.limelight.setLiveStream(0);
-    Robot.limelight.setLEDMode(3);
+    Limelight.setLiveStream(0);
+    Limelight.setLEDMode(3);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -89,7 +89,6 @@ public class AutoAlign_PID extends Command {
   protected boolean isFinished() {
     //return Drivetrain.frontRightHall.getPosition()*Drivetrain.constant >= distance || Drivetrain.frontLeftHall.getPosition()*Drivetrain.constant >= distance;
     return false;
-    //return false;
   }
 
   // Called once after isFinished returns true

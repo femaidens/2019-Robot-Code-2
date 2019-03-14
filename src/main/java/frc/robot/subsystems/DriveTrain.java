@@ -34,9 +34,6 @@ public class DriveTrain extends Subsystem {
   public static CANSparkMax middleLeft = new CANSparkMax(RobotMap.middleLeftPort, MotorType.kBrushless);//2
   public static CANSparkMax middleRight = new CANSparkMax(RobotMap.middleRightPort, MotorType.kBrushless);//11
 
-//
-  public static double initial, initial2;
-  public static double max = 30;
   public int currentLimit = 40;
   public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
@@ -46,9 +43,6 @@ public class DriveTrain extends Subsystem {
   public static CANEncoder rearLeftHall = rearLeft.getEncoder();
   public static CANEncoder middleLeftHall = middleLeft.getEncoder();
   public static CANEncoder middleRightHall = middleRight.getEncoder();
-  //1 revolution is approximately 0.  
-  
-  //public static TalonSRX frontRight = new TalonSRX(1);
 
   public DriveTrain(){
     frontLeft.setSmartCurrentLimit(currentLimit);
@@ -57,11 +51,7 @@ public class DriveTrain extends Subsystem {
     rearRight.setSmartCurrentLimit(currentLimit);
     middleLeft.setSmartCurrentLimit(currentLimit);
     middleRight.setSmartCurrentLimit(currentLimit);
-    /*frontRightHall.setPosition(0.0);
-    rearRightHall.setPosition(0.0);
-    initial = frontRightHall.getPosition();
-    initial2 = rearRightHall.getPosition();
-  */}
+  }
 
   @Override
   public void initDefaultCommand() { 
@@ -70,11 +60,13 @@ public class DriveTrain extends Subsystem {
   }
 
   
-  public static void driveTeleop(){//cascade
-
-    //make joystick value positive, pos is up, neg is down
+  public static void driveTeleop(){
     double rightJoy = 0;//OI.atkJoy1.getRawAxis(5);
     double leftJoy = 0;//-OI.atkJoy1.getRawAxis(1);
+    if (LiftSpark.moving){
+      rightJoy *= 0.25;
+      leftJoy *= 0.25;
+    }
     
     frontLeft.set(leftJoy);
     frontRight.set(rightJoy);
@@ -83,44 +75,10 @@ public class DriveTrain extends Subsystem {
     rearLeft.set(leftJoy);
     rearRight.set(rightJoy);
 
-    SmartDashboard.putNumber("Left motor speed", Robot.drivetrain.frontLeft.get());
-    SmartDashboard.putNumber("Right motor speed", -Robot.drivetrain.frontRight.get());
+    SmartDashboard.putNumber("Left motor speed", DriveTrain.frontLeft.get());
+    SmartDashboard.putNumber("Right motor speed", -DriveTrain.frontRight.get());
   }
-      //System.out.println("joy" + rightJoy);
-      
-
-    /*if ((rearRightHall.getPosition() <= initial2 || frontRightHall.getPosition() <= initial) && rightJoy < 0){//min limit
-      frontRight.set(0.0);
-      rearRight.set(0.0);
-      System.out.println("too low");
-    }
-    
-    else if ((rearRightHall.getPosition() >= max || frontRightHall.getPosition() >= max) && rightJoy > 0){//max limit
-      frontRight.set(0.0);
-      rearRight.set(0.0);
-      System.out.println("too high");
-    }
-    
-    else{
-      frontRight.set(rightJoy);
-      //rearRight.follow(frontRight);
-      rearRight.set(rightJoy);
-      System.out.println("ok");
-    }
-    */
   
-  
-  
-/*
-  public static void driveTeleop(){//cargo
-    //double leftJoy = OI.atkJoy1.getRawAxis(1);
-    double rightJoy = OI.atkJoy1.getRawAxis(5);
-
-    //frontRight.set(ControlMode.PercentOutput, rightJoy);
-    frontRight.set(rightJoy);
-    frontLeft.set(rightJoy);
-  }
-*/
   public static void driveAuton(double rightSpeed, double leftSpeed){
     frontRight.set(rightSpeed);
     rearRight.set(rightSpeed);
@@ -128,12 +86,8 @@ public class DriveTrain extends Subsystem {
     rearLeft.set(leftSpeed);
     middleLeft.set(leftSpeed);
     middleRight.set(rightSpeed);
-    SmartDashboard.putNumber("Left motor speed", Robot.drivetrain.frontLeft.get());
-    SmartDashboard.putNumber("Right motor speed", Robot.drivetrain.frontRight.get());
-  }
-  
-
-  public static void infrared(){
+    SmartDashboard.putNumber("Left motor speed", DriveTrain.frontLeft.get());
+    SmartDashboard.putNumber("Right motor speed", DriveTrain.frontRight.get());
   }
   
   public static void turnDegrees(double angle) {

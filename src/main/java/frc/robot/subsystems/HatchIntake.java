@@ -22,39 +22,39 @@ public class HatchIntake extends Subsystem {
   public static DoubleSolenoid sol2 = new DoubleSolenoid(RobotMap.hatchPcmPort2, RobotMap.solChannel3, RobotMap.solChannel4);
   //actual robot ports = 2, 2, 3
   //practice robot ports = 2, 2, 3
+  public static boolean hatchState; //true if baby piston extended
+  public static boolean hatchState2; //true if mama piston extended
 
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  public static boolean hatchState ; //true if already extended
-  public static boolean hatchState2; 
-//
+  // Put methods for controlling this subsystem here. 
+  //Call these from Commands.
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
-  public static void extend(){
+  public static void extendBaby(){
     sol1.set(DoubleSolenoid.Value.kForward);
     hatchState = true;
     SmartDashboard.putBoolean("Baby piston", hatchState);
   }
   
-  public static void retract(){
+  public static void retractBaby(){
     sol1.set(DoubleSolenoid.Value.kReverse);
     hatchState = false;
     SmartDashboard.putBoolean("Baby piston", hatchState);
   }
 
-  public static void extend2(){
+  public static void extendMama(){
     sol2.set(DoubleSolenoid.Value.kForward);
     hatchState2 = true;
-    SmartDashboard.putBoolean("Big piston", hatchState2);
+    SmartDashboard.putBoolean("Mama piston", hatchState2);
   }
   
-  public static void retract2(){
+  public static void retractMama(){
     sol2.set(DoubleSolenoid.Value.kReverse);
     hatchState2 = false;
-    SmartDashboard.putBoolean("Big piston", hatchState2);
+    SmartDashboard.putBoolean("Mama piston", hatchState2);
   }
    
 }

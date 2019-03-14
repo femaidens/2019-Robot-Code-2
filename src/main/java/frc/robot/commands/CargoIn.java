@@ -17,7 +17,6 @@ public class CargoIn extends Command {
   public CargoIn() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    //requires(Robot.cargoIntake);
   }
 
   // Called just before this Command runs the first time

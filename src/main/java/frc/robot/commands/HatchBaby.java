@@ -10,8 +10,8 @@ import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class HatchIntakeCom extends Command { //actual mechanism
-  public HatchIntakeCom() {
+public class HatchBaby extends Command { //actual mechanism
+  public HatchBaby() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -26,10 +26,10 @@ public class HatchIntakeCom extends Command { //actual mechanism
   @Override
   protected void execute() {
       if (HatchIntake.hatchState){
-        HatchIntake.retract();
+        HatchIntake.retractBaby();
         //System.out.println("yoot");
       }else{
-        HatchIntake.extend();
+        HatchIntake.extendBaby();
         //System.out.println("yate");
       }
   }

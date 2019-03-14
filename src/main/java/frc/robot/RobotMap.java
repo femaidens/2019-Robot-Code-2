@@ -58,7 +58,7 @@ public class RobotMap {
     public static int solChannel1 = 0; 
     public static int solChannel2 = 1;
 
-    //Hatch- out piston ports (PCM-2)
+    //Hatch- mama piston ports (PCM-2)
     public static int hatchPcmPort2 = 2;
     public static int solChannel3 = 2;
     public static int solChannel4 = 3;

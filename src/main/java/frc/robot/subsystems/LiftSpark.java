@@ -25,60 +25,65 @@ public class LiftSpark extends Subsystem {
   //for the hall sensors
   public static CANEncoder leftLiftHall = leftCasMotor.getEncoder();
   public static CANEncoder rightLiftHall = rightCasMotor.getEncoder();
+  //The motors turn the negative direction for the cascade to go up --> hall sensor positions become more negative as the cascade goes higher
   public static int level = 0;
   public static double initposition;
+  public static double maxposition;
+  public static double safety = 2.5;
 
-  public LiftSpark(){
-    //height = new double[] {initposition, 10 + initposition, 20 + initposition, 30 + initposition, 40 + initposition, 50 + initposition, 60 + initposition};
-  }
+  public LiftSpark(){}
 
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  // Put methods for controlling this subsystem here. 
+  // Call these from Commands.
   public static void downToZero(){
+    double downVel = 0.1;
     moving = true;
-    while(-leftLiftHall.getPosition() > initposition+2.5 || -rightLiftHall.getPosition() > initposition+2.5){
-      leftCasMotor.set(0.1);
-      rightCasMotor.set(0.1);
+    while(-leftLiftHall.getPosition() > initposition+safety || -rightLiftHall.getPosition() > initposition+safety){
+      leftCasMotor.set(downVel);
+      rightCasMotor.set(downVel);
     }
     leftCasMotor.set(0.0);
     rightCasMotor.set(0.0);
-    initposition = Math.min(leftLiftHall.getPosition(), rightLiftHall.getPosition());
-    height = new double[] {initposition, 6 + initposition, 19 + initposition, 23 + initposition, 28 + initposition, 35 + initposition, 50 + initposition, 69+initposition};
+    initposition = Math.min(-leftLiftHall.getPosition(), -rightLiftHall.getPosition());
+    height = new double[] {
+      initposition, //starting position
+      6 + initposition, //hatch 1 position
+      19 + initposition, //cargo 1 position
+      23 + initposition, //cargo ship cargo position
+      28 + initposition, //hatch 2 position
+      35 + initposition, //cargo 2 position
+      50 + initposition, //hatch 3 position
+      69 + initposition}; //cargo 3 position
     level = 0;
     moving = false;
   }
 
   public static void up(){
-    //position = leftLiftHall.getPosition();
+    double upVel = 0.25;
+    moving = true;
     if(level < 7){
       System.out.println("going up");
-      while((-leftLiftHall.getPosition() < height[level + 1] && -rightLiftHall.getPosition() < height[level + 1])) {
-        leftCasMotor.set(-0.25);
-        rightCasMotor.set(-0.25);
-        //position = leftLiftHall.getPosition();
-        /*
-        if (leftLiftHall.getPosition() == 0) {
-          System.out.println("zero");
-          Timer.delay(0.1);
-        }*/
+      while((-leftLiftHall.getPosition() < height[level + 1] && -rightLiftHall.getPosition() < height[level + 1]) && Math.max(-leftLiftHall.getPosition(), -rightLiftHall.getPosition()) < maxposition) {
+        leftCasMotor.set(-upVel);
+        rightCasMotor.set(-upVel);
       }
       leftCasMotor.set(0);
       rightCasMotor.set(0);
       level++;
-  
     }
     System.out.println("level: " + level);
     System.out.println("position: " + leftLiftHall.getPosition());
+    moving = false;
   }
 
   public static void down(){
-    //position = leftLiftHall.getPosition();
+    double downVel = .1;
+    moving = true;
     if (level > 0){
       System.out.println("going down");
       while((-leftLiftHall.getPosition() > height[level - 1] && -rightLiftHall.getPosition() > height[level-1]) && Math.min(-leftLiftHall.getPosition(),-rightLiftHall.getPosition()) > initposition+2.5) {
-        leftCasMotor.set(0.1);
-        rightCasMotor.set(0.1);
-        //position = leftLiftHall.getPosition();
+        leftCasMotor.set(downVel);
+        rightCasMotor.set(downVel);
       }
       leftCasMotor.set(0);
       rightCasMotor.set(0);
@@ -86,6 +91,7 @@ public class LiftSpark extends Subsystem {
     }
     System.out.println("level: " + level);
     System.out.println("position: " + leftLiftHall.getPosition());
+    moving = false;
   }
 
   public static void printPosition(){

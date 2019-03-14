@@ -23,8 +23,6 @@ public class AutoAlign extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    //Robot.limelight.table.getEntry("camMode").setNumber(0);
-    //Robot.limelight.table.getEntry("ledMode").setNumber(3);
     Limelight.setLiveStream(0);
     Limelight.setLEDMode(3);
 
@@ -33,9 +31,9 @@ public class AutoAlign extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double degrees = Robot.limelight.getTx();
+    double degrees = Limelight.getTx();
     if(degrees > 10 || degrees < -10){
-      Robot.drivetrain.turnDegrees(degrees);
+      DriveTrain.turnDegrees(degrees);
     }
     else{
       DriveTrain.driveAuton(0.3, 0.3);
@@ -52,7 +50,7 @@ public class AutoAlign extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drivetrain.driveAuton(0, 0);
+    DriveTrain.driveAuton(0, 0);
   }
 
   // Called when another command which requires one or more of the same

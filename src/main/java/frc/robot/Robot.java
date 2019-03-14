@@ -32,26 +32,19 @@ public class Robot extends TimedRobot {
   //private String m_autoSelected;
   public static OI m_oi;
   //private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  public static DriveTrain drivetrain;
-  public static Limelight limelight;
   
   //Command autonomousCommand;
   public static Timer timer;
   
-  //public static HallLift hallLift;
-  //public static I2C i2c;
-  //public static SerialCom serialCom;
-  //public static Practice practice;
-  
+  public static DriveTrain drivetrain;
+  public static Limelight limelight;
+  public static SerialCom serialCom;
   public static Climb climb;
   public static Compressor compress;
   public static HatchIntake hatchIntake;
   public static CargoIntake cargoIntake;
   //public static Lift lift;
   public static LiftSpark liftSpark;
-  //public static DriveTrain drivetrain;
-  
-  
 
   /**
    * This function is run when the robot is first started up and should be
@@ -61,21 +54,17 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi=new OI();
     //m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-   // m_chooser.addOption("My Auto", kCustomAuto);
+    // m_chooser.addOption("My Auto", kCustomAuto);
     //SmartDashboard.putData("Auto choices", m_chooser);
-   // autonomousCommand = new AutonomousDrive();
+    // autonomousCommand = new AutonomousDrive();
+    m_oi=new OI(); 
     m_oi.bindButtons();
-    //timer = new Timer();
-    //serialCom = new SerialCom();
-    //practice = new Practice();
-    //hallLift = new HallLift();
+
+    serialCom = new SerialCom();
     timer = new Timer();
 
     drivetrain = new DriveTrain();
     limelight = new Limelight();
-
-    //stuff with pneumatics
-    
     hatchIntake = new HatchIntake();
     cargoIntake = new CargoIntake();
     //lift = new Lift();
@@ -100,22 +89,37 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledInit() {
-    timer.stop();/*
+    timer.stop();
+    timer.reset();
+    /*
     Lift.frontHall.setPosition(0.0);
     Lift.rearHall.setPosition(0.0);
     Lift.initial = Lift.frontHall.getPosition();
     Lift.initial2 = Lift.rearHall.getPosition();
-    */
 
+    SmartDashboard.putNumber("Initial Lift", Robot.lift.initial);
+    SmartDashboard.putNumber("Initial2 Lift", Robot.lift.initial2);
+    SmartDashboard.putString("Print statements", "reset lift hall sensors");
+    */
+    Limelight.setLiveStream(1);
+    Limelight.setLEDMode(1);
     LiftSpark.leftLiftHall.setPosition(0.0);
     LiftSpark.rightLiftHall.setPosition(0.0);
-    LiftSpark.initposition = Math.min(LiftSpark.leftLiftHall.getPosition(), LiftSpark.rightLiftHall.getPosition());
-    LiftSpark.height = new double[] {LiftSpark.initposition, 6 + LiftSpark.initposition, 19 + LiftSpark.initposition, 23 + LiftSpark.initposition, 28 + LiftSpark.initposition, 35 + LiftSpark.initposition, 50 + LiftSpark.initposition, 69+LiftSpark.initposition};
-  
+    LiftSpark.initposition = Math.min(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition());
+    LiftSpark.height = new double[] {
+      LiftSpark.initposition, //starting position
+      6 + LiftSpark.initposition, //hatch 1 position
+      19 + LiftSpark.initposition, //cargo 1 position
+      23 + LiftSpark.initposition, //cargo ship cargo position
+      28 + LiftSpark.initposition, //hatch 2 position
+      35 + LiftSpark.initposition, //cargo 2 position
+      50 + LiftSpark.initposition, //hatch 3 position
+      69 + LiftSpark.initposition}; //cargo 3 position
 
-    //SmartDashboard.putNumber("Initial Lift", Robot.lift.initial);
-    //SmartDashboard.putNumber("Initial2 Lift", Robot.lift.initial2);
-    //SmartDashboard.putString("Print statements", "reset lift hall sensors");
+    SmartDashboard.putNumber("Initial Lift", LiftSpark.initposition);
+    SmartDashboard.putString("Print statements", "reset lift hall sensors");
+
+
   }
 
   @Override
@@ -167,7 +171,7 @@ public class Robot extends TimedRobot {
       autonomousCommand.cancel();
     }*/
     timer.start();
-    HatchIntake.extend2();
+    HatchIntake.extendBaby();
   }
 
   /**

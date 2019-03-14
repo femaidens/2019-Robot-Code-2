@@ -18,8 +18,6 @@ public class DriveTeleop extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrain);
-    //System.out.println("hi");
-    //requires(Robot.practice);
   }
 
   // Called just before this Command runs the first time
@@ -30,8 +28,6 @@ public class DriveTeleop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //DriveTrain.driveTeleop();
-    
     //System.out.println("frontRight " +  DriveTrain.frontRightHall.getPosition()+"\t rearRight " + DriveTrain.rearRightHall.getPosition());
     DriveTrain.driveTeleop();
   }

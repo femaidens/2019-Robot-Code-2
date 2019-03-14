@@ -21,8 +21,8 @@ public class OI {
     
     //public static Joystick atkJoy2 = new Joystick(RobotMap.joyPort2);
 
-    public static Button hatchPer = new JoystickButton(atkJoy2, 1);//baby
-    public static Button hatchOut = new JoystickButton(atkJoy2, 2);
+    public static Button hatchPer = new JoystickButton(atkJoy2, 1); //baby hatch piston
+    public static Button hatchOut = new JoystickButton(atkJoy2, 2); //mama hatch piston
     //public static Button cargoauton = new JoystickButton(atkJoy1, 2);
     /*public static Button testCounter = new JoystickButton(atkJoy1, 5);*/
 
@@ -54,8 +54,8 @@ public class OI {
         //serialtest.whenPressed(new SerialTest());
         
         //hatch
-        hatchPer.whenPressed(new HatchIntakeCom());
-        hatchOut.whenPressed(new HatchOutCom());
+        hatchPer.whenPressed(new HatchBaby());
+        hatchOut.whenPressed(new HatchMama());
         
 /*
         //cargoauton.whenPressed(new DriveAuton());

@@ -20,7 +20,8 @@ public class Lift extends Subsystem {
   public static TalonSRX frontRight = new TalonSRX(RobotMap.frontRightTalon);
   public static TalonSRX rearLeft = new TalonSRX(RobotMap.rearLeftTalon);
   public static TalonSRX rearRight = new TalonSRX(RobotMap.rearRightTalon);
-*/
+  */
+  
   public static CANEncoder frontHall = frontLeft.getEncoder();
   public static CANEncoder rearHall = rearLeft.getEncoder();
   //public static Encoder encLeft = new Encoder(RobotMap.encPort1, RobotMap.encPort2);

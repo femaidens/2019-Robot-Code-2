@@ -23,7 +23,8 @@ public class Limelight extends Subsystem {
   public static NetworkTableEntry ts = table.getEntry("ts"); // skew or rotation (-90 to 0 degrees)
 
   public Limelight(){
-    setLiveStream(1);
+    //setLiveStream(1);
+    //Limelight.setLEDMode(1);
   }
   
   public static boolean objectSighted(){

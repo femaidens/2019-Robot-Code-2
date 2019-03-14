@@ -8,12 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.subsystems.DriveTrain;
 
 public class DriveAuton extends Command {
-  public DriveAuton() {
+  public double rightSpeed, leftSpeed;
+  public DriveAuton(double r, double l) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     //requires(Robot.practice);
+    rightSpeed = r;
+    leftSpeed = l;
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +28,7 @@ public class DriveAuton extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Practice.driveAuton(1.0, 1.0);
+    DriveTrain.driveAuton(rightSpeed,leftSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()

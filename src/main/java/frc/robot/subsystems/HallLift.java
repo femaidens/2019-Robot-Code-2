@@ -11,32 +11,25 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
-/**
- * Add your docs here.
- */
+
 public class HallLift extends Subsystem {
   public static CANSparkMax sparkLeft = new CANSparkMax(RobotMap.frontPort, MotorType.kBrushless);//3
   public static CANSparkMax sparkRight = new CANSparkMax(RobotMap.rearPort, MotorType.kBrushless);//15
 
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  // Put methods for controlling this subsystem here. 
+  //Call these from Commands.
   public static CANEncoder leftHall = sparkLeft.getEncoder();
   public static CANEncoder rightHall = sparkRight.getEncoder();
-
   public static CANPIDController controller;
 
   public static int index1 = 0;
-
-  public static double[] level = {0.0, 5.0, 11.0, 18.0, 27.0, 37.0, 48.0}; 
-    //0.0 will be ground state and 1.0 will be first hatch
+  public static double[] level = {0.0, 5.0, 11.0, 18.0, 27.0, 37.0, 48.0}; //0.0 will be ground state and 1.0 will be first hatch
 
   public static double distance, initDistance;
-//
+
   public HallLift()
   {
     //leftHall.setPosition(0.0);

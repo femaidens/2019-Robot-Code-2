@@ -10,8 +10,8 @@ package frc.robot.commands; //pushes hatch intake out of perimeter
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class HatchOutCom extends Command {
-  public HatchOutCom() {
+public class HatchMama extends Command {
+  public HatchMama() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -21,15 +21,14 @@ public class HatchOutCom extends Command {
   protected void initialize() {
 
   }
-//
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     if (HatchIntake.hatchState2){
-      HatchIntake.retract2();
+      HatchIntake.retractMama();
       //System.out.println("yeet");
     }else{
-      HatchIntake.extend2();
+      HatchIntake.extendMama();
       //System.out.println("yote");
     }
   }
