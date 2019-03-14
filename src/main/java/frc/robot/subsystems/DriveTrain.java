@@ -63,17 +63,19 @@ public class DriveTrain extends Subsystem {
   public static void driveTeleop(){
     double rightJoy = 0;//OI.atkJoy1.getRawAxis(5);
     double leftJoy = 0;//-OI.atkJoy1.getRawAxis(1);
-    if (LiftSpark.moving){
+    if (LiftSpark.moving || LiftSpark.level >=3){
       rightJoy *= 0.25;
       leftJoy *= 0.25;
     }
     
     frontLeft.set(leftJoy);
     frontRight.set(rightJoy);
+    /*
     middleLeft.set(leftJoy);
     middleRight.set(rightJoy);
     rearLeft.set(leftJoy);
     rearRight.set(rightJoy);
+    */
 
     SmartDashboard.putNumber("Left motor speed", DriveTrain.frontLeft.get());
     SmartDashboard.putNumber("Right motor speed", -DriveTrain.frontRight.get());
@@ -81,11 +83,13 @@ public class DriveTrain extends Subsystem {
   
   public static void driveAuton(double rightSpeed, double leftSpeed){
     frontRight.set(rightSpeed);
-    rearRight.set(rightSpeed);
     frontLeft.set(leftSpeed);
+    /*
+    rearRight.set(rightSpeed);
     rearLeft.set(leftSpeed);
     middleLeft.set(leftSpeed);
     middleRight.set(rightSpeed);
+    */
     SmartDashboard.putNumber("Left motor speed", DriveTrain.frontLeft.get());
     SmartDashboard.putNumber("Right motor speed", DriveTrain.frontRight.get());
   }

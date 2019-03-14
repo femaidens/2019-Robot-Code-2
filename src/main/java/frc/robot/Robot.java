@@ -72,7 +72,13 @@ public class Robot extends TimedRobot {
     compress = new Compressor();
     liftSpark = new LiftSpark();
     SmartDashboard.putString("Print statements", "initialized robot");
-  }
+
+    LiftSpark.leftCasMotor.follow(LiftSpark.rightCasMotor);
+    DriveTrain.middleLeft.follow(DriveTrain.frontLeft);
+    DriveTrain.rearLeft.follow(DriveTrain.frontLeft);
+    DriveTrain.middleRight.follow(DriveTrain.frontRight);
+    DriveTrain.rearRight.follow(DriveTrain.frontRight);
+    }
 
   /**
    * This function is called every robot packet, no matter the mode. Use

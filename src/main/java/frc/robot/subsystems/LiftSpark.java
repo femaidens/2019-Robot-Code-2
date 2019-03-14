@@ -8,6 +8,7 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.*;
 
 import frc.robot.commands.*;
 
@@ -25,13 +26,16 @@ public class LiftSpark extends Subsystem {
   //for the hall sensors
   public static CANEncoder leftLiftHall = leftCasMotor.getEncoder();
   public static CANEncoder rightLiftHall = rightCasMotor.getEncoder();
+  public static CANPIDController controller = rightCasMotor.getPIDController();
   //The motors turn the negative direction for the cascade to go up --> hall sensor positions become more negative as the cascade goes higher
   public static int level = 0;
   public static double initposition;
   public static double maxposition;
   public static double safety = 2.5;
 
-  public LiftSpark(){}
+  public LiftSpark(){
+    //leftCasMotor.follow(rightCasMotor);
+  }
 
   // Put methods for controlling this subsystem here. 
   // Call these from Commands.
@@ -39,10 +43,10 @@ public class LiftSpark extends Subsystem {
     double downVel = 0.1;
     moving = true;
     while(-leftLiftHall.getPosition() > initposition+safety || -rightLiftHall.getPosition() > initposition+safety){
-      leftCasMotor.set(downVel);
+      //leftCasMotor.set(downVel);
       rightCasMotor.set(downVel);
     }
-    leftCasMotor.set(0.0);
+    //leftCasMotor.set(0.0);
     rightCasMotor.set(0.0);
     initposition = Math.min(-leftLiftHall.getPosition(), -rightLiftHall.getPosition());
     height = new double[] {
@@ -64,10 +68,10 @@ public class LiftSpark extends Subsystem {
     if(level < 7){
       System.out.println("going up");
       while((-leftLiftHall.getPosition() < height[level + 1] && -rightLiftHall.getPosition() < height[level + 1]) && Math.max(-leftLiftHall.getPosition(), -rightLiftHall.getPosition()) < maxposition) {
-        leftCasMotor.set(-upVel);
+        //leftCasMotor.set(-upVel);
         rightCasMotor.set(-upVel);
       }
-      leftCasMotor.set(0);
+      //leftCasMotor.set(0);
       rightCasMotor.set(0);
       level++;
     }
@@ -82,10 +86,10 @@ public class LiftSpark extends Subsystem {
     if (level > 0){
       System.out.println("going down");
       while((-leftLiftHall.getPosition() > height[level - 1] && -rightLiftHall.getPosition() > height[level-1]) && Math.min(-leftLiftHall.getPosition(),-rightLiftHall.getPosition()) > initposition+2.5) {
-        leftCasMotor.set(downVel);
+        //leftCasMotor.set(downVel);
         rightCasMotor.set(downVel);
       }
-      leftCasMotor.set(0);
+      //leftCasMotor.set(0);
       rightCasMotor.set(0);
       level--;
     }
@@ -101,7 +105,7 @@ public class LiftSpark extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new KeepCascadeU());
+    //setDefaultCommand(new KeepCascadeUp());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
