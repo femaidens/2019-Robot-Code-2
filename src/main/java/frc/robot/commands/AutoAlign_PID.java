@@ -15,7 +15,7 @@ import frc.robot.OI;
 
 public class AutoAlign_PID extends Command {
 
-  public final static double Kp = 0.01;
+  public final static double Kp = 0.075;
   public final static double Ki = 0.0;
   public final static double Kd = 0.0;
   //public double distance, left_speed, right_speed;
@@ -66,7 +66,7 @@ public class AutoAlign_PID extends Command {
     if (!Limelight.objectSighted()) return;
 
     previous_error = current_error;
-    current_error = Limelight.getTx();
+    current_error = Math.sin(Limelight.getTx());
     integral = (current_error+previous_error)/2*(time);
     derivative = (current_error-previous_error)/time;
     adjust = Kp*current_error + Ki*integral + Kd*derivative;

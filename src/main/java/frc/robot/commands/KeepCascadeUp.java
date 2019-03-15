@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 import frc.robot.subsystems.*;
+import frc.robot.Robot;
 
 import com.revrobotics.ControlType;
 
@@ -28,8 +29,8 @@ public class KeepCascadeUp extends Command {
     kD = 1; 
     kIz = 0; 
     kFF = 0; 
-    kMaxOutput = .25; 
-    kMinOutput = 0;
+    kMaxOutput = 0; 
+    kMinOutput = -.25;
     setpoint = -LiftSpark.height[LiftSpark.level];
 
     LiftSpark.controller.setP(kP);
@@ -58,7 +59,7 @@ public class KeepCascadeUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (LiftSpark.moving){return;}
+    if (LiftSpark.moving || LiftSpark.level==0){return;}
     // read PID coefficients from SmartDashboard
     double p = SmartDashboard.getNumber("P Gain", 0);
     double i = SmartDashboard.getNumber("I Gain", 0);
@@ -100,11 +101,12 @@ public class KeepCascadeUp extends Command {
     
     SmartDashboard.putNumber("SetPoint", setpoint);
     SmartDashboard.putNumber("ProcessVariable", -LiftSpark.rightLiftHall.getPosition());
-
+    /*
     try {
       Thread.sleep((long)(time*1000));
     } catch(InterruptedException e){
     }
+    */
   }
 
   // Make this return true when this Command no longer needs to run execute()

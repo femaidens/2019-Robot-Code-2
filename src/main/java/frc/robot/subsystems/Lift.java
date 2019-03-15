@@ -13,17 +13,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Lift extends Subsystem {
-  public static CANSparkMax frontLeft = new CANSparkMax(RobotMap.frontPort, MotorType.kBrushless);//3
-  public static CANSparkMax rearLeft = new CANSparkMax(RobotMap.rearPort, MotorType.kBrushless);//15
+  public static CANSparkMax frontLeft = LiftSpark.leftCasMotor;// new CANSparkMax(RobotMap.frontPort, MotorType.kBrushless);//3
+  public static CANSparkMax rearLeft = LiftSpark.rightCasMotor;//new CANSparkMax(RobotMap.rearPort, MotorType.kBrushless);//15
 
   /*public static TalonSRX frontLeft = new TalonSRX(RobotMap.frontLeftTalon);
   public static TalonSRX frontRight = new TalonSRX(RobotMap.frontRightTalon);
   public static TalonSRX rearLeft = new TalonSRX(RobotMap.rearLeftTalon);
   public static TalonSRX rearRight = new TalonSRX(RobotMap.rearRightTalon);
   */
-  
-  public static CANEncoder frontHall = frontLeft.getEncoder();
-  public static CANEncoder rearHall = rearLeft.getEncoder();
+    
+  public static CANEncoder frontHall = LiftSpark.leftLiftHall;//.getEncoder();
+  public static CANEncoder rearHall = LiftSpark.rightLiftHall;//.getEncoder();
   //public static Encoder encLeft = new Encoder(RobotMap.encPort1, RobotMap.encPort2);
   //public static Encoder encRight = new Encoder(RobotMap.encPort3, RobotMap.encPort4);
 
@@ -32,7 +32,8 @@ public class Lift extends Subsystem {
   public static double initial2;
   public static double max  = 71;
 
-  public static double[] level = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}; 
+  public static double[] height; //{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}; 
+  public static String[] printOuts = {"Starting Position (Hatch 1)","Cargo 1","Cargo Ship", "Hatch 2", "Cargo 2", "Hatch 3", "Cargo 3"};
     //0.0 will be ground state and 1.0 will be first hatch
 //
 public Lift(){
@@ -42,10 +43,11 @@ public Lift(){
   initial = frontHall.getPosition();
   initial2 = rearHall.getPosition();
   */
-}
+} /*
   public static double rocket(int index){
-    return level[index];
+    return height[index];
   }
+  */
   
   @Override
   public void initDefaultCommand() {
@@ -59,12 +61,11 @@ public Lift(){
      double currentFront = -frontHall.getPosition();
 
      if ((currentRear <= initial2+2.5 || currentFront <= initial+2.5) && rightSpeed < 0){//min limit
-      frontLeft.set(0.0);
+      //frontLeft.set(0.0);
       rearLeft.set(0.0);
       System.out.println("too low");
     }
     /*
-    
     else if ((rearHall.getPosition() >= max || frontHall.getPosition() >= max) && rightSpeed > 0){//max limit
       frontLeft.set(0.0);
       rearLeft.set(0.0);
@@ -72,14 +73,14 @@ public Lift(){
     }
     */
     else{
-      frontLeft.set(-rightSpeed);
-      //rearRight.follow(frontRight);
+      //frontLeft.set(-rightSpeed);
       rearLeft.set(-rightSpeed);
       //System.out.println("ok");
     }
     SmartDashboard.putNumber("Front Hall", currentFront);
     SmartDashboard.putNumber("Rear Hall", currentRear);
     SmartDashboard.putNumber("Joystick", rightSpeed);
+
   }
 
   }

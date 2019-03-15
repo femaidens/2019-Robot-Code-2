@@ -51,7 +51,7 @@ public class LiftSpark extends Subsystem {
     initposition = Math.min(-leftLiftHall.getPosition(), -rightLiftHall.getPosition());
     height = new double[] {
       initposition, //starting position
-      6 + initposition, //hatch 1 position
+      //6 + initposition, //hatch 1 position
       19 + initposition, //cargo 1 position
       23 + initposition, //cargo ship cargo position
       28 + initposition, //hatch 2 position
@@ -65,7 +65,7 @@ public class LiftSpark extends Subsystem {
   public static void up(){
     double upVel = 0.25;
     moving = true;
-    if(level < 7){
+    if(level < 6){
       System.out.println("going up");
       while((-leftLiftHall.getPosition() < height[level + 1] && -rightLiftHall.getPosition() < height[level + 1]) && Math.max(-leftLiftHall.getPosition(), -rightLiftHall.getPosition()) < maxposition) {
         //leftCasMotor.set(-upVel);

@@ -61,8 +61,8 @@ public class DriveTrain extends Subsystem {
 
   
   public static void driveTeleop(){
-    double rightJoy = 0;//OI.atkJoy1.getRawAxis(5);
-    double leftJoy = 0;//-OI.atkJoy1.getRawAxis(1);
+    double rightJoy = OI.atkJoy1.getRawAxis(5);
+    double leftJoy = -OI.atkJoy1.getRawAxis(1);
     if (LiftSpark.moving || LiftSpark.level >=3){
       rightJoy *= 0.25;
       leftJoy *= 0.25;
@@ -82,7 +82,7 @@ public class DriveTrain extends Subsystem {
   }
   
   public static void driveAuton(double rightSpeed, double leftSpeed){
-    frontRight.set(rightSpeed);
+    frontRight.set(-rightSpeed);
     frontLeft.set(leftSpeed);
     /*
     rearRight.set(rightSpeed);
