@@ -1,0 +1,147 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Lift Level" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="330"/>
+	</widget>
+	<widget field="Back" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="313" y="267"/>
+	</widget>
+	<widget field="Front" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="313" y="244"/>
+	</widget>
+	<widget field="Big piston" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="449" y="266"/>
+	</widget>
+	<widget field="Baby piston" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="448" y="242"/>
+	</widget>
+	<widget field="State" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="171" y="264"/>
+	</widget>
+	<widget field="Cargo" type="String" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="171" y="242"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="256" y="92"/>
+		<property name="Text" value="Right Motor Speed"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="60" y="92"/>
+		<property name="Text" value="Left Motor Speed"/>
+	</static-widget>
+	<widget field="Left motor speed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.SimpleDial">
+		<location x="4" y="108"/>
+		<width>191</width>
+		<height>117</height>
+		<property name="Upper Limit" value="1.0"/>
+		<property name="Lower Limit" value="-1.0"/>
+		<property name="Tick Interval" value="0.1"/>
+	</widget>
+	<widget field="Right motor speed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.SimpleDial">
+		<location x="211" y="105"/>
+		<width>191</width>
+		<height>123</height>
+		<property name="Upper Limit" value="1.0"/>
+		<property name="Lower Limit" value="-1.0"/>
+		<property name="Tick Interval" value="0.1"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="476" y="89"/>
+		<property name="Text" value="Lift Joystick"/>
+	</static-widget>
+	<widget field="Joystick" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.SimpleDial">
+		<location x="415" y="99"/>
+		<width>195</width>
+		<height>126</height>
+		<property name="Upper Limit" value="1.0"/>
+		<property name="Lower Limit" value="-1.0"/>
+		<property name="Tick Interval" value="0.1"/>
+	</widget>
+	<widget field="Time" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="4" y="406"/>
+		<width>141</width>
+		<height>43</height>
+		<property name="Foreground" value="51.204.0.255"/>
+		<property name="Background" value="0.0.0.255"/>
+		<property name="Font Size" value="30"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="1282" y="52"/>
+		<property name="Text" value="Connection"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="445" y="226"/>
+		<property name="Text" value="Hatch"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="311" y="226"/>
+		<property name="Text" value="Climber"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="171" y="227"/>
+		<width>29</width>
+		<height>14</height>
+		<property name="Text" value="Cargo"/>
+	</static-widget>
+	<widget field="Limelight_Interface" type="String" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="2" y="22"/>
+		<width>238</width>
+	</widget>
+	<widget field="Limelight_Stream" type="String" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="5" y="42"/>
+		<width>231</width>
+	</widget>
+	<widget field="Limelight_PipelineName" type="String" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="4" y="65"/>
+	</widget>
+	<widget field="Print statements" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="268" y="5"/>
+		<width>997</width>
+		<height>55</height>
+	</widget>
+	<widget field="Rear Hall" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="0" y="308"/>
+	</widget>
+	<widget field="Front Hall" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="1" y="285"/>
+		<height>21</height>
+	</widget>
+	<widget field="Initial2 Lift" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="1" y="263"/>
+	</widget>
+	<widget field="Initial Lift" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.FormattedField">
+		<location x="3" y="241"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="612" y="73"/>
+		<width>722</width>
+		<height>326</height>
+		<property name="Camera Choice" value="limelight"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="0" y="225"/>
+		<property name="Text" value="Lift"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="2" y="91"/>
+		<property name="Text" value="Drivetrain"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="1290" y="8"/>
+		<width>40</width>
+		<height>39</height>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="1" y="5"/>
+		<property name="Text" value="Limelight"/>
+	</static-widget>
+	<widget field="Mama piston" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="272" y="319"/>
+	</widget>
+	<widget field="Auto Selector" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="267" y="350"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
