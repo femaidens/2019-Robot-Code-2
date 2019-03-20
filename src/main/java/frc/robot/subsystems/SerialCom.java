@@ -25,7 +25,7 @@ public class SerialCom extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-    //setDefaultCommand(new SerialTest());
+    setDefaultCommand(new SerialTest());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }

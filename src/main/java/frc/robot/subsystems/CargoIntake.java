@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import frc.robot.*;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -38,8 +39,9 @@ public class CargoIntake extends Subsystem {
   
   public static void intake(){ 
     double cargoVel = 0.75;
-    if(!state){
-      backTalon.set(ControlMode.PercentOutput, cargoVel);
+    if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = OI.atkJoy2.getRawAxis(5);
+    if(state){
+      backTalon.set(ControlMode.PercentOutput, -cargoVel);
     }
     else{
       inTalon.set(ControlMode.PercentOutput, cargoVel);
@@ -50,9 +52,9 @@ public class CargoIntake extends Subsystem {
   }
   public static void outtake(){
     double cargoVel = 0.75;
-    if (LiftSpark.level == 3) cargoVel = 0.50;
-    if(!state){
-      backTalon.set(ControlMode.PercentOutput, -cargoVel);
+    if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = -OI.atkJoy2.getRawAxis(5);    //if (LiftSpark.level == 3) cargoVel = 0.50;
+    if(state){
+      backTalon.set(ControlMode.PercentOutput, cargoVel);
     }
     else{
       inTalon.set(ControlMode.PercentOutput, -cargoVel);
@@ -65,10 +67,5 @@ public class CargoIntake extends Subsystem {
     backTalon.set(ControlMode.PercentOutput, 0.0);
     inTalon.set(ControlMode.PercentOutput, 0.0);
     SmartDashboard.putString("Cargo", "stop");
-  }
-  public static void outtakeZ(){
-    double cargoVel = 0.75;
-    if (LiftSpark.level == 3) cargoVel = 0.50;
-    backTalon.set(ControlMode.PercentOutput, -cargoVel);
   }
 }

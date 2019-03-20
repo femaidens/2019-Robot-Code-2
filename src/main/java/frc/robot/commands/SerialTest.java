@@ -27,7 +27,7 @@ public class SerialTest extends Command {
   @Override
   protected void execute() {
     String str = SerialCom.receive();
-    if (str.length() !=0) System.out.println(str);
+    //if (str.length() !=0) System.out.println(str);
   }
 
   // Make this return true when this Command no longer needs to run execute()

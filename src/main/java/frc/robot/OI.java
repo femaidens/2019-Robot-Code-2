@@ -26,7 +26,7 @@ public class OI {
     //public static Button cargoauton = new JoystickButton(atkJoy1, 2);
     /*public static Button testCounter = new JoystickButton(atkJoy1, 5);*/
 
-    public static Button cargoIn = new JoystickButton(atkJoy1, 1); //backwards
+    public static Button cargoIn = new JoystickButton(atkJoy2, 4); //backwards
     public static Button cargoOut = new JoystickButton(atkJoy2, 1); //forwards
 
     public static Button cargoPiston = new JoystickButton(atkJoy2, 5);
@@ -34,18 +34,16 @@ public class OI {
     //public static Button liftUp = new JoystickButton(atkJoy1, 3);
     //public static Button liftDown = new JoystickButton(atkJoy1, 2);
 
-    //public static Button frontClimb = new JoystickButton(atkJoy1, 1);
-    //public static Button rearClimb = new JoystickButton(atkJoy1, 2);
+    public static Button frontClimb = new JoystickButton(atkJoy1, 4);
+    public static Button rearClimb = new JoystickButton(atkJoy1, 1);
 
     public static Button autoAlign1 = new JoystickButton(atkJoy1, 2);
-    public static Button autoAlign2 = new JoystickButton(atkJoy1,3);
+    //public static Button autoAlign2 = new JoystickButton(atkJoy1,3);
+    public static Button autoAlign3 = new JoystickButton(atkJoy1, 3);
 
     //public static Button liftUp = new JoystickButton(atkJoy2, 4);
     //public static Button liftDown = new JoystickButton(atkJoy2,6);
     //public static Button downToZero = new JoystickButton(atkJoy2, 3);
-
-    //public static Button cargoOutZ = new JoystickButton(atkJoy1, 12);
-    //public static Button cargoInZ = new JoystickButton(atkJoy1, 12);
 
     //public static Button i2ctest = new JoystickButton(atkJoy1, 3);
     //public static Button serialtest = new JoystickButton(atkJoy1, 4);
@@ -64,7 +62,7 @@ public class OI {
         cargoIn.whenReleased(new StopAcquirer());
         cargoOut.whenReleased(new StopAcquirer());
         cargoPiston.whenPressed(new CargoPiston());
-        
+
         /*
         liftUp.whenPressed(new CascadeUp());
         liftDown.whenPressed(new CascadeDown());
@@ -74,19 +72,17 @@ public class OI {
         //liftDown.whenPressed(new RocketDown());
         
         //climber manual
-        //frontClimb.whenPressed(new FrontClimb());
-        //rearClimb.whenPressed(new RearClimb());
+        frontClimb.whenPressed(new FrontClimb());
+        rearClimb.whenPressed(new RearClimb());
 
         autoAlign1.whileHeld(new AutoAlign_PID(.1,.1));
-        autoAlign2.whileHeld(new AutoAlign());
+        //autoAlign2.whileHeld(new AutoAlign());
+        autoAlign3.whileHeld(new AutoAlign_PID(0,0));
         autoAlign1.whenReleased(new StopAlign());
-        autoAlign2.whenReleased(new StopAlign());
+        //autoAlign2.whenReleased(new StopAlign());
+        autoAlign3.whenReleased(new StopAlign());
 
         //testCounter.whenPressed(new PrintTest());
-
-        //cargoOutZ.whenReleased(new CargoOutZ());
-        //cargoInZ.whileHeld(new CargoInZ());
-    
     }
     
 }

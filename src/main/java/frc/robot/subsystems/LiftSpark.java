@@ -57,11 +57,33 @@ public class LiftSpark extends Subsystem {
       28 + initposition, //hatch 2 position
       35 + initposition, //cargo 2 position
       50 + initposition, //hatch 3 position
-      69 + initposition}; //cargo 3 position
+      69 + initposition, //cargo 3 position
+      71 + initposition}; //max
     level = 0;
     moving = false;
   }
 
+  public static void up(int l){
+    double upVel = 0.75;
+    moving = true;
+    if(level< l && l < 6){
+      System.out.println("going up");
+      while((-leftLiftHall.getPosition() < height[l] && -rightLiftHall.getPosition() < height[l]) && Math.max(-leftLiftHall.getPosition(), -rightLiftHall.getPosition()) < maxposition) {
+        //leftCasMotor.set(-upVel);
+        
+        System.out.println(-leftLiftHall.getPosition()+"\t"+height[l]);
+        rightCasMotor.set(-upVel);
+      }
+      //leftCasMotor.set(0);
+      rightCasMotor.set(0);
+      //level++;
+      level = l;
+    }
+    System.out.println("height:"+height[l]);
+    System.out.println("level: " + level);
+    System.out.println("position: " + leftLiftHall.getPosition());
+    moving = false;
+  }
   public static void up(){
     double upVel = 0.25;
     moving = true;
@@ -79,7 +101,26 @@ public class LiftSpark extends Subsystem {
     System.out.println("position: " + leftLiftHall.getPosition());
     moving = false;
   }
-
+  /*
+  public static void down(int l){
+    double downVel = .1;
+    moving = true;
+    if (level > l && l > 0){
+      System.out.println("going down");
+      while((-leftLiftHall.getPosition() > height[l] && -rightLiftHall.getPosition() > height[l]) && Math.min(-leftLiftHall.getPosition(),-rightLiftHall.getPosition()) > initposition+2.5) {
+        //leftCasMotor.set(downVel);
+        rightCasMotor.set(downVel);
+      }
+      //leftCasMotor.set(0);
+      rightCasMotor.set(0);
+      //level--;
+      level = l;
+    }
+    System.out.println("level: " + level);
+    System.out.println("position: " + leftLiftHall.getPosition());
+    moving = false;
+  }
+*/
   public static void down(){
     double downVel = .1;
     moving = true;
@@ -108,5 +149,6 @@ public class LiftSpark extends Subsystem {
     //setDefaultCommand(new KeepCascadeUp());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new CascadeUpLvl());
   }
 }

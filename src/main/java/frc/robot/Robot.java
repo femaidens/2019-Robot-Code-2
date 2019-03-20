@@ -38,13 +38,13 @@ public class Robot extends TimedRobot {
   
   public static DriveTrain drivetrain;
   public static Limelight limelight;
-  public static SerialCom serialCom;
-  //public static Climb climb;
+  //public static SerialCom serialCom;
+  public static Climb climb;
   public static Compressor compress;
   public static HatchIntake hatchIntake;
   public static CargoIntake cargoIntake;
   public static Lift lift;
-  //public static LiftSpark liftSpark;
+  public static LiftSpark liftSpark;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -60,17 +60,17 @@ public class Robot extends TimedRobot {
     m_oi=new OI(); 
     m_oi.bindButtons();
 
-    serialCom = new SerialCom();
+    //serialCom = new SerialCom();
     timer = new Timer();
 
+    compress = new Compressor();
     drivetrain = new DriveTrain();
     limelight = new Limelight();
     hatchIntake = new HatchIntake();
     cargoIntake = new CargoIntake();
     lift = new Lift();
-    //climb = new Climb();
-    compress = new Compressor();
-    //liftSpark = new LiftSpark();
+    climb = new Climb();
+    liftSpark = new LiftSpark();
     SmartDashboard.putString("Print statements", "initialized robot");
 
     
@@ -115,7 +115,12 @@ public class Robot extends TimedRobot {
     LiftSpark.rightLiftHall.setPosition(0.0);
     Lift.initial = Lift.frontHall.getPosition();
     Lift.initial2 = Lift.rearHall.getPosition();
-  
+    
+    SmartDashboard.putNumber("Initial Lift", Robot.lift.initial);
+    SmartDashboard.putNumber("Initial2 Lift", Robot.lift.initial2);
+    SmartDashboard.putString("Print statements", "reset lift hall sensors");
+
+    LiftSpark.level = 0;
     LiftSpark.initposition = Math.min(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition());
     LiftSpark.height = new double[] {
       LiftSpark.initposition, //starting position
@@ -125,7 +130,9 @@ public class Robot extends TimedRobot {
       28 + LiftSpark.initposition, //hatch 2 position
       35 + LiftSpark.initposition, //cargo 2 position
       50 + LiftSpark.initposition, //hatch 3 position
-      69 + LiftSpark.initposition}; //cargo 3 position
+      69 + LiftSpark.initposition, //cargo 3 position
+      71 + LiftSpark.initposition}; //MAX
+    LiftSpark.maxposition = 71+LiftSpark.initposition;  
     Lift.height = LiftSpark.height;
     
     //LiftSpark.downToZero();
@@ -184,7 +191,6 @@ public class Robot extends TimedRobot {
       autonomousCommand.cancel();
     }*/
     timer.start();
-    HatchIntake.extendBaby();
     //LiftSpark.downToZero();
     Limelight.setLiveStream(1);
     Limelight.setLEDMode(1);
@@ -197,15 +203,15 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     //System.out.println(DriveTrain.gyro.getAngle());
-  /*
-    if (Math.max(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition()) >= -LiftSpark.height[LiftSpark.level+1]) {
+  
+    if (LiftSpark.level < 7 && Math.max(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition()) >= LiftSpark.height[LiftSpark.level+1]) {
       LiftSpark.level++;
     }
-    else if (Math.min(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition()) < -LiftSpark.height[LiftSpark.level]){
+    else if (LiftSpark.level > 0 && Math.min(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition()) < LiftSpark.height[LiftSpark.level]){
       LiftSpark.level--;
     }
     SmartDashboard.putString("Lift Level", Lift.printOuts[LiftSpark.level]);
-    */
+    
   }
 
   /**

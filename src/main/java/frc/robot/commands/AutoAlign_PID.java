@@ -94,8 +94,8 @@ public class AutoAlign_PID extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    //Robot.limelight.setLiveStream(1);
-    //Limelight.setLEDMode(1);
+    Robot.limelight.setLiveStream(1);
+    Limelight.setLEDMode(1);
   }
 
   // Called when another command which requires one or more of the same

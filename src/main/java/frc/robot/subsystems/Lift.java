@@ -33,7 +33,7 @@ public class Lift extends Subsystem {
   public static double max  = 71;
 
   public static double[] height; //{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}; 
-  public static String[] printOuts = {"Starting Position (Hatch 1)","Cargo 1","Cargo Ship", "Hatch 2", "Cargo 2", "Hatch 3", "Cargo 3"};
+  public static String[] printOuts = {"Starting Position (Hatch 1)","Cargo 1","Cargo Ship", "Hatch 2", "Cargo 2", "Hatch 3", "Cargo 3", "MAX"};
     //0.0 will be ground state and 1.0 will be first hatch
 //
 public Lift(){
@@ -55,8 +55,11 @@ public Lift(){
   }
 
   public static void liftTeleop(){
+    System.out.println("joystick value:"+ (-OI.atkJoy2.getRawAxis(1)));
      double rightSpeed = -OI.atkJoy2.getRawAxis(1);
-     if (rightSpeed < 0) rightSpeed *= .15;
+     if (Math.abs(rightSpeed) < 0.075) rightSpeed = 0;
+     else if (rightSpeed < 0) rightSpeed *= .15;
+     //else if (-LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[2]) rightSpeed *= .5;
      double currentRear = -rearHall.getPosition();
      double currentFront = -frontHall.getPosition();
 
