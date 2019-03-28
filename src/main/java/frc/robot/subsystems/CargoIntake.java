@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import frc.robot.*;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -39,7 +40,7 @@ public class CargoIntake extends Subsystem {
   
   public static void intake(){ 
     double cargoVel = 0.75;
-    if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = OI.atkJoy2.getRawAxis(5);
+    //if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = OI.atkJoy2.getRawAxis(5);
     if(state){
       backTalon.set(ControlMode.PercentOutput, -cargoVel);
     }
@@ -52,7 +53,8 @@ public class CargoIntake extends Subsystem {
   }
   public static void outtake(){
     double cargoVel = 0.75;
-    if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = -OI.atkJoy2.getRawAxis(5);    //if (LiftSpark.level == 3) cargoVel = 0.50;
+    //if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = -OI.atkJoy2.getRawAxis(5);    //
+    if (LiftSpark.level == 3) cargoVel = 0.50;
     if(state){
       backTalon.set(ControlMode.PercentOutput, cargoVel);
     }

@@ -23,7 +23,7 @@ public class RobotMap {
 
     /*----------- Actual Robot Pneumatic Ports -----------*/
 
-    /*
+    
 
     //Hatch- baby piston ports (PCM-1)
     public static int hatchPcmPort1 = 1;
@@ -31,27 +31,28 @@ public class RobotMap {
     public static int solChannel2 = 1;
 
     //Hatch- out piston ports (PCM-2)
-    public static int hatchPcmPort2 = 2;
+    public static int hatchPcmPort2 = 1;
     public static int solChannel3 = 2;
     public static int solChannel4 = 3;
 
     //Cargo Piston ports (PCM- 1)
-    public static int cargoPcmPort = 1;
+    public static int cargoPcmPort = 3;
     public static int cargoSol1 = 2;
     public static int cargoSol2 = 3;
 
     //Climb Piston ports (PCM- 1)
-    public static int climbPcmPort = 1;
-    public static int climbFrontPort1 = 6;
-    public static int climbFrontPort2 = 7;
-    public static int climbRearPort1 = 4;
-    public static int climbRearPort2 = 5;
+    public static int climbPcmPortr = 3;
+    public static int climbPcmPortf = 1;
+    public static int climbFrontPort1 = 4;
+    public static int climbFrontPort2 = 5;
+    public static int climbRearPort1 = 6;
+    public static int climbRearPort2 = 7;
 
-    */
+    
 
     /*----------- Practice Robot Pneumatic Ports -----------*/
 
-    
+    /*
 
      //Hatch- baby piston ports (PCM-2)
     public static int hatchPcmPort1 = 2;
@@ -75,7 +76,7 @@ public class RobotMap {
     public static int climbRearPort1 = 4;
     public static int climbRearPort2 = 5;
     
-    
+    */
     /*----------- Motor Controller Ports -----------*/
 
     //Drivetrain SparkMax ports

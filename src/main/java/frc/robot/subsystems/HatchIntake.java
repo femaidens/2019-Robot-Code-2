@@ -37,24 +37,28 @@ public class HatchIntake extends Subsystem {
     sol1.set(DoubleSolenoid.Value.kForward);
     hatchState = true;
     SmartDashboard.putBoolean("Baby piston", hatchState);
+    //SerialCom.send("B-t\n");
   }
   
   public static void retractBaby(){
     sol1.set(DoubleSolenoid.Value.kReverse);
     hatchState = false;
     SmartDashboard.putBoolean("Baby piston", hatchState);
+    //SerialCom.send("B-f\n");
   }
 
   public static void extendMama(){
     sol2.set(DoubleSolenoid.Value.kForward);
     hatchState2 = true;
     SmartDashboard.putBoolean("Mama piston", hatchState2);
+    //SerialCom.send("M-t\n");
   }
   
   public static void retractMama(){
     sol2.set(DoubleSolenoid.Value.kReverse);
     hatchState2 = false;
     SmartDashboard.putBoolean("Mama piston", hatchState2);
+    //SerialCom.send("M-f\n");
   }
    
 }

@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
   
   public static DriveTrain drivetrain;
   public static Limelight limelight;
-  //public static SerialCom serialCom;
+  public static SerialCom serialCom;
   public static Climb climb;
   public static Compressor compress;
   public static HatchIntake hatchIntake;
@@ -60,7 +60,7 @@ public class Robot extends TimedRobot {
     m_oi=new OI(); 
     m_oi.bindButtons();
 
-    //serialCom = new SerialCom();
+    serialCom = new SerialCom();
     timer = new Timer();
 
     compress = new Compressor();
@@ -72,7 +72,8 @@ public class Robot extends TimedRobot {
     climb = new Climb();
     liftSpark = new LiftSpark();
     SmartDashboard.putString("Print statements", "initialized robot");
-
+    Limelight.setLiveStream(1);
+    Limelight.setLEDMode(1);
     
     LiftSpark.leftCasMotor.follow(LiftSpark.rightCasMotor);
     DriveTrain.middleLeft.follow(DriveTrain.frontLeft);
@@ -163,6 +164,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    timer.start();
+    //LiftSpark.downToZero();
+    Limelight.setLiveStream(1);
+    Limelight.setLEDMode(1);
+
     //m_autoSelected = m_chooser.getSelected();
     // autoSelected = SmartDashboard.getString("Auto Selector",
     // defaultAuto);
@@ -174,6 +180,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    Scheduler.getInstance().run();
     /*switch (m_autoSelected) {
       case kCustomAuto:
         // Put custom auto code here
@@ -189,8 +196,9 @@ public class Robot extends TimedRobot {
   public void teleopInit() {
     /*if (autonomousCommand != null){
       autonomousCommand.cancel();
-    }*/
-    timer.start();
+    }
+    */
+    //timer.start();
     //LiftSpark.downToZero();
     Limelight.setLiveStream(1);
     Limelight.setLEDMode(1);

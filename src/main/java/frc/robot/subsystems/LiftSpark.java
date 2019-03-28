@@ -68,11 +68,11 @@ public class LiftSpark extends Subsystem {
     moving = true;
     if(level< l && l < 6){
       System.out.println("going up");
-      while((-leftLiftHall.getPosition() < height[l] && -rightLiftHall.getPosition() < height[l]) && Math.max(-leftLiftHall.getPosition(), -rightLiftHall.getPosition()) < maxposition) {
+      while((leftLiftHall.getPosition() < height[l] && rightLiftHall.getPosition() < height[l]) && Math.max(leftLiftHall.getPosition(), rightLiftHall.getPosition()) < maxposition) {
         //leftCasMotor.set(-upVel);
         
-        System.out.println(-leftLiftHall.getPosition()+"\t"+height[l]);
-        rightCasMotor.set(-upVel);
+        System.out.println(leftLiftHall.getPosition()+"\t"+height[l]);
+        rightCasMotor.set(upVel);
       }
       //leftCasMotor.set(0);
       rightCasMotor.set(0);

@@ -55,15 +55,14 @@ public Lift(){
   }
 
   public static void liftTeleop(){
-    System.out.println("joystick value:"+ (-OI.atkJoy2.getRawAxis(1)));
      double rightSpeed = -OI.atkJoy2.getRawAxis(1);
      if (Math.abs(rightSpeed) < 0.075) rightSpeed = 0;
-     else if (rightSpeed < 0) rightSpeed *= .15;
+     else if (rightSpeed < 0) rightSpeed *= .3;
      //else if (-LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[2]) rightSpeed *= .5;
-     double currentRear = -rearHall.getPosition();
-     double currentFront = -frontHall.getPosition();
+     double currentRear = rearHall.getPosition();
+     double currentFront = frontHall.getPosition();
 
-     if ((currentRear <= initial2+2.5 || currentFront <= initial+2.5) && rightSpeed < 0){//min limit
+     if ((currentRear <= initial2+2 || currentFront <= initial+2) && rightSpeed < 0){//min limit
       //frontLeft.set(0.0);
       rearLeft.set(0.0);
       System.out.println("too low");
@@ -73,11 +72,11 @@ public Lift(){
       frontLeft.set(0.0);
       rearLeft.set(0.0);
       System.out.println("too high");
-    }
+    
     */
     else{
       //frontLeft.set(-rightSpeed);
-      rearLeft.set(-rightSpeed);
+      rearLeft.set(rightSpeed);
       //System.out.println("ok");
     }
     SmartDashboard.putNumber("Front Hall", currentFront);

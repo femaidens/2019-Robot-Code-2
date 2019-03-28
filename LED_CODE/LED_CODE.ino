@@ -15,6 +15,13 @@ int IRLeft = 5;
 int IRCenter = 6;
 int IRRight= 7;
 int IRLED = 9; //cargo IR
+bool baby = true;
+bool mama = false;
+
+String inputString = ""; //String to hold incoming data
+bool stringComplete = false; //whether the string is complete
+bool baby = true;
+bool mama  = false;
 
 void setup() {
   Serial.begin(9600);
@@ -23,11 +30,55 @@ void setup() {
   pinMode(IRLeft, INPUT);
   pinMode(IRCenter, INPUT);
   pinMode(IRRight, INPUT);
+  inputString.reserve(200);
 }
 
 //grb
 
 void loop() {
+  if (stringComplete){
+    if(inputString.startsWith("B")){
+      if (inputString.endsWith("t")){
+        baby = true;
+      }
+      else if (inputString.endsWith("f")){
+        baby = false;
+      }
+    }
+    if (inputString.startsWith("M")){
+      if (inputString.endsWith("t")){
+        mama = true;
+      }
+      else if (inputString.endsWith("f")){
+        mama = false;
+      }
+    }
+
+    if(baby && mama){
+      for (int i = 0; i < strip.numPixels() / 2; i++) {
+        solid(i, 10, 200, 255); //purple
+      }
+    }
+    else if (baby){
+      for (int i = 0; i < strip.numPixels() / 2; i++) {
+        solid(i, 0, 255, 0); //red
+    }
+    }
+    else if (mama){
+      for (int i = 0; i < strip.numPixels() / 2; i++) {
+        solid(i, 0, 0, 255); //blue
+     }
+     else{
+        for (int i = 0; i < strip.numPixels() / 2; i++) {
+        chasing(i, delayTime);
+        chasing(i+30, delayTime);
+      }
+     }
+    }
+    inputString = "";
+    stringComplete = false;
+  }
+  
   //strip.setPixelColor(25, 50, 50, 50);
   //strip.setPixelColor(5, 50, 50, 50);
   /*for (int i = 0; i < strip.numPixels() / 2; i++) {
@@ -36,6 +87,7 @@ void loop() {
      solid(i, 10, 200, 250);
      solid(i+30, 10, 100, 120);
   }*/
+  /*
   cargo();
   hatch();
   IRLine();
@@ -58,8 +110,21 @@ void loop() {
     for (int i = 0; i < strip.numPixels() / 2; i++){
         solid(i, 255, 0, 0); //green
     }
-   
+   */
   }
+
+void serialEvent(){
+  while (Serial.available()){
+    char ch = (char) Serial.read();
+    if(ch == '\n'){
+      stringComplete = true;
+    }
+    else{
+      inputString +=ch;
+    }
+  }
+}
+
  } 
 
 void solid(uint16_t i, int g, int r, int b){

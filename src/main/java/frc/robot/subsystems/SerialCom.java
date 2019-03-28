@@ -25,7 +25,7 @@ public class SerialCom extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new SerialTest());
+    //setDefaultCommand(new SerialTest());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
@@ -35,5 +35,9 @@ public class SerialCom extends Subsystem {
     return pls;
     /*for (SerialPort.Port c : SerialPort.Port.values())
     System.out.println(c);*/
+  }
+
+  public static void send(String str){
+    serialPort.writeString(str);
   }
 }//

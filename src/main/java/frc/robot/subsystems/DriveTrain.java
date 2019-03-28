@@ -37,6 +37,7 @@ public class DriveTrain extends Subsystem {
   public int currentLimit = 40;
   public static double minOutput = 0.1;
   public static double midOuput = 0.15;
+  public static double acceleration = 0;
   public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
   public static CANEncoder frontRightHall = frontRight.getEncoder();
@@ -63,13 +64,13 @@ public class DriveTrain extends Subsystem {
 
   
   public static void driveTeleop(){
-    double rightJoy = OI.atkJoy1.getRawAxis(5);
-    double leftJoy = -OI.atkJoy1.getRawAxis(1);
+    double rightJoy = .9*OI.atkJoy1.getRawAxis(5);
+    double leftJoy = -.9*OI.atkJoy1.getRawAxis(1);
 
     if (Math.abs(rightJoy) < minOutput) rightJoy = 0;
-    else if (Math.abs(rightJoy)<midOuput) rightJoy *= .25;
+    else if (Math.abs(rightJoy)<midOuput) rightJoy *= .75;
     if (Math.abs(leftJoy) < minOutput) leftJoy = 0;
-    else if (Math.abs(leftJoy)<midOuput) leftJoy *= .25;
+    else if (Math.abs(leftJoy)<midOuput) leftJoy *= .75;
 
     if (-Math.max(LiftSpark.leftLiftHall.getPosition(), LiftSpark.rightLiftHall.getPosition()) > LiftSpark.height[2]){
       rightJoy *= 0.25;
