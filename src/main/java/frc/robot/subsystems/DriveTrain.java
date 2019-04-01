@@ -38,6 +38,7 @@ public class DriveTrain extends Subsystem {
   public static double minOutput = 0.1;
   public static double midOuput = 0.15;
   public static double acceleration = 0;
+  
   public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
   public static CANEncoder frontRightHall = frontRight.getEncoder();
