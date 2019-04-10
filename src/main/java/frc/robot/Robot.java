@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
   
   public static DriveTrain drivetrain;
   public static Limelight limelight;
-  public static SerialCom serialCom;
+  //public static SerialCom serialCom;
   public static Climb climb;
   public static Compressor compress;
   public static HatchIntake hatchIntake;
@@ -60,7 +60,7 @@ public class Robot extends TimedRobot {
     m_oi=new OI(); 
     m_oi.bindButtons();
 
-    serialCom = new SerialCom();
+    //serialCom = new SerialCom();
     timer = new Timer();
 
     compress = new Compressor();
@@ -127,9 +127,9 @@ public class Robot extends TimedRobot {
       LiftSpark.initposition, //starting position
       //6 + LiftSpark.initposition, //hatch 1 position
       19 + LiftSpark.initposition, //cargo 1 position
-      23 + LiftSpark.initposition, //cargo ship cargo position
+      35 + LiftSpark.initposition, //cargo ship cargo position
       28 + LiftSpark.initposition, //hatch 2 position
-      35 + LiftSpark.initposition, //cargo 2 position
+      49 + LiftSpark.initposition, //cargo 2 position
       50 + LiftSpark.initposition, //hatch 3 position
       69 + LiftSpark.initposition, //cargo 3 position
       71 + LiftSpark.initposition}; //MAX

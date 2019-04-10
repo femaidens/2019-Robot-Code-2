@@ -15,6 +15,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.Timer;
 
 //import org.graalvm.compiler.nodes.calc.RightShiftNode;
 
@@ -37,7 +38,10 @@ public class DriveTrain extends Subsystem {
   public int currentLimit = 40;
   public static double minOutput = 0.1;
   public static double midOuput = 0.15;
-  public static double acceleration = 0;
+  public static double beforeLeftVel = 0;
+  public static double beforeRightVel = 0;
+  public static Timer timerLeft = new Timer();
+  public static Timer timerRight = new Timer();
   
   public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
@@ -65,21 +69,30 @@ public class DriveTrain extends Subsystem {
 
   
   public static void driveTeleop(){
-    double rightJoy = .9*OI.atkJoy1.getRawAxis(5);
-    double leftJoy = -.9*OI.atkJoy1.getRawAxis(1);
+    double rightJoy = OI.atkJoy1.getRawAxis(5);
+    double leftJoy = -OI.atkJoy1.getRawAxis(1);
+/*
+    if (Math.abs(rightJoy) > .05+beforeRightVel || Math.abs(rightJoy) < beforeRightVel-0.5){
+      timerRight.stop();
+      timerRight.reset();
+      timerRight.start();
+    }
+*/
+
 
     if (Math.abs(rightJoy) < minOutput) rightJoy = 0;
-    else if (Math.abs(rightJoy)<midOuput) rightJoy *= .75;
+    //else if (Math.abs(rightJoy)<midOuput) rightJoy *= .75;
     if (Math.abs(leftJoy) < minOutput) leftJoy = 0;
-    else if (Math.abs(leftJoy)<midOuput) leftJoy *= .75;
+    //else if (Math.abs(leftJoy)<midOuput) leftJoy *= .75;
 
     if (-Math.max(LiftSpark.leftLiftHall.getPosition(), LiftSpark.rightLiftHall.getPosition()) > LiftSpark.height[2]){
-      rightJoy *= 0.25;
-      leftJoy *= 0.25;
+      rightJoy *= 0.75;
+      leftJoy *= 0.75;
     }
     
     frontLeft.set(leftJoy);
     frontRight.set(rightJoy);
+
     /*
     middleLeft.set(leftJoy);
     middleRight.set(rightJoy);

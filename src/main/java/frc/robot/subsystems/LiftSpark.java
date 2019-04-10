@@ -53,9 +53,9 @@ public class LiftSpark extends Subsystem {
       initposition, //starting position
       //6 + initposition, //hatch 1 position
       19 + initposition, //cargo 1 position
-      23 + initposition, //cargo ship cargo position
+      35 + initposition, //cargo ship cargo position
       28 + initposition, //hatch 2 position
-      35 + initposition, //cargo 2 position
+      49 + initposition, //cargo 2 position
       50 + initposition, //hatch 3 position
       69 + initposition, //cargo 3 position
       71 + initposition}; //max

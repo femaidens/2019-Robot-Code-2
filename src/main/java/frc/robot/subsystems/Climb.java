@@ -16,10 +16,10 @@ import frc.robot.RobotMap;
 public class Climb extends Subsystem {
 
   public static DoubleSolenoid frontPiston = new DoubleSolenoid(RobotMap.climbPcmPortf, RobotMap.climbFrontPort1, RobotMap.climbFrontPort2);
-  //actual robot ports = 1, 6, 7
+  //actual robot ports = 1, 4, 5
   //practice robot ports  = 3, 6, 7
   public static DoubleSolenoid rearPiston = new DoubleSolenoid(RobotMap.climbPcmPortr, RobotMap.climbRearPort1, RobotMap.climbRearPort2);
-  //actual robot ports = 1, 4, 5
+  //actual robot ports = 3, 6, 7
   //practice robot ports = 3, 4, 5
 
   public static boolean climbFront = false;
@@ -28,6 +28,7 @@ public class Climb extends Subsystem {
   @Override
   public void initDefaultCommand() {
   }
+  
   public static void extendFront(){
     frontPiston.set(DoubleSolenoid.Value.kForward);
     climbFront = true;
