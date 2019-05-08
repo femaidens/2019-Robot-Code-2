@@ -111,7 +111,8 @@ public class Robot extends TimedRobot {
     
     
     Limelight.setLiveStream(1);
-    Limelight.setLEDMode(1);
+    Limelight.setLEDMode(1); 
+    
     LiftSpark.leftLiftHall.setPosition(0.0);
     LiftSpark.rightLiftHall.setPosition(0.0);
     Lift.initial = Lift.frontHall.getPosition();
@@ -122,7 +123,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putString("Print statements", "reset lift hall sensors");
 
     LiftSpark.level = 0;
-    LiftSpark.initposition = Math.min(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition());
+    LiftSpark.initposition = Math.min(LiftSpark.leftLiftHall.getPosition(), LiftSpark.rightLiftHall.getPosition());
     LiftSpark.height = new double[] {
       LiftSpark.initposition, //starting position
       //6 + LiftSpark.initposition, //hatch 1 position
@@ -211,7 +212,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     //System.out.println(DriveTrain.gyro.getAngle());
-  
+  /*
     if (LiftSpark.level < 7 && Math.max(-LiftSpark.leftLiftHall.getPosition(), -LiftSpark.rightLiftHall.getPosition()) >= LiftSpark.height[LiftSpark.level+1]) {
       LiftSpark.level++;
     }
@@ -219,7 +220,7 @@ public class Robot extends TimedRobot {
       LiftSpark.level--;
     }
     SmartDashboard.putString("Lift Level", Lift.printOuts[LiftSpark.level]);
-    
+    */
   }
 
   /**

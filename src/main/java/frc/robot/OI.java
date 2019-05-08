@@ -34,8 +34,8 @@ public class OI {
     //public static Button liftUp = new JoystickButton(atkJoy1, 3);
     //public static Button liftDown = new JoystickButton(atkJoy1, 2);
 
-    public static Button frontClimb = new JoystickButton(atkJoy1, 4);
-    public static Button rearClimb = new JoystickButton(atkJoy1, 1);
+    public static Button frontClimb = new JoystickButton(atkJoy2, 7);
+    public static Button rearClimb = new JoystickButton(atkJoy2, 8);
 
     public static Button autoAlign1 = new JoystickButton(atkJoy1, 2);
     //public static Button autoAlign2 = new JoystickButton(atkJoy1,3);
