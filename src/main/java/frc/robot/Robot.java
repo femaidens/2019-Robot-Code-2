@@ -104,11 +104,11 @@ public class Robot extends TimedRobot {
     Lift.rearHall.setPosition(0.0);
     Lift.initial = Lift.frontHall.getPosition();
     Lift.initial2 = Lift.rearHall.getPosition();
-*/
+
     SmartDashboard.putNumber("Initial Lift", Robot.lift.initial);
     SmartDashboard.putNumber("Initial2 Lift", Robot.lift.initial2);
     SmartDashboard.putString("Print statements", "reset lift hall sensors");
-    
+    */    
     
     Limelight.setLiveStream(1);
     Limelight.setLEDMode(1); 

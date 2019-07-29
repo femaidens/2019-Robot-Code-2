@@ -27,6 +27,11 @@ public class CargoIntake extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
+  public CargoIntake () {
+    backSol.set(DoubleSolenoid.Value.kReverse);
+    state = false;
+  }
+
   public static void retract(){
     backSol.set(DoubleSolenoid.Value.kReverse);
     state = false;
@@ -41,12 +46,12 @@ public class CargoIntake extends Subsystem {
   public static void intake(){ 
     double cargoVel = 0.75;
     //if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = OI.atkJoy2.getRawAxis(5);
-    if(state){
-      backTalon.set(ControlMode.PercentOutput, cargoVel);
+    if(!state){
+      backTalon.set(ControlMode.PercentOutput, -cargoVel);
     }
     else{
       inTalon.set(ControlMode.PercentOutput, cargoVel);
-      backTalon.set(ControlMode.PercentOutput, cargoVel);
+      backTalon.set(ControlMode.PercentOutput, -cargoVel);
     }
     System.out.println("Intake");
     SmartDashboard.putString("Cargo", "intake");
@@ -55,12 +60,12 @@ public class CargoIntake extends Subsystem {
     double cargoVel = 0.75;
     //if (LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[0]) cargoVel = -OI.atkJoy2.getRawAxis(5);    //
     if (LiftSpark.level == 3) cargoVel = 0.50;
-    if(state){
-      backTalon.set(ControlMode.PercentOutput, -cargoVel);
+    if(!state){
+      backTalon.set(ControlMode.PercentOutput, cargoVel);
     }
     else{
       inTalon.set(ControlMode.PercentOutput, -cargoVel);
-      backTalon.set(ControlMode.PercentOutput, -cargoVel);
+      backTalon.set(ControlMode.PercentOutput, cargoVel);
     }
     System.out.println("Outtake");
     SmartDashboard.putString("Cargo", "outtake");

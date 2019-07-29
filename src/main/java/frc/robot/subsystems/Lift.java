@@ -21,6 +21,8 @@ public class Lift extends Subsystem {
   public static TalonSRX rearLeft = new TalonSRX(RobotMap.rearLeftTalon);
   public static TalonSRX rearRight = new TalonSRX(RobotMap.rearRightTalon);
   */
+
+  //public statuc TalonSRX rearRight = new TlonSRX(Rob)
     
   public static CANEncoder frontHall = LiftSpark.leftLiftHall;//.getEncoder();
   public static CANEncoder rearHall = LiftSpark.rightLiftHall;//.getEncoder();
@@ -55,14 +57,17 @@ public Lift(){
   }
 
   public static void liftTeleop(){
-     double rightSpeed = -OI.atkJoy2.getRawAxis(1);
-     if (Math.abs(rightSpeed) < 0.075) rightSpeed = 0;
-     else if (rightSpeed < 0) rightSpeed *= .3;
-     //else if (-LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[2]) rightSpeed *= .5;
-     double currentRear = rearHall.getPosition();
-     double currentFront = frontHall.getPosition();
+    double rightSpeed = -OI.atkJoy2.getRawAxis(1);
+    if (Math.abs(rightSpeed) < 0.075) {
+      rightSpeed = 0;
+    } else if (rightSpeed < 0) {
+      rightSpeed *= .3;
+    }
+    //else if (-LiftSpark.rightLiftHall.getPosition() > LiftSpark.height[2]) rightSpeed *= .5;
+    double currentRear = rearHall.getPosition();
+    double currentFront = frontHall.getPosition();
 
-     if ((currentRear <= initial2+2 || currentFront <= initial+2) && rightSpeed < 0){//min limit
+    if ((currentRear <= initial2+2 || currentFront <= initial+2) && rightSpeed < 0){//min limit
       //frontLeft.set(0.0);
       rearLeft.set(0.0);
       System.out.println("too low");

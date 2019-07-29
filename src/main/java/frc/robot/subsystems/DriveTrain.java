@@ -78,7 +78,9 @@ public class DriveTrain extends Subsystem {
       timerRight.start();
     }
 */
-
+    frontLeft.setClosedLoopRampRate(3.0);
+    frontRight.setClosedLoopRampRate(3.0);
+    System.out.println(frontRight.setClosedLoopRampRate(3.0));
 
     if (Math.abs(rightJoy) < minOutput) rightJoy = 0;
     //else if (Math.abs(rightJoy)<midOuput) rightJoy *= .75;
@@ -89,7 +91,7 @@ public class DriveTrain extends Subsystem {
       rightJoy *= 0.75;
       leftJoy *= 0.75;
     }
-    
+
     frontLeft.set(leftJoy);
     frontRight.set(rightJoy);
 

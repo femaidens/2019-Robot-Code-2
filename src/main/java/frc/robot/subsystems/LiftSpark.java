@@ -42,13 +42,13 @@ public class LiftSpark extends Subsystem {
   public static void downToZero(){
     double downVel = 0.1;
     moving = true;
-    while(-leftLiftHall.getPosition() > initposition+safety || -rightLiftHall.getPosition() > initposition+safety){
+    while(leftLiftHall.getPosition() > initposition+safety || rightLiftHall.getPosition() > initposition+safety){
       //leftCasMotor.set(downVel);
-      rightCasMotor.set(downVel);
+      rightCasMotor.set(-downVel);
     }
     //leftCasMotor.set(0.0);
     rightCasMotor.set(0.0);
-    initposition = Math.min(-leftLiftHall.getPosition(), -rightLiftHall.getPosition());
+    initposition = Math.min(leftLiftHall.getPosition(), rightLiftHall.getPosition());
     height = new double[] {
       initposition, //starting position
       //6 + initposition, //hatch 1 position

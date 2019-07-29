@@ -29,7 +29,7 @@ public class OI {
     public static Button cargoIn = new JoystickButton(atkJoy2, 4); //backwards
     public static Button cargoOut = new JoystickButton(atkJoy2, 1); //forwards
 
-    public static Button cargoPiston = new JoystickButton(atkJoy2, 5);
+    public static Button cargoPiston = new JoystickButton(atkJoy2, 6);
 
     //public static Button liftUp = new JoystickButton(atkJoy1, 3);
     //public static Button liftDown = new JoystickButton(atkJoy1, 2);
@@ -41,6 +41,7 @@ public class OI {
     //public static Button autoAlign2 = new JoystickButton(atkJoy1,3);
     public static Button autoAlign3 = new JoystickButton(atkJoy1, 3);
 
+    public static Button reset = new JoystickButton(atkJoy2, 10);
     //public static Button liftUp = new JoystickButton(atkJoy2, 4);
     //public static Button liftDown = new JoystickButton(atkJoy2,6);
     //public static Button downToZero = new JoystickButton(atkJoy2, 3);
@@ -72,15 +73,17 @@ public class OI {
         //liftDown.whenPressed(new RocketDown());
         
         //climber manual
-        frontClimb.whenPressed(new FrontClimb());
-        rearClimb.whenPressed(new RearClimb());
+        //frontClimb.whenPressed(new FrontClimb());
+        //rearClimb.whenPressed(new RearClimb());
 
-        autoAlign1.whileHeld(new AutoAlign_PID(.1,.1));
+        //autoAlign1.whileHeld(new AutoAlign_PID(.1,.1));
         //autoAlign2.whileHeld(new AutoAlign());
-        autoAlign3.whileHeld(new AutoAlign_PID(0,0));
-        autoAlign1.whenReleased(new StopAlign());
+        //autoAlign3.whileHeld(new AutoAlign_PID(0,0));
+        //autoAlign1.whenReleased(new StopAlign());
         //autoAlign2.whenReleased(new StopAlign());
-        autoAlign3.whenReleased(new StopAlign());
+        //autoAlign3.whenReleased(new StopAlign());
+
+        reset.whenPressed(new ResetMinimum());
 
         //testCounter.whenPressed(new PrintTest());
     }
